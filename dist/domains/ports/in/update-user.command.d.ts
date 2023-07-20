@@ -1,0 +1,33 @@
+export declare class UpdateUserCommand {
+    private readonly _userId;
+    private _email;
+    private _name;
+    private _secondName;
+    private _vk;
+    private _instagram;
+    private _youtube;
+    private _twitter;
+    private _facebook;
+    private _aboutMe;
+    private _avatarImage;
+    private _gender;
+    private _birthday;
+    private _country;
+    private _city;
+    constructor(_userId: string, _email: string, _name: string, _secondName: string, _vk: string, _instagram: string, _youtube: string, _twitter: string, _facebook: string, _aboutMe: string, _avatarImage: string, _gender: string, _birthday: string, _country: string, _city: string);
+    get userId(): string;
+    get email(): string;
+    get avatarImage(): string;
+    get name(): string;
+    get secondName(): string;
+    get vk(): string;
+    get instagram(): string;
+    get youtube(): string;
+    get twitter(): string;
+    get facebook(): string;
+    get aboutMe(): string;
+    get city(): string;
+    get country(): string;
+    get gender(): string;
+    get birthday(): string;
+}

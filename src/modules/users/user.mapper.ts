@@ -9,6 +9,11 @@ export class UserMapper {
   static mapToDomain(user: UserData): UserEntity {
     const id = user._id.valueOf() as string;
     const friends = user.friends.map((i) => i.valueOf() as string);
+    const likedFilms = user.likedFilms.map((i) => i.valueOf() as string);
+    const dislikedFilms = user.dislikedFilms.map((i) => i.valueOf() as string);
+    const films = user.films.map((i) => i.valueOf() as string);
+    const expectedFilms = user.expectedFilms.map((i) => i.valueOf() as string);
+    const favoriteFilms = user.favoriteFilms.map((i) => i.valueOf() as string);
     return new UserEntity(
       id,
       user.email,
@@ -26,16 +31,16 @@ export class UserMapper {
       user.country,
       user.city,
       user.favoriteGenres,
-      user.films,
+      films,
       friends,
-      user.favoriteFilms,
-      user.expectedFilms,
+      favoriteFilms,
+      expectedFilms,
       user.persons,
       user.favoritePersons,
       user.reviews,
       user.comments,
-      user.likedFilms,
-      user.dislikedFilms,
+      likedFilms,
+      dislikedFilms,
       user.avatarImage,
       user.wasOnline,
     );

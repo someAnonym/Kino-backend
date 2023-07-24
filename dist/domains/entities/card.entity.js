@@ -2,9 +2,10 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CardEntity = void 0;
 class CardEntity {
-    constructor(_id, _posterImage, _name, _secondName, _ratings, _userLike, _userDislike, _favourites, _year, _country, _slogan, _directors, _screenwriters, _producers, _operators, _composers, _artists, _editors, _genres, _collecting, _premiereInWorld, _premiereInRussia, _age, _duration, _production, _specialEffects, _dubbingStudios, _persons, _trailers, _awards, _posters, _shots, _sequelAndPrequels, _quotes, _seemFilms) {
+    constructor(_id, _posterImage, _reviews, _name, _secondName, _ratings, _userLike, _userDislike, _favourites, _year, _country, _slogan, _directors, _screenwriters, _producers, _operators, _composers, _artists, _editors, _genres, _collecting, _premiereInWorld, _premiereInRussia, _age, _duration, _production, _specialEffects, _dubbingStudios, _persons, _trailers, _awards, _posters, _shots, _sequelAndPrequels, _quotes, _seemFilms, _description) {
         this._id = _id;
         this._posterImage = _posterImage;
+        this._reviews = _reviews;
         this._name = _name;
         this._secondName = _secondName;
         this._ratings = _ratings;
@@ -38,111 +39,191 @@ class CardEntity {
         this._sequelAndPrequels = _sequelAndPrequels;
         this._quotes = _quotes;
         this._seemFilms = _seemFilms;
+        this._description = _description;
     }
-    id() {
+    get id() {
         return this._id;
     }
-    posterImage() {
+    get description() {
+        return this._description;
+    }
+    get posterImage() {
         return this._posterImage;
     }
-    name() {
+    get name() {
         return this._name;
     }
-    secondName() {
+    get reviews() {
+        return this._reviews;
+    }
+    get secondName() {
         return this._secondName;
     }
-    ratings() {
+    get ratings() {
         return this._ratings;
     }
-    userLike() {
+    get userLike() {
         return this._userLike;
     }
-    userDislike() {
+    get userDislike() {
         return this._userDislike;
     }
-    favourites() {
+    get favourites() {
         return this._favourites;
     }
-    year() {
+    get year() {
         return this._year;
     }
-    country() {
+    get country() {
         return this._country;
     }
-    slogan() {
+    get slogan() {
         return this._slogan;
     }
-    directors() {
+    get directors() {
         return this._directors;
     }
-    screenwriters() {
+    get screenwriters() {
         return this._screenwriters;
     }
-    producers() {
+    get producers() {
         return this._producers;
     }
-    operators() {
+    get operators() {
         return this._operators;
     }
-    composers() {
+    get composers() {
         return this._composers;
     }
-    artisrs() {
+    get artisrs() {
         return this._artists;
     }
-    editors() {
+    get editors() {
         return this._editors;
     }
-    genres() {
+    get genres() {
         return this._genres;
     }
-    collecting() {
+    get collecting() {
         return this._collecting;
     }
-    premiereInWorld() {
+    get premiereInWorld() {
         return this._premiereInWorld;
     }
-    premiereInRussia() {
+    get premiereInRussia() {
         return this._premiereInRussia;
     }
-    age() {
+    get age() {
         return this._age;
     }
-    duration() {
+    get duration() {
         return this._duration;
     }
-    production() {
+    get production() {
         return this._production;
     }
-    specialEffects() {
+    get specialEffects() {
         return this._specialEffects;
     }
-    dubbingStudios() {
+    get dubbingStudios() {
         return this._dubbingStudios;
     }
-    persons() {
+    get persons() {
         return this._persons;
     }
-    trailers() {
+    get trailers() {
         return this._trailers;
     }
-    awards() {
+    get awards() {
         return this._awards;
     }
-    posters() {
+    get posters() {
         return this._posters;
     }
-    shots() {
+    get shots() {
         return this._shots;
     }
-    sequelAndPrequels() {
+    get sequelAndPrequels() {
         return this._sequelAndPrequels;
     }
-    quotes() {
+    get quotes() {
         return this._quotes;
     }
-    seemFilms() {
+    get seemFilms() {
         return this._seemFilms;
+    }
+    updateFavorite(favorite) {
+        try {
+            this._favourites = favorite;
+        }
+        catch (err) {
+            throw new Error('Ошибка при изменении избранных!');
+        }
+    }
+    updateLikes(like) {
+        try {
+            this._userLike = like;
+        }
+        catch (err) {
+            throw new Error('Ошибка при изменении лайков!');
+        }
+    }
+    updateDislikes(dislike) {
+        try {
+            this._userDislike = dislike;
+        }
+        catch (err) {
+            throw new Error('Ошибка при изменении дизлайков!');
+        }
+    }
+    updateReviews(reviews) {
+        try {
+            this._reviews = [...this._reviews, ...reviews];
+        }
+        catch (err) {
+            throw new Error('Ошибка при обновлении Рецензий!');
+        }
+    }
+    getCardData() {
+        return {
+            id: this._id,
+            posterImage: this._posterImage,
+            reviews: this._reviews,
+            name: this._name,
+            secondName: this._secondName,
+            ratings: this._ratings,
+            userLike: this._userLike,
+            userDislike: this._userDislike,
+            favourites: this._favourites,
+            year: this._year,
+            country: this._country,
+            slogan: this._slogan,
+            directors: this._directors,
+            screenwriters: this._screenwriters,
+            producers: this._producers,
+            operators: this._operators,
+            composers: this._composers,
+            artists: this._artists,
+            editors: this._editors,
+            genres: this._genres,
+            collecting: this._collecting,
+            oremiereImWorld: this._premiereInWorld,
+            premiereInRussia: this._premiereInRussia,
+            age: this._age,
+            duration: this.duration,
+            production: this._production,
+            specialEffects: this._specialEffects,
+            dubbingStudios: this._dubbingStudios,
+            persons: this._persons,
+            trailers: this._trailers,
+            awards: this._awards,
+            posters: this._posters,
+            shots: this._shots,
+            sequelAndPrequels: this._sequelAndPrequels,
+            quotes: this._quotes,
+            seemFilms: this._seemFilms,
+            description: this._description,
+        };
     }
 }
 exports.CardEntity = CardEntity;

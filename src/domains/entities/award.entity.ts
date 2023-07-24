@@ -7,6 +7,10 @@ export class AwardEntity {
     private readonly _year: string,
   ) {}
 
+  public get id(): string {
+    return this._id;
+  }
+
   public get picture(): string {
     return this._picture;
   }

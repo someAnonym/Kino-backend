@@ -20,16 +20,16 @@ export declare class User {
     country: string;
     city: string;
     favoriteGenres: Genres[];
-    films: string[];
+    films: ObjectId[];
     friends: ObjectId[];
-    favoriteFilms: string[];
-    expectedFilms: string[];
+    favoriteFilms: ObjectId[];
+    expectedFilms: ObjectId[];
     persons: string[];
     favoritePersons: string[];
     reviews: string[];
     comments: string[];
-    likedFilms: string[];
-    dislikedFilms: string[];
+    likedFilms: ObjectId[];
+    dislikedFilms: ObjectId[];
 }
 export declare const UserSchema: mongoose.Schema<User, mongoose.Model<User, any, any, any, mongoose.Document<unknown, any, User> & User & {
     _id: mongoose.Types.ObjectId;

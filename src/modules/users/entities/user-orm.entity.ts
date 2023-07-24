@@ -61,8 +61,11 @@ export class User {
   @Prop({ default: [] })
   favoriteGenres: Genres[];
 
-  @Prop({ default: [] })
-  films: string[];
+  @Prop({
+    type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Card' }],
+    default: [],
+  })
+  films: ObjectId[];
 
   @Prop({
     type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
@@ -70,11 +73,17 @@ export class User {
   })
   friends: ObjectId[];
 
-  @Prop({ default: [] })
-  favoriteFilms: string[];
+  @Prop({
+    type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Card' }],
+    default: [],
+  })
+  favoriteFilms: ObjectId[];
 
-  @Prop({ default: [] })
-  expectedFilms: string[];
+  @Prop({
+    type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Card' }],
+    default: [],
+  })
+  expectedFilms: ObjectId[];
 
   @Prop({ default: [] })
   persons: string[];
@@ -88,11 +97,17 @@ export class User {
   @Prop({ default: [] })
   comments: string[];
 
-  @Prop({ default: [] })
-  likedFilms: string[];
+  @Prop({
+    type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Card' }],
+    default: [],
+  })
+  likedFilms: ObjectId[];
 
-  @Prop({ default: [] })
-  dislikedFilms: string[];
+  @Prop({
+    type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Card' }],
+    default: [],
+  })
+  dislikedFilms: ObjectId[];
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

@@ -1,8 +1,5 @@
 import { ForbiddenException, Injectable } from '@nestjs/common';
-import { UserEntity } from 'src/domains/entities/user.entity';
-import { UserRepositoryPort } from 'src/domains/ports/out/user-repository.port';
 import { Model } from 'mongoose';
-import { errorMonitor } from 'events';
 import { InjectModel } from '@nestjs/mongoose';
 import { CardMapper } from './card.mapper';
 import { CardEntity } from 'src/domains/entities/card.entity';
@@ -40,8 +37,6 @@ export class CardsRepository implements CardRepositoryPort {
   }
 
   create(dto: CreateCardOrmDto) {
-    console.log(1);
-
     return this.repository.create(dto);
   }
 

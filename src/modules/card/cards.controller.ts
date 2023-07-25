@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Inject, Post, Put, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Inject, Param, Post, Put, Query, UseGuards } from '@nestjs/common';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { CardId } from '../decorators/card-id.decorator';
 import { JwtAuthGuard } from '../auth/guards/jwt.guard';
@@ -8,7 +8,7 @@ import { CardsRepository } from './cards.repository';
 import {
   UpdateCardUseCase,
   UpdateCardUseCaseSymbol,
-} from 'src/domains/ports/in/update-card-use-case';
+} from 'src/domains/ports/in/update-card.use-case';
 import { CreateCardDto } from 'src/domains/ports/out/card-repository.port';
 import { CreateCardOrmDto } from './dto/create-card.dto';
 
@@ -25,13 +25,13 @@ export class CardsController {
 
   @Get('/currentCard')
   @UseGuards(JwtAuthGuard)
-  getMe(@Body() id: string) {
+  getMe(@Param('id') id: string) {
     return this.cardsRepository.findById(id);
   }
 
   @Put('/update')
   @UseGuards(JwtAuthGuard)
-  async update(@Body() id: string, @Body() dto: UpdateCardDto) {
+  async update(@Param('id') id: string, @Body() dto: UpdateCardDto) {
     const command = new UpdateCardCommand(
       id,
       dto._reviews,

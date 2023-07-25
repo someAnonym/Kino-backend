@@ -4,7 +4,7 @@ export class AwardEntity {
     private readonly _picture: string,
     private readonly _name: string,
     private readonly _description: string,
-    private readonly _year: string,
+    private readonly _year: number,
   ) {}
 
   public get id(): string {
@@ -23,7 +23,7 @@ export class AwardEntity {
     return this._description;
   }
 
-  public get year(): string {
+  public get year(): number {
     return this._year;
   }
 }

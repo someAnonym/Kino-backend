@@ -25,7 +25,7 @@
 /// <reference types="mongoose/types/inferschematype" />
 import { UpdateCardDto } from './dto/update-card.dto';
 import { CardsRepository } from './cards.repository';
-import { UpdateCardUseCase } from 'src/domains/ports/in/update-card-use-case';
+import { UpdateCardUseCase } from 'src/domains/ports/in/update-card.use-case';
 import { CreateCardOrmDto } from './dto/create-card.dto';
 export declare class CardsController {
     private readonly _updateCardUseCase;

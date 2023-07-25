@@ -19,7 +19,7 @@ const jwt_guard_1 = require("../auth/guards/jwt.guard");
 const update_card_dto_1 = require("./dto/update-card.dto");
 const update_card_command_1 = require("../../domains/ports/in/update-card.command");
 const cards_repository_1 = require("./cards.repository");
-const update_card_use_case_1 = require("../../domains/ports/in/update-card-use-case");
+const update_card_use_case_1 = require("../../domains/ports/in/update-card.use-case");
 const create_card_dto_1 = require("./dto/create-card.dto");
 let CardsController = exports.CardsController = class CardsController {
     constructor(_updateCardUseCase, cardsRepository) {
@@ -41,7 +41,7 @@ let CardsController = exports.CardsController = class CardsController {
 __decorate([
     (0, common_1.Get)('/currentCard'),
     (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuard),
-    __param(0, (0, common_1.Body)()),
+    __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
@@ -49,7 +49,7 @@ __decorate([
 __decorate([
     (0, common_1.Put)('/update'),
     (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuard),
-    __param(0, (0, common_1.Body)()),
+    __param(0, (0, common_1.Param)('id')),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, update_card_dto_1.UpdateCardDto]),

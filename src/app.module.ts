@@ -7,6 +7,9 @@ import { ConfigModule } from '@nestjs/config';
 import { FilesModule } from './modules/files/files.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { CardsModule } from './modules/card/cards.module';
+import { AwardModule } from './modules/awards/awards.module';
+import { PersonsModule } from './modules/persons/persons.module';
+import { ReviewsModule } from './modules/reviews/reviews.module';
 
 @Module({
   imports: [
@@ -16,6 +19,9 @@ import { CardsModule } from './modules/card/cards.module';
     FilesModule,
     AuthModule,
     CardsModule,
+    AwardModule,
+    PersonsModule,
+    ReviewsModule,
   ],
   controllers: [],
   providers: [],

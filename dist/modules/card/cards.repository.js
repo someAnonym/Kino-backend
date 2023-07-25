@@ -41,7 +41,6 @@ let CardsRepository = exports.CardsRepository = class CardsRepository {
         }
     }
     create(dto) {
-        console.log(1);
         return this.repository.create(dto);
     }
     findById(id) {

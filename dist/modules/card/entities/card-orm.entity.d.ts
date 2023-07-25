@@ -11,7 +11,7 @@ export declare class Card {
     userLike: number;
     userDislike: number;
     favorites: number;
-    year: string;
+    year: number;
     country: string;
     slogan: string;
     directors: string[];
@@ -32,7 +32,7 @@ export declare class Card {
     dubbingStudios: string[];
     persons: string[];
     trailers: string[];
-    awards: string[];
+    awards: ObjectId[];
     posters: string[];
     shots: string[];
     sequelAndPrequels: ObjectId[];

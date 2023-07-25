@@ -18,7 +18,7 @@ export class CardEntity {
     private _userLike: number,
     private _userDislike: number,
     private _favourites: number,
-    private readonly _year: string,
+    private readonly _year: number,
     private readonly _country: string,
     private readonly _slogan: string,
     private readonly _directors: string[],
@@ -90,7 +90,7 @@ export class CardEntity {
     return this._favourites;
   }
 
-  public get year(): string {
+  public get year(): number {
     return this._year;
   }
 

@@ -37,7 +37,7 @@ export declare class CardEntity {
     private readonly _quotes;
     private readonly _seemFilms;
     private readonly _description;
-    constructor(_id: string, _posterImage: string, _reviews: string[], _name: string, _secondName: string, _ratings: string[], _userLike: number, _userDislike: number, _favourites: number, _year: string, _country: string, _slogan: string, _directors: string[], _screenwriters: string[], _producers: string[], _operators: string[], _composers: string[], _artists: string[], _editors: string[], _genres: Genres[], _collecting: number, _premiereInWorld: string, _premiereInRussia: string, _age: number, _duration: number, _production: string[], _specialEffects: string[], _dubbingStudios: string[], _persons: string[], _trailers: string[], _awards: string[], _posters: string[], _shots: string[], _sequelAndPrequels: string[], _quotes: string[], _seemFilms: string[], _description: string);
+    constructor(_id: string, _posterImage: string, _reviews: string[], _name: string, _secondName: string, _ratings: string[], _userLike: number, _userDislike: number, _favourites: number, _year: number, _country: string, _slogan: string, _directors: string[], _screenwriters: string[], _producers: string[], _operators: string[], _composers: string[], _artists: string[], _editors: string[], _genres: Genres[], _collecting: number, _premiereInWorld: string, _premiereInRussia: string, _age: number, _duration: number, _production: string[], _specialEffects: string[], _dubbingStudios: string[], _persons: string[], _trailers: string[], _awards: string[], _posters: string[], _shots: string[], _sequelAndPrequels: string[], _quotes: string[], _seemFilms: string[], _description: string);
     get id(): string;
     get description(): string;
     get posterImage(): string;
@@ -48,7 +48,7 @@ export declare class CardEntity {
     get userLike(): number;
     get userDislike(): number;
     get favourites(): number;
-    get year(): string;
+    get year(): number;
     get country(): string;
     get slogan(): string;
     get directors(): string[];
@@ -89,7 +89,7 @@ export declare class CardEntity {
         userLike: number;
         userDislike: number;
         favourites: number;
-        year: string;
+        year: number;
         country: string;
         slogan: string;
         directors: string[];

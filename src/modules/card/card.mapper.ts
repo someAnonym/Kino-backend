@@ -11,6 +11,7 @@ export class CardMapper {
     const id = card._id.valueOf() as string;
     const sequelAndPrequels = card.sequelAndPrequels.map((i) => i.valueOf() as string);
     const seemFilms = card.seemFilms.map((i) => i.valueOf() as string);
+    const awards = card.awards.map((i) => i.valueOf() as string);
     return new CardEntity(
       id,
       card.posterImage,
@@ -42,7 +43,7 @@ export class CardMapper {
       card.dubbingStudios,
       card.persons,
       card.trailers,
-      card.awards,
+      awards,
       card.posters,
       card.shots,
       sequelAndPrequels,

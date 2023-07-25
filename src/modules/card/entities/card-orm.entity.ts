@@ -32,7 +32,7 @@ export class Card {
   favorites: number;
 
   @Prop()
-  year: string;
+  year: number;
 
   @Prop()
   country: string;
@@ -94,8 +94,11 @@ export class Card {
   @Prop()
   trailers: string[];
 
-  @Prop()
-  awards: string[];
+  @Prop({
+    type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Award' }],
+    default: [],
+  })
+  awards: ObjectId[];
 
   @Prop()
   posters: string[];

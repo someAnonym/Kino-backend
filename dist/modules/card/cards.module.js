@@ -13,7 +13,7 @@ const card_orm_entity_1 = require("./entities/card-orm.entity");
 const cards_controller_1 = require("./cards.controller");
 const cards_repository_1 = require("./cards.repository");
 const update_card_service_1 = require("../../domains/services/update-card.service");
-const update_card_use_case_1 = require("../../domains/ports/in/update-card-use-case");
+const update_card_use_case_1 = require("../../domains/ports/in/update-card.use-case");
 let CardsModule = exports.CardsModule = class CardsModule {
 };
 exports.CardsModule = CardsModule = __decorate([

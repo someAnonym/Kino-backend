@@ -48,7 +48,7 @@ __decorate([
 ], Card.prototype, "favorites", void 0);
 __decorate([
     (0, mongoose_1.Prop)(),
-    __metadata("design:type", String)
+    __metadata("design:type", Number)
 ], Card.prototype, "year", void 0);
 __decorate([
     (0, mongoose_1.Prop)(),
@@ -131,7 +131,10 @@ __decorate([
     __metadata("design:type", Array)
 ], Card.prototype, "trailers", void 0);
 __decorate([
-    (0, mongoose_1.Prop)(),
+    (0, mongoose_1.Prop)({
+        type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Award' }],
+        default: [],
+    }),
     __metadata("design:type", Array)
 ], Card.prototype, "awards", void 0);
 __decorate([

@@ -20,6 +20,7 @@ const comments_repository_1 = require("./comments.repository");
 const create_comment_dto_1 = require("./dto/create-comment.dto");
 const update_comment_dto_1 = require("./dto/update-comment.dto");
 const udpate_comment_command_1 = require("../../domains/ports/in/udpate-comment.command");
+const jwt_guard_1 = require("../auth/guards/jwt.guard");
 let CommentsController = exports.CommentsController = class CommentsController {
     constructor(_updateCommentUseCase, _commentsRepository) {
         this._updateCommentUseCase = _updateCommentUseCase;
@@ -42,12 +43,14 @@ let CommentsController = exports.CommentsController = class CommentsController {
 };
 __decorate([
     (0, common_1.Get)('/all'),
+    (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuard),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
 ], CommentsController.prototype, "getAll", null);
 __decorate([
     (0, common_1.Get)('/:id'),
+    (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuard),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
@@ -55,6 +58,7 @@ __decorate([
 ], CommentsController.prototype, "getOne", null);
 __decorate([
     (0, common_1.Post)('/create'),
+    (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuard),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [create_comment_dto_1.createCommentOrmDto]),
@@ -62,6 +66,7 @@ __decorate([
 ], CommentsController.prototype, "create", null);
 __decorate([
     (0, common_1.Put)('update'),
+    (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuard),
     __param(0, (0, common_1.Param)('id')),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),

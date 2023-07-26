@@ -12,45 +12,33 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AwardsController = void 0;
+exports.DirectorsController = void 0;
 const common_1 = require("@nestjs/common");
 const swagger_1 = require("@nestjs/swagger");
-const awards_repository_1 = require("./awards.repository");
-const create_award_dto_1 = require("./dto/create-award.dto");
 const jwt_guard_1 = require("../auth/guards/jwt.guard");
-let AwardsController = exports.AwardsController = class AwardsController {
-    constructor(_awardsRepository) {
-        this._awardsRepository = _awardsRepository;
-    }
-    create(dto) {
-        return this._awardsRepository.create(dto);
-    }
-    delete(id) {
-        return this._awardsRepository.deleteAward(id);
-    }
-    getAward(id) {
-        return this._awardsRepository.getOneById(id);
+const directors_repository_1 = require("./directors.repository");
+const create_director_orm_dto_1 = require("./dto/create-director-orm.dto");
+let DirectorsController = exports.DirectorsController = class DirectorsController {
+    constructor(_directorsRepository) {
+        this._directorsRepository = _directorsRepository;
     }
     getAll() {
-        return this._awardsRepository.getAll();
+        return this._directorsRepository.getAll();
+    }
+    getOne(id) {
+        return this._directorsRepository.getDirecorById(id);
+    }
+    create(dto) {
+        return this._directorsRepository.createDirector(dto);
     }
 };
 __decorate([
-    (0, common_1.Post)('/create'),
+    (0, common_1.Get)('/all'),
     (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuard),
-    __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [create_award_dto_1.CreateAwardOrmDto]),
+    __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
-], AwardsController.prototype, "create", null);
-__decorate([
-    (0, common_1.Delete)('/delete/:id'),
-    (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuard),
-    __param(0, (0, common_1.Param)('id')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", void 0)
-], AwardsController.prototype, "delete", null);
+], DirectorsController.prototype, "getAll", null);
 __decorate([
     (0, common_1.Get)('/:id'),
     (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuard),
@@ -58,18 +46,18 @@ __decorate([
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
-], AwardsController.prototype, "getAward", null);
+], DirectorsController.prototype, "getOne", null);
 __decorate([
-    (0, common_1.Get)('/all'),
-    (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuard),
+    (0, common_1.Post)('/create'),
+    __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
+    __metadata("design:paramtypes", [create_director_orm_dto_1.CreateDirectorOrmDto]),
     __metadata("design:returntype", void 0)
-], AwardsController.prototype, "getAll", null);
-exports.AwardsController = AwardsController = __decorate([
-    (0, common_1.Controller)('awards'),
+], DirectorsController.prototype, "create", null);
+exports.DirectorsController = DirectorsController = __decorate([
+    (0, swagger_1.ApiTags)('Directors'),
     (0, swagger_1.ApiBearerAuth)(),
-    (0, swagger_1.ApiTags)('Awards'),
-    __metadata("design:paramtypes", [awards_repository_1.AwardsRepository])
-], AwardsController);
-//# sourceMappingURL=awards.controller.js.map
+    (0, common_1.Controller)('directors'),
+    __metadata("design:paramtypes", [directors_repository_1.DirectorsRepository])
+], DirectorsController);
+//# sourceMappingURL=directors.controller.js.map

@@ -20,6 +20,7 @@ const update_person_use_case_1 = require("../../domains/ports/in/update-person.u
 const create_person_dto_1 = require("./dto/create-person.dto");
 const update_person_dto_1 = require("./dto/update-person.dto");
 const update_person_command_1 = require("../../domains/ports/in/update-person.command");
+const jwt_guard_1 = require("../auth/guards/jwt.guard");
 let PersonsController = exports.PersonsController = class PersonsController {
     constructor(_updatePersonUseCase, _personsRepository) {
         this._updatePersonUseCase = _updatePersonUseCase;
@@ -45,12 +46,14 @@ let PersonsController = exports.PersonsController = class PersonsController {
 };
 __decorate([
     (0, common_1.Get)('/all'),
+    (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuard),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
 ], PersonsController.prototype, "getAll", null);
 __decorate([
     (0, common_1.Get)('/:id'),
+    (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuard),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
@@ -58,6 +61,7 @@ __decorate([
 ], PersonsController.prototype, "getOne", null);
 __decorate([
     (0, common_1.Delete)('/delete'),
+    (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuard),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
@@ -65,6 +69,7 @@ __decorate([
 ], PersonsController.prototype, "delete", null);
 __decorate([
     (0, common_1.Post)('/create'),
+    (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuard),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [create_person_dto_1.CreatePersonOrmDto]),
@@ -72,6 +77,7 @@ __decorate([
 ], PersonsController.prototype, "create", null);
 __decorate([
     (0, common_1.Put)('/update'),
+    (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuard),
     __param(0, (0, common_1.Param)('id')),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),

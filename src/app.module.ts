@@ -11,6 +11,7 @@ import { AwardModule } from './modules/awards/awards.module';
 import { PersonsModule } from './modules/persons/persons.module';
 import { ReviewsModule } from './modules/reviews/reviews.module';
 import { CommentsModule } from './modules/comments/comments.module';
+import { DirectorsModule } from './modules/directors/directors.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { CommentsModule } from './modules/comments/comments.module';
     PersonsModule,
     ReviewsModule,
     CommentsModule,
+    DirectorsModule,
   ],
   controllers: [],
   providers: [],

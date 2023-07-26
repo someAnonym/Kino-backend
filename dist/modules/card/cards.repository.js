@@ -46,6 +46,13 @@ let CardsRepository = exports.CardsRepository = class CardsRepository {
     findById(id) {
         return this.repository.findById(id);
     }
+    async search(query) {
+        const cards = await this.repository.find();
+        return [
+            ...cards.filter((i) => i.name.toLowerCase().includes(query.toLowerCase())),
+            ...cards.filter((i) => i.secondName.toLowerCase().includes(query.toLowerCase())),
+        ];
+    }
 };
 exports.CardsRepository = CardsRepository = __decorate([
     (0, common_1.Injectable)(),

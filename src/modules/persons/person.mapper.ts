@@ -10,6 +10,7 @@ export class PersonMapper {
     const films = person.films.map((i) => i.valueOf() as string);
     const bestFilms = person.films.map((i) => i.valueOf() as string);
     const awards = person.awards.map((i) => i.valueOf() as string);
+    const comments = person.comments.map((i) => i.valueOf() as string);
 
     return new PersonEntity(
       id,
@@ -28,7 +29,7 @@ export class PersonMapper {
       person.lastNews,
       person.photos,
       films,
-      person.comments,
+      comments,
     );
   }
 }

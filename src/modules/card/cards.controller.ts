@@ -48,4 +48,10 @@ export class CardsController {
   async create(@Body() dto: CreateCardOrmDto) {
     return await this.cardsRepository.create(dto);
   }
+
+  @Get('/search')
+  @UseGuards(JwtAuthGuard)
+  search(@Query('query') query: string) {
+    return this.cardsRepository.search(query);
+  }
 }

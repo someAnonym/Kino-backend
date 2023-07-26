@@ -29,6 +29,9 @@ let PersonsController = exports.PersonsController = class PersonsController {
     getAll() {
         return this._personsRepository.getAll();
     }
+    search(query) {
+        return this._personsRepository.search(query);
+    }
     getOne(id) {
         return this._personsRepository.getOneById(id);
     }
@@ -51,6 +54,14 @@ __decorate([
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
 ], PersonsController.prototype, "getAll", null);
+__decorate([
+    (0, common_1.Get)('/search'),
+    (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuard),
+    __param(0, (0, common_1.Query)('query')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], PersonsController.prototype, "search", null);
 __decorate([
     (0, common_1.Get)('/:id'),
     (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuard),

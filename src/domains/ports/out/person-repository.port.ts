@@ -28,4 +28,5 @@ export interface PersonsRepositoryPort {
   update(person: PersonEntity);
   getAll();
   create(dto: CreatePersonDto);
+  search(query: string);
 }

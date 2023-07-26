@@ -49,4 +49,5 @@ export interface CardRepositoryPort {
   loadCard(cardId: string): Promise<CardEntity>;
   findById(id: string);
   create(dto: CreateCardDto);
+  search(query: string);
 }

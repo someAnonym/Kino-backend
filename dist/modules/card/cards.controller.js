@@ -37,6 +37,9 @@ let CardsController = exports.CardsController = class CardsController {
     async create(dto) {
         return await this.cardsRepository.create(dto);
     }
+    search(query) {
+        return this.cardsRepository.search(query);
+    }
 };
 __decorate([
     (0, common_1.Get)('/currentCard'),
@@ -63,6 +66,14 @@ __decorate([
     __metadata("design:paramtypes", [create_card_dto_1.CreateCardOrmDto]),
     __metadata("design:returntype", Promise)
 ], CardsController.prototype, "create", null);
+__decorate([
+    (0, common_1.Get)('/search'),
+    (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuard),
+    __param(0, (0, common_1.Query)('query')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], CardsController.prototype, "search", null);
 exports.CardsController = CardsController = __decorate([
     (0, common_1.Controller)('cards'),
     (0, swagger_1.ApiBearerAuth)(),

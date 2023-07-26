@@ -42,4 +42,7 @@ export declare class CardsRepository implements CardRepositoryPort {
     }, import("mongoose").Document<unknown, {}, CardDocument> & Card & Document & {
         _id: import("mongoose").Types.ObjectId;
     }, {}, CardDocument, "findOne">;
+    search(query: string): Promise<(import("mongoose").Document<unknown, {}, CardDocument> & Card & Document & {
+        _id: import("mongoose").Types.ObjectId;
+    })[]>;
 }

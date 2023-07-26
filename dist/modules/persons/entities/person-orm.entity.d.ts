@@ -18,7 +18,7 @@ export declare class Person {
     lastNews: string[];
     photos: string[];
     films: ObjectId[];
-    comments: string[];
+    comments: ObjectId[];
 }
 export declare const PersonSchema: mongoose.Schema<Person, mongoose.Model<Person, any, any, any, mongoose.Document<unknown, any, Person> & Person & {
     _id: mongoose.Types.ObjectId;

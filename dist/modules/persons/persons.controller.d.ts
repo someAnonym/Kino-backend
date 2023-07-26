@@ -36,6 +36,9 @@ export declare class PersonsController {
     })[], import("mongoose").Document<unknown, {}, import("./entities/person-orm.entity").PersonDocument> & import("./entities/person-orm.entity").Person & Document & {
         _id: import("mongoose").Types.ObjectId;
     }, {}, import("./entities/person-orm.entity").PersonDocument, "find">;
+    search(query: string): Promise<(import("mongoose").Document<unknown, {}, import("./entities/person-orm.entity").PersonDocument> & import("./entities/person-orm.entity").Person & Document & {
+        _id: import("mongoose").Types.ObjectId;
+    })[]>;
     getOne(id: string): import("mongoose").Query<import("mongoose").Document<unknown, {}, import("./entities/person-orm.entity").PersonDocument> & import("./entities/person-orm.entity").Person & Document & {
         _id: import("mongoose").Types.ObjectId;
     }, import("mongoose").Document<unknown, {}, import("./entities/person-orm.entity").PersonDocument> & import("./entities/person-orm.entity").Person & Document & {

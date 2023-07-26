@@ -43,6 +43,9 @@ let UsersController = exports.UsersController = class UsersController {
         const updUser = await this._updateUserPasswordUseCase.updateUserPassword(command);
         return this.usersRepository.updateUser(updUser);
     }
+    search(query) {
+        return this.usersRepository.search(query);
+    }
 };
 __decorate([
     (0, common_1.Get)('/me'),
@@ -70,6 +73,14 @@ __decorate([
     __metadata("design:paramtypes", [String, update_user_password_dto_1.UpdateUserPasswordDto]),
     __metadata("design:returntype", Promise)
 ], UsersController.prototype, "updatePassword", null);
+__decorate([
+    (0, common_1.Get)('/search'),
+    (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuard),
+    __param(0, (0, common_1.Query)('query')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], UsersController.prototype, "search", null);
 exports.UsersController = UsersController = __decorate([
     (0, common_1.Controller)('users'),
     (0, swagger_1.ApiBearerAuth)(),

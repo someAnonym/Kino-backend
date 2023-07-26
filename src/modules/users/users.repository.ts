@@ -63,4 +63,9 @@ export class UsersRepository implements UserRepositoryPort {
 
     return user;
   }
+
+  async search(query: string) {
+    const users = await this.repository.find();
+    return users.filter((i) => i.name.toLowerCase().includes(query.toLowerCase()));
+  }
 }

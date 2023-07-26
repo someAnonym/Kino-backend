@@ -22,11 +22,21 @@ let PersonsRepository = exports.PersonsRepository = class PersonsRepository {
     constructor(repository) {
         this.repository = repository;
     }
+    async search(query) {
+        const persons = await this.repository.find();
+        return [
+            ...persons.filter((i) => i.name.toLowerCase().includes(query.toLowerCase())),
+            ...persons.filter((i) => i.englishName.toLowerCase().includes(query.toLowerCase())),
+        ];
+    }
     async update(person) {
         try {
+            const mongoose = require('mongoose');
             const updatedPerson = person.getData();
             const currentPerson = await this.repository.findById(person.id);
-            currentPerson.comments = updatedPerson.comments;
+            for (let i = 0; i < currentPerson.comments.length; i++) {
+                currentPerson.comments[i] = mongoose.Types.ObjectId(updatedPerson.comments[i]);
+            }
             return this.repository.findOneAndUpdate(currentPerson._id, currentPerson);
         }
         catch (error) {

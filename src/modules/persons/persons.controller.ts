@@ -1,4 +1,15 @@
-import { Body, Controller, Delete, Get, Inject, Param, Post, Put, UseGuards } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Inject,
+  Param,
+  Post,
+  Put,
+  Query,
+  UseGuards,
+} from '@nestjs/common';
 import { PersonsRepository } from './persons.repository';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { InjectModel } from '@nestjs/mongoose';
@@ -25,6 +36,12 @@ export class PersonsController {
   @UseGuards(JwtAuthGuard)
   getAll() {
     return this._personsRepository.getAll();
+  }
+
+  @Get('/search')
+  @UseGuards(JwtAuthGuard)
+  search(@Query('query') query: string) {
+    return this._personsRepository.search(query);
   }
 
   @Get('/:id')

@@ -25,29 +25,15 @@
 import { UserEntity } from 'src/domains/entities/user.entity';
 import { UserRepositoryPort } from 'src/domains/ports/out/user-repository.port';
 import { CreateUserDto } from './dto/create-user.dto';
-import { User, UserDocument } from './entities/user-orm.entity';
+import { UserDocument } from './entities/user-orm.entity';
 import { Model } from 'mongoose';
 export declare class UsersRepository implements UserRepositoryPort {
     private repository;
     constructor(repository: Model<UserDocument>);
     loadUser(userId: string): Promise<UserEntity>;
-    updateUser(user: UserEntity): Promise<import("mongoose").Document<unknown, {}, UserDocument> & User & Document & {
-        _id: import("mongoose").Types.ObjectId;
-    }>;
-    create(dto: CreateUserDto): Promise<import("mongoose").Document<unknown, {}, UserDocument> & User & Document & {
-        _id: import("mongoose").Types.ObjectId;
-    }>;
-    findByEmail(email: string): import("mongoose").Query<import("mongoose").Document<unknown, {}, UserDocument> & User & Document & {
-        _id: import("mongoose").Types.ObjectId;
-    }, import("mongoose").Document<unknown, {}, UserDocument> & User & Document & {
-        _id: import("mongoose").Types.ObjectId;
-    }, {}, UserDocument, "findOne">;
-    findById(id: string): import("mongoose").Query<import("mongoose").Document<unknown, {}, UserDocument> & User & Document & {
-        _id: import("mongoose").Types.ObjectId;
-    }, import("mongoose").Document<unknown, {}, UserDocument> & User & Document & {
-        _id: import("mongoose").Types.ObjectId;
-    }, {}, UserDocument, "findOne">;
-    search(query: string): Promise<(import("mongoose").Document<unknown, {}, UserDocument> & User & Document & {
-        _id: import("mongoose").Types.ObjectId;
-    })[]>;
+    updateUser(user: UserEntity): Promise<any>;
+    create(dto: CreateUserDto): Promise<any>;
+    findByEmail(email: string): import("mongoose").Query<any, any, {}, UserDocument, "findOne">;
+    findById(id: string): import("mongoose").Query<any, any, {}, UserDocument, "findOne">;
+    search(query: string): Promise<any[]>;
 }

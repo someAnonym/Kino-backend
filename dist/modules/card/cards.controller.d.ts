@@ -42,4 +42,7 @@ export declare class CardsController {
     create(dto: CreateCardOrmDto): Promise<import("mongoose").Document<unknown, {}, import("./entities/card-orm.entity").CardDocument> & import("./entities/card-orm.entity").Card & Document & {
         _id: import("mongoose").Types.ObjectId;
     }>;
+    search(query: string): Promise<(import("mongoose").Document<unknown, {}, import("./entities/card-orm.entity").CardDocument> & import("./entities/card-orm.entity").Card & Document & {
+        _id: import("mongoose").Types.ObjectId;
+    })[]>;
 }

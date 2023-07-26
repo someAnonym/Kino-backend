@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Inject, Param, Post, Put, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Inject, Param, Post, Put, Query, UseGuards } from '@nestjs/common';
 import { ObjectId } from 'mongodb';
 import { UsersRepository } from './users.repository';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
@@ -67,5 +67,11 @@ export class UsersController {
     const command = new UpdateUserPasswordCommand(id, dto.password);
     const updUser = await this._updateUserPasswordUseCase.updateUserPassword(command);
     return this.usersRepository.updateUser(updUser);
+  }
+
+  @Get('/search')
+  @UseGuards(JwtAuthGuard)
+  search(@Query('query') query: string) {
+    return this.usersRepository.search(query);
   }
 }

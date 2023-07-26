@@ -84,7 +84,10 @@ __decorate([
     __metadata("design:type", Array)
 ], Person.prototype, "films", void 0);
 __decorate([
-    (0, mongoose_1.Prop)(),
+    (0, mongoose_1.Prop)({
+        type: [{ type: mongoose_2.default.Schema.Types.ObjectId, ref: 'Comment' }],
+        default: [],
+    }),
     __metadata("design:type", Array)
 ], Person.prototype, "comments", void 0);
 exports.Person = Person = __decorate([

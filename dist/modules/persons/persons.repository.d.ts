@@ -29,6 +29,9 @@ import { PersonEntity } from 'src/domains/entities/person.entity';
 export declare class PersonsRepository implements PersonsRepositoryPort {
     private repository;
     constructor(repository: Model<PersonDocument>);
+    search(query: string): Promise<(import("mongoose").Document<unknown, {}, PersonDocument> & Person & Document & {
+        _id: import("mongoose").Types.ObjectId;
+    })[]>;
     update(person: PersonEntity): Promise<import("mongoose").Document<unknown, {}, PersonDocument> & Person & Document & {
         _id: import("mongoose").Types.ObjectId;
     }>;

@@ -61,8 +61,11 @@ export class Person {
   })
   films: ObjectId[];
 
-  @Prop()
-  comments: string[];
+  @Prop({
+    type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }],
+    default: [],
+  })
+  comments: ObjectId[];
 }
 
 export const PersonSchema = SchemaFactory.createForClass(Person);

@@ -43,4 +43,12 @@ export class CardsRepository implements CardRepositoryPort {
   findById(id: string) {
     return this.repository.findById(id);
   }
+
+  async search(query: string) {
+    const cards = await this.repository.find();
+    return [
+      ...cards.filter((i) => i.name.toLowerCase().includes(query.toLowerCase())),
+      ...cards.filter((i) => i.secondName.toLowerCase().includes(query.toLowerCase())),
+    ];
+  }
 }

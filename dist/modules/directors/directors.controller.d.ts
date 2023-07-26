@@ -41,4 +41,9 @@ export declare class DirectorsController {
     create(dto: CreateDirectorOrmDto): Promise<import("mongoose").Document<unknown, {}, import("./entities/director-orm.entity").DirectorDocument> & import("./entities/director-orm.entity").Director & Document & {
         _id: import("mongoose").Types.ObjectId;
     }>;
+    delete(id: string): import("mongoose").Query<import("mongoose").Document<unknown, {}, import("./entities/director-orm.entity").DirectorDocument> & import("./entities/director-orm.entity").Director & Document & {
+        _id: import("mongoose").Types.ObjectId;
+    }, import("mongoose").Document<unknown, {}, import("./entities/director-orm.entity").DirectorDocument> & import("./entities/director-orm.entity").Director & Document & {
+        _id: import("mongoose").Types.ObjectId;
+    }, {}, import("./entities/director-orm.entity").DirectorDocument, "findOneAndDelete">;
 }

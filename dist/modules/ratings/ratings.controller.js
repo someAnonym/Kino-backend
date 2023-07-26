@@ -12,27 +12,27 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.DirectorsController = void 0;
+exports.RatingsController = void 0;
 const common_1 = require("@nestjs/common");
 const swagger_1 = require("@nestjs/swagger");
+const ratings_repository_1 = require("./ratings.repository");
 const jwt_guard_1 = require("../auth/guards/jwt.guard");
-const directors_repository_1 = require("./directors.repository");
-const create_director_orm_dto_1 = require("./dto/create-director-orm.dto");
-let DirectorsController = exports.DirectorsController = class DirectorsController {
-    constructor(_directorsRepository) {
-        this._directorsRepository = _directorsRepository;
+const create_rating_orm_dto_1 = require("./dto/create-rating-orm.dto");
+let RatingsController = exports.RatingsController = class RatingsController {
+    constructor(_ratingsRepository) {
+        this._ratingsRepository = _ratingsRepository;
     }
     getAll() {
-        return this._directorsRepository.getAll();
+        return this._ratingsRepository.getAll();
     }
     getOne(id) {
-        return this._directorsRepository.getDirecorById(id);
+        return this._ratingsRepository.getRatingById(id);
     }
     create(dto) {
-        return this._directorsRepository.createDirector(dto);
+        return this._ratingsRepository.createRating(dto);
     }
-    delete(id) {
-        return this._directorsRepository.deleteDirector(id);
+    deleteOne(id) {
+        return this._ratingsRepository.deleteRating(id);
     }
 };
 __decorate([
@@ -41,7 +41,7 @@ __decorate([
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
-], DirectorsController.prototype, "getAll", null);
+], RatingsController.prototype, "getAll", null);
 __decorate([
     (0, common_1.Get)('/:id'),
     (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuard),
@@ -49,25 +49,27 @@ __decorate([
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
-], DirectorsController.prototype, "getOne", null);
+], RatingsController.prototype, "getOne", null);
 __decorate([
     (0, common_1.Post)('/create'),
+    (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuard),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [create_director_orm_dto_1.CreateDirectorOrmDto]),
+    __metadata("design:paramtypes", [create_rating_orm_dto_1.CreateRatingOrmDto]),
     __metadata("design:returntype", void 0)
-], DirectorsController.prototype, "create", null);
+], RatingsController.prototype, "create", null);
 __decorate([
     (0, common_1.Delete)('/delete'),
+    (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuard),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
-], DirectorsController.prototype, "delete", null);
-exports.DirectorsController = DirectorsController = __decorate([
-    (0, swagger_1.ApiTags)('Directors'),
+], RatingsController.prototype, "deleteOne", null);
+exports.RatingsController = RatingsController = __decorate([
+    (0, common_1.Controller)('ratings'),
     (0, swagger_1.ApiBearerAuth)(),
-    (0, common_1.Controller)('directors'),
-    __metadata("design:paramtypes", [directors_repository_1.DirectorsRepository])
-], DirectorsController);
-//# sourceMappingURL=directors.controller.js.map
+    (0, swagger_1.ApiTags)('Ratings'),
+    __metadata("design:paramtypes", [ratings_repository_1.RatingsRepository])
+], RatingsController);
+//# sourceMappingURL=ratings.controller.js.map

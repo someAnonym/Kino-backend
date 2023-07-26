@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, UseGuards } from '@nestjs/common';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { JwtAuthGuard } from '../auth/guards/jwt.guard';
 import { DirectorsRepository } from './directors.repository';
@@ -25,5 +25,10 @@ export class DirectorsController {
   @Post('/create')
   create(@Body() dto: CreateDirectorOrmDto) {
     return this._directorsRepository.createDirector(dto);
+  }
+
+  @Delete('/delete')
+  delete(@Param('id') id: string) {
+    return this._directorsRepository.deleteDirector(id);
   }
 }

@@ -1,7 +1,7 @@
 export class RatingEntity {
   constructor(
     private readonly _id: string,
-    private readonly _rate: number,
+    private readonly _rate: string,
     private readonly _whoose: string,
   ) {}
 
@@ -9,7 +9,7 @@ export class RatingEntity {
     return this._id;
   }
 
-  public get rate(): number {
+  public get rate(): string {
     return this._rate;
   }
 

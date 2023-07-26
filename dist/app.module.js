@@ -20,6 +20,7 @@ const reviews_module_1 = require("./modules/reviews/reviews.module");
 const comments_module_1 = require("./modules/comments/comments.module");
 const directors_module_1 = require("./modules/directors/directors.module");
 const ratings_module_1 = require("./modules/ratings/ratings.module");
+const quotes_module_1 = require("./modules/quotes/quotes.module");
 let AppModule = exports.AppModule = class AppModule {
 };
 exports.AppModule = AppModule = __decorate([
@@ -37,6 +38,7 @@ exports.AppModule = AppModule = __decorate([
             comments_module_1.CommentsModule,
             directors_module_1.DirectorsModule,
             ratings_module_1.RatingsModule,
+            quotes_module_1.QuotesModule,
         ],
         controllers: [],
         providers: [],

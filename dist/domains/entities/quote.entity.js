@@ -8,6 +8,9 @@ class QuoteEntity {
         this._text = _text;
         this._whoseText = _whoseText;
     }
+    get id() {
+        return this._id;
+    }
     get picture() {
         return this._picture;
     }

@@ -6,6 +6,10 @@ export class QuoteEntity {
     private readonly _whoseText: string,
   ) {}
 
+  public get id(): string {
+    return this._id;
+  }
+
   public get picture(): string {
     return this._picture;
   }

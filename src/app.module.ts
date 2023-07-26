@@ -13,6 +13,7 @@ import { ReviewsModule } from './modules/reviews/reviews.module';
 import { CommentsModule } from './modules/comments/comments.module';
 import { DirectorsModule } from './modules/directors/directors.module';
 import { RatingsModule } from './modules/ratings/ratings.module';
+import { QuotesModule } from './modules/quotes/quotes.module';
 
 @Module({
   imports: [
@@ -28,6 +29,7 @@ import { RatingsModule } from './modules/ratings/ratings.module';
     CommentsModule,
     DirectorsModule,
     RatingsModule,
+    QuotesModule,
   ],
   controllers: [],
   providers: [],

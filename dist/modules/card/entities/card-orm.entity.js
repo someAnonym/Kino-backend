@@ -19,7 +19,10 @@ __decorate([
     __metadata("design:type", String)
 ], Card.prototype, "posterImage", void 0);
 __decorate([
-    (0, mongoose_1.Prop)(),
+    (0, mongoose_1.Prop)({
+        type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Review' }],
+        default: [],
+    }),
     __metadata("design:type", Array)
 ], Card.prototype, "reviews", void 0);
 __decorate([

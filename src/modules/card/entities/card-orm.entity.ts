@@ -10,7 +10,10 @@ export class Card {
   @Prop()
   posterImage: string;
 
-  @Prop()
+  @Prop({
+    type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Review' }],
+    default: [],
+  })
   reviews: string[];
 
   @Prop()

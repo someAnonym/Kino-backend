@@ -12,10 +12,11 @@ export class CardMapper {
     const sequelAndPrequels = card.sequelAndPrequels.map((i) => i.valueOf() as string);
     const seemFilms = card.seemFilms.map((i) => i.valueOf() as string);
     const awards = card.awards.map((i) => i.valueOf() as string);
+    const reviews = card.reviews.map((i) => i.valueOf() as string);
     return new CardEntity(
       id,
       card.posterImage,
-      card.reviews,
+      reviews,
       card.name,
       card.secondName,
       card.ratings,

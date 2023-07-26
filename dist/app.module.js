@@ -17,6 +17,7 @@ const cards_module_1 = require("./modules/card/cards.module");
 const awards_module_1 = require("./modules/awards/awards.module");
 const persons_module_1 = require("./modules/persons/persons.module");
 const reviews_module_1 = require("./modules/reviews/reviews.module");
+const comments_module_1 = require("./modules/comments/comments.module");
 let AppModule = exports.AppModule = class AppModule {
 };
 exports.AppModule = AppModule = __decorate([
@@ -31,6 +32,7 @@ exports.AppModule = AppModule = __decorate([
             awards_module_1.AwardModule,
             persons_module_1.PersonsModule,
             reviews_module_1.ReviewsModule,
+            comments_module_1.CommentsModule,
         ],
         controllers: [],
         providers: [],

@@ -10,6 +10,7 @@ import { CardsModule } from './modules/card/cards.module';
 import { AwardModule } from './modules/awards/awards.module';
 import { PersonsModule } from './modules/persons/persons.module';
 import { ReviewsModule } from './modules/reviews/reviews.module';
+import { CommentsModule } from './modules/comments/comments.module';
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { ReviewsModule } from './modules/reviews/reviews.module';
     AwardModule,
     PersonsModule,
     ReviewsModule,
+    CommentsModule,
   ],
   controllers: [],
   providers: [],

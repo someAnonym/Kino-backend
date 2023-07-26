@@ -1,6 +1,5 @@
 import { Body, Controller, Get, Inject, Param, Post, Put, Query, UseGuards } from '@nestjs/common';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
-import { CardId } from '../decorators/card-id.decorator';
 import { JwtAuthGuard } from '../auth/guards/jwt.guard';
 import { UpdateCardDto } from './dto/update-card.dto';
 import { UpdateCardCommand } from 'src/domains/ports/in/update-card.command';

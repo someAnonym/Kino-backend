@@ -35,7 +35,7 @@ export class UserEntity {
     private _birthday: string,
     private _country: string,
     private _city: string,
-    private _favoriteGenres: Genres[],
+    private _favoriteGenres: string[],
     // second
     private readonly _films: string[],
     private readonly _friends: string[],
@@ -112,7 +112,7 @@ export class UserEntity {
     return this._city;
   }
 
-  public get favoriteGenres(): Genres[] {
+  public get favoriteGenres(): string[] {
     return this._favoriteGenres;
   }
 
@@ -228,6 +228,14 @@ export class UserEntity {
     }
   }
 
+  public updateGenres(genres: string[]): void | never {
+    try {
+      this._favoriteGenres = genres;
+    } catch (err) {
+      throw new Error('Ошибка при обновлении жанров!');
+    }
+  }
+
   public updateAboutMe(about: string): void | never {
     if (about.length >= 5) {
       this._aboutMe = about;
@@ -318,9 +326,7 @@ export class UserEntity {
 
   private _validateUserEmail(email: string): boolean {
     const isEmailLengthValid = email.length >= USER_CONFIG.email.minLength;
-    const isEmailTruthy = email.match(
-      /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-    );
+    const isEmailTruthy = email.match(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i);
 
     return isEmailTruthy && isEmailLengthValid;
   }

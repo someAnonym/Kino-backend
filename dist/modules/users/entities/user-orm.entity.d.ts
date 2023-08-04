@@ -1,5 +1,4 @@
 import * as mongoose from 'mongoose';
-import { Genres } from './genges.entity';
 import { ObjectId } from 'mongodb';
 export type UserDocument = User & Document;
 export declare class User {
@@ -19,7 +18,7 @@ export declare class User {
     birthday: string;
     country: string;
     city: string;
-    favoriteGenres: Genres[];
+    favoriteGenres: string[];
     films: ObjectId[];
     friends: ObjectId[];
     favoriteFilms: ObjectId[];

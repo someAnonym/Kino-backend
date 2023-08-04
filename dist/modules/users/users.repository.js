@@ -44,6 +44,7 @@ let UsersRepository = exports.UsersRepository = class UsersRepository {
             currentUser.birthday = updatedUser.birthday;
             currentUser.city = updatedUser.city;
             currentUser.country = updatedUser.country;
+            currentUser.favoriteGenres = updatedUser.favoriteGenres;
             return this.repository.findOneAndUpdate(currentUser._id, currentUser);
         }
         catch (error) {
@@ -58,7 +59,7 @@ let UsersRepository = exports.UsersRepository = class UsersRepository {
     }
     findById(id) {
         const user = this.repository.findById(id);
-        return user;
+        return user.populate('reviews').populate('comments');
     }
     async search(query) {
         const users = await this.repository.find();

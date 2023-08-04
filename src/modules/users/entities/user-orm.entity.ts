@@ -59,7 +59,7 @@ export class User {
   city: string;
 
   @Prop({ default: [] })
-  favoriteGenres: Genres[];
+  favoriteGenres: string[];
 
   @Prop({
     type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Card' }],

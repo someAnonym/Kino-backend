@@ -40,10 +40,9 @@ export class UsersRepository implements UserRepositoryPort {
       currentUser.birthday = updatedUser.birthday;
       currentUser.city = updatedUser.city;
       currentUser.country = updatedUser.country;
+      currentUser.favoriteGenres = updatedUser.favoriteGenres;
 
-      // return this.repository.updateOne()
       return this.repository.findOneAndUpdate(currentUser._id, currentUser);
-      // return currentUser;
     } catch (error) {
       throw new ForbiddenException('Ошибка при обновлении пользователя', error);
     }
@@ -61,7 +60,7 @@ export class UsersRepository implements UserRepositoryPort {
     const user = this.repository.findById(id);
     // console.log(user);
 
-    return user;
+    return user.populate('reviews').populate('comments');
   }
 
   async search(query: string) {

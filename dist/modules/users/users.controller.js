@@ -34,7 +34,7 @@ let UsersController = exports.UsersController = class UsersController {
         return this.usersRepository.findById(id);
     }
     async update(id, dto) {
-        const command = new update_user_command_1.UpdateUserCommand(id, dto.email, dto.name, dto.secondName, dto.vk, dto.instagram, dto.youtube, dto.twitter, dto.facebook, dto.aboutMe, dto.avatarImage, dto.gender, dto.birthday, dto.country, dto.city);
+        const command = new update_user_command_1.UpdateUserCommand(id, dto.email, dto.name, dto.secondName, dto.vk, dto.instagram, dto.youtube, dto.twitter, dto.facebook, dto.aboutMe, dto.avatarImage, dto.gender, dto.birthday, dto.country, dto.city, dto.favoriteGenres);
         const updUser = await this._updateUserUseCase.updateUser(command);
         return await this.usersRepository.updateUser(updUser);
     }

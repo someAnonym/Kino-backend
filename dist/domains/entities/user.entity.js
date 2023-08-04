@@ -192,6 +192,14 @@ class UserEntity {
             throw new Error('Слишком мало символов!');
         }
     }
+    updateGenres(genres) {
+        try {
+            this._favoriteGenres = genres;
+        }
+        catch (err) {
+            throw new Error('Ошибка при обновлении жанров!');
+        }
+    }
     updateAboutMe(about) {
         if (about.length >= 5) {
             this._aboutMe = about;

@@ -55,6 +55,7 @@ export class UsersController {
       dto.birthday,
       dto.country,
       dto.city,
+      dto.favoriteGenres,
     );
     const updUser = await this._updateUserUseCase.updateUser(command);
     return await this.usersRepository.updateUser(updUser);

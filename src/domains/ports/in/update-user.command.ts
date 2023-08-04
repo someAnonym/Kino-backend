@@ -15,6 +15,7 @@ export class UpdateUserCommand {
     private _birthday: string,
     private _country: string,
     private _city: string,
+    private _favoriteGenres: string[],
   ) {}
 
   public get userId(): string {
@@ -23,6 +24,10 @@ export class UpdateUserCommand {
 
   public get email(): string {
     return this._email;
+  }
+
+  public get favoriteGenres(): string[] {
+    return this._favoriteGenres;
   }
 
   public get avatarImage(): string {

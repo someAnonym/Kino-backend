@@ -14,9 +14,11 @@ export declare class UpdateUserCommand {
     private _birthday;
     private _country;
     private _city;
-    constructor(_userId: string, _email: string, _name: string, _secondName: string, _vk: string, _instagram: string, _youtube: string, _twitter: string, _facebook: string, _aboutMe: string, _avatarImage: string, _gender: string, _birthday: string, _country: string, _city: string);
+    private _favoriteGenres;
+    constructor(_userId: string, _email: string, _name: string, _secondName: string, _vk: string, _instagram: string, _youtube: string, _twitter: string, _facebook: string, _aboutMe: string, _avatarImage: string, _gender: string, _birthday: string, _country: string, _city: string, _favoriteGenres: string[]);
     get userId(): string;
     get email(): string;
+    get favoriteGenres(): string[];
     get avatarImage(): string;
     get name(): string;
     get secondName(): string;

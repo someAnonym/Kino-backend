@@ -14,6 +14,9 @@ export class Person {
   englishName: string;
 
   @Prop()
+  avatarImage: string;
+
+  @Prop()
   linkToBiography: string;
 
   @Prop()

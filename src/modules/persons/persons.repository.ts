@@ -8,6 +8,7 @@ import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { PersonEntity } from 'src/domains/entities/person.entity';
 import { PersonMapper } from './person.mapper';
+import { ObjectId } from 'mongodb';
 
 @Injectable()
 export class PersonsRepository implements PersonsRepositoryPort {
@@ -30,9 +31,7 @@ export class PersonsRepository implements PersonsRepositoryPort {
       const updatedPerson = person.getData();
       const currentPerson = await this.repository.findById(person.id);
 
-      for (let i = 0; i < currentPerson.comments.length; i++) {
-        currentPerson.comments[i] = mongoose.Types.ObjectId(updatedPerson.comments[i]);
-      }
+      currentPerson.comments = updatedPerson.comments.map((i) => new ObjectId(i));
 
       return this.repository.findOneAndUpdate(currentPerson._id, currentPerson);
     } catch (error) {

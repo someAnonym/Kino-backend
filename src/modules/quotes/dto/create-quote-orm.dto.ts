@@ -1,12 +1,9 @@
 import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateQuoteOrmDto {
-  @ApiProperty({ default: '' })
-  picture: string;
-
-  @ApiProperty({ default: '' })
+  @ApiProperty({ default: 'asd' })
   text: string;
 
-  @ApiProperty({ default: '' })
+  @ApiProperty({ default: 'sss' })
   whoseText: string;
 }

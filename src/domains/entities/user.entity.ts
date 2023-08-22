@@ -38,7 +38,7 @@ export class UserEntity {
     private _favoriteGenres: string[],
     // second
     private readonly _films: string[],
-    private readonly _friends: string[],
+    private _friends: string[],
     private readonly _favoriteFilms: string[],
     private readonly _expecredFilms: string[],
     private readonly _persons: string[],
@@ -194,6 +194,14 @@ export class UserEntity {
       avatarImage: this._avatarImage,
       wasOnline: this._wasOnline,
     };
+  }
+
+  public updateFriends(friends: string[]): void | never {
+    try {
+      this._friends = [...this._friends, ...friends];
+    } catch (error) {
+      throw new Error('Ошибка при обновлении количества друзей!');
+    }
   }
 
   public updateGender(gender: string): void | never {

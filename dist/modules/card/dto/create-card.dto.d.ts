@@ -1,5 +1,5 @@
-import { Genres } from 'src/modules/users/entities/genges.entity';
 export declare class CreateCardOrmDto {
+    backgroundImage: string;
     posterImage: string;
     name: string;
     secondName: string;
@@ -8,8 +8,8 @@ export declare class CreateCardOrmDto {
     userLike: number;
     userDislike: number;
     favourites: number;
-    year: string;
-    country: string;
+    year: number;
+    country: string[];
     slogan: string;
     directors: string[];
     screenwriters: string[];
@@ -18,7 +18,7 @@ export declare class CreateCardOrmDto {
     composers: string[];
     artists: string[];
     editors: string[];
-    genres: Genres[];
+    genres: string[];
     collecting: number;
     premiereInWorld: string;
     premiereInRussia: string;

@@ -6,6 +6,7 @@ import { CardEntity } from 'src/domains/entities/card.entity';
 import { CardRepositoryPort, CreateCardDto } from 'src/domains/ports/out/card-repository.port';
 import { Card, CardDocument } from './entities/card-orm.entity';
 import { CreateCardOrmDto } from './dto/create-card.dto';
+import { ObjectId } from 'mongodb';
 
 @Injectable()
 export class CardsRepository implements CardRepositoryPort {
@@ -25,7 +26,7 @@ export class CardsRepository implements CardRepositoryPort {
       const updatedCard = card.getCardData();
       const currentCard = await this.repository.findById(card.id);
 
-      currentCard.reviews = updatedCard.reviews;
+      currentCard.reviews = updatedCard.reviews.map((i) => new ObjectId(i));
       currentCard.userLike = updatedCard.userLike;
       currentCard.userDislike = updatedCard.userDislike;
       currentCard.favorites = updatedCard.favourites;

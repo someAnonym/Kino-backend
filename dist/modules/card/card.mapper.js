@@ -9,7 +9,11 @@ class CardMapper {
         const seemFilms = card.seemFilms.map((i) => i.valueOf());
         const awards = card.awards.map((i) => i.valueOf());
         const reviews = card.reviews.map((i) => i.valueOf());
-        return new card_entity_1.CardEntity(id, card.posterImage, reviews, card.name, card.secondName, card.ratings, card.userLike, card.userDislike, card.favorites, card.year, card.country, card.slogan, card.directors, card.screenwriters, card.producers, card.operators, card.composers, card.artists, card.editors, card.genres, card.collecting, card.premiereInWorld, card.premiereInRussia, card.age, card.duration, card.production, card.specialEffects, card.dubbingStudios, card.persons, card.trailers, awards, card.posters, card.shots, sequelAndPrequels, card.quotes, seemFilms, card.description);
+        const persons = card.persons.map((i) => i.valueOf());
+        const quotes = card.quotes.map((i) => i.valueOf());
+        const ratings = card.ratings.map((i) => i.valueOf());
+        const directors = card.directors.map((i) => i.valueOf());
+        return new card_entity_1.CardEntity(id, card.posterImage, card.backgroundImage, reviews, card.name, card.secondName, ratings, card.userLike, card.userDislike, card.favorites, card.year, card.country, card.slogan, directors, card.screenwriters, card.producers, card.operators, card.composers, card.artists, card.editors, card.genres, card.collecting, card.premiereInWorld, card.premiereInRussia, card.age, card.duration, card.production, card.specialEffects, card.dubbingStudios, persons, card.trailers, awards, card.posters, card.shots, sequelAndPrequels, quotes, seemFilms, card.description);
     }
 }
 exports.CardMapper = CardMapper;

@@ -25,7 +25,6 @@
 /// <reference types="mongoose/types/inferschematype" />
 export type QuoteDocuments = Quote & Document;
 export declare class Quote {
-    picture: string;
     text: string;
     whoseText: string;
 }

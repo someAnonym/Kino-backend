@@ -14,8 +14,8 @@ export interface CreateCardDto {
   userLike: number;
   userDislike: number;
   favourites: number;
-  year: string;
-  country: string;
+  year: number;
+  country: string[];
   slogan: string;
   directors: string[];
   screenwriters: string[];
@@ -24,7 +24,7 @@ export interface CreateCardDto {
   composers: string[];
   artists: string[];
   editors: string[];
-  genres: Genres[];
+  genres: string[];
   collecting: number;
   premiereInWorld: string;
   premiereInRussia: string;
@@ -42,6 +42,7 @@ export interface CreateCardDto {
   quotes: string[];
   seemFilms: string[];
   description: string;
+  backgroundImage: string;
 }
 
 export interface CardRepositoryPort {

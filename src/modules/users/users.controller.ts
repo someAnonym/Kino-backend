@@ -33,7 +33,9 @@ export class UsersController {
   @Get('/me')
   @UseGuards(JwtAuthGuard)
   getMe(@UserId() id: string) {
-    return this.usersRepository.findById(id);
+    return this.usersRepository
+      .findById(id)
+      .populate('friends', 'avatarImage name secondName wasOnline');
   }
 
   @Put('/update')
@@ -56,6 +58,7 @@ export class UsersController {
       dto.country,
       dto.city,
       dto.favoriteGenres,
+      // dto.friends,
     );
     const updUser = await this._updateUserUseCase.updateUser(command);
     return await this.usersRepository.updateUser(updUser);

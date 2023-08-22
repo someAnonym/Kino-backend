@@ -11,9 +11,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DirectorSchema = exports.Director = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
-class Director {
-}
-exports.Director = Director;
+let Director = exports.Director = class Director {
+};
 __decorate([
     (0, mongoose_1.Prop)(),
     __metadata("design:type", String)
@@ -26,5 +25,8 @@ __decorate([
     (0, mongoose_1.Prop)(),
     __metadata("design:type", String)
 ], Director.prototype, "picture", void 0);
+exports.Director = Director = __decorate([
+    (0, mongoose_1.Schema)()
+], Director);
 exports.DirectorSchema = mongoose_1.SchemaFactory.createForClass(Director);
 //# sourceMappingURL=director-orm.entity.js.map

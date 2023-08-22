@@ -4,6 +4,7 @@ export class PersonEntity {
   constructor(
     private readonly _id: string,
     private readonly _name: string,
+    private readonly _avatarImage: string,
     private readonly _englishName: string,
     private readonly _linkToBiography: string,
     private readonly _career: string[],
@@ -27,6 +28,10 @@ export class PersonEntity {
 
   public get englishName(): string {
     return this._englishName;
+  }
+
+  public get avatarImage(): string {
+    return this._avatarImage;
   }
 
   public get linkToBiography(): string {

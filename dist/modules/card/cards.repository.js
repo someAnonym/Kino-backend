@@ -18,6 +18,7 @@ const mongoose_1 = require("mongoose");
 const mongoose_2 = require("@nestjs/mongoose");
 const card_mapper_1 = require("./card.mapper");
 const card_orm_entity_1 = require("./entities/card-orm.entity");
+const mongodb_1 = require("mongodb");
 let CardsRepository = exports.CardsRepository = class CardsRepository {
     constructor(repository) {
         this.repository = repository;
@@ -30,7 +31,7 @@ let CardsRepository = exports.CardsRepository = class CardsRepository {
         try {
             const updatedCard = card.getCardData();
             const currentCard = await this.repository.findById(card.id);
-            currentCard.reviews = updatedCard.reviews;
+            currentCard.reviews = updatedCard.reviews.map((i) => new mongodb_1.ObjectId(i));
             currentCard.userLike = updatedCard.userLike;
             currentCard.userDislike = updatedCard.userDislike;
             currentCard.favorites = updatedCard.favourites;

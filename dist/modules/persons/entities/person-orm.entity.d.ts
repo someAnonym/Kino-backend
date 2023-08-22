@@ -5,6 +5,7 @@ export type PersonDocument = Person & Document;
 export declare class Person {
     name: string;
     englishName: string;
+    avatarImage: string;
     linkToBiography: string;
     career: string[];
     height: string;

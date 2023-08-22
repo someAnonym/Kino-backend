@@ -22,10 +22,15 @@ export class CardsController {
     private readonly cardsRepository: CardsRepository,
   ) {}
 
-  @Get('/currentCard')
+  @Get('/:id')
   @UseGuards(JwtAuthGuard)
   getMe(@Param('id') id: string) {
-    return this.cardsRepository.findById(id);
+    return this.cardsRepository
+      .findById(id)
+      .populate('ratings', 'whoose rate')
+      .populate('persons', 'name englishName avatarImage')
+      .populate('awards', 'picture name description year')
+      .populate('directors');
   }
 
   @Put('/update')

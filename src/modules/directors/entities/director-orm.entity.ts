@@ -1,7 +1,8 @@
-import { Prop, SchemaFactory } from '@nestjs/mongoose';
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 
 export type DirectorDocument = Director & Document;
 
+@Schema()
 export class Director {
   @Prop()
   name: string;

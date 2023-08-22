@@ -17,6 +17,10 @@ let Card = exports.Card = class Card {
 __decorate([
     (0, mongoose_1.Prop)(),
     __metadata("design:type", String)
+], Card.prototype, "backgroundImage", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", String)
 ], Card.prototype, "posterImage", void 0);
 __decorate([
     (0, mongoose_1.Prop)({
@@ -26,111 +30,120 @@ __decorate([
     __metadata("design:type", Array)
 ], Card.prototype, "reviews", void 0);
 __decorate([
-    (0, mongoose_1.Prop)(),
+    (0, mongoose_1.Prop)({ default: '' }),
     __metadata("design:type", String)
 ], Card.prototype, "name", void 0);
 __decorate([
-    (0, mongoose_1.Prop)(),
+    (0, mongoose_1.Prop)({ default: '' }),
     __metadata("design:type", String)
 ], Card.prototype, "secondName", void 0);
 __decorate([
-    (0, mongoose_1.Prop)(),
+    (0, mongoose_1.Prop)({
+        type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Rating' }],
+        default: [],
+    }),
     __metadata("design:type", Array)
 ], Card.prototype, "ratings", void 0);
 __decorate([
-    (0, mongoose_1.Prop)(),
+    (0, mongoose_1.Prop)({ default: 0 }),
     __metadata("design:type", Number)
 ], Card.prototype, "userLike", void 0);
 __decorate([
-    (0, mongoose_1.Prop)(),
+    (0, mongoose_1.Prop)({ default: 0 }),
     __metadata("design:type", Number)
 ], Card.prototype, "userDislike", void 0);
 __decorate([
-    (0, mongoose_1.Prop)(),
+    (0, mongoose_1.Prop)({ default: 0 }),
     __metadata("design:type", Number)
 ], Card.prototype, "favorites", void 0);
 __decorate([
-    (0, mongoose_1.Prop)(),
+    (0, mongoose_1.Prop)({ default: 0 }),
     __metadata("design:type", Number)
 ], Card.prototype, "year", void 0);
 __decorate([
-    (0, mongoose_1.Prop)(),
-    __metadata("design:type", String)
+    (0, mongoose_1.Prop)({ default: [] }),
+    __metadata("design:type", Array)
 ], Card.prototype, "country", void 0);
 __decorate([
-    (0, mongoose_1.Prop)(),
+    (0, mongoose_1.Prop)({ default: '' }),
     __metadata("design:type", String)
 ], Card.prototype, "slogan", void 0);
 __decorate([
-    (0, mongoose_1.Prop)(),
+    (0, mongoose_1.Prop)({
+        type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Director' }],
+        default: [],
+    }),
     __metadata("design:type", Array)
 ], Card.prototype, "directors", void 0);
 __decorate([
-    (0, mongoose_1.Prop)(),
+    (0, mongoose_1.Prop)({ default: '' }),
     __metadata("design:type", Array)
 ], Card.prototype, "screenwriters", void 0);
 __decorate([
-    (0, mongoose_1.Prop)(),
+    (0, mongoose_1.Prop)({ default: '' }),
     __metadata("design:type", Array)
 ], Card.prototype, "producers", void 0);
 __decorate([
-    (0, mongoose_1.Prop)(),
+    (0, mongoose_1.Prop)({ default: '' }),
     __metadata("design:type", Array)
 ], Card.prototype, "operators", void 0);
 __decorate([
-    (0, mongoose_1.Prop)(),
+    (0, mongoose_1.Prop)({ default: '' }),
     __metadata("design:type", Array)
 ], Card.prototype, "composers", void 0);
 __decorate([
-    (0, mongoose_1.Prop)(),
+    (0, mongoose_1.Prop)({ default: '' }),
     __metadata("design:type", Array)
 ], Card.prototype, "artists", void 0);
 __decorate([
-    (0, mongoose_1.Prop)(),
+    (0, mongoose_1.Prop)({ default: '' }),
     __metadata("design:type", Array)
 ], Card.prototype, "editors", void 0);
 __decorate([
-    (0, mongoose_1.Prop)(),
+    (0, mongoose_1.Prop)({ default: '' }),
     __metadata("design:type", Array)
 ], Card.prototype, "genres", void 0);
 __decorate([
-    (0, mongoose_1.Prop)(),
+    (0, mongoose_1.Prop)({ default: '' }),
     __metadata("design:type", Number)
 ], Card.prototype, "collecting", void 0);
 __decorate([
-    (0, mongoose_1.Prop)(),
+    (0, mongoose_1.Prop)({ default: '' }),
     __metadata("design:type", String)
 ], Card.prototype, "premiereInWorld", void 0);
 __decorate([
-    (0, mongoose_1.Prop)(),
+    (0, mongoose_1.Prop)({ default: '' }),
     __metadata("design:type", String)
 ], Card.prototype, "premiereInRussia", void 0);
 __decorate([
-    (0, mongoose_1.Prop)(),
+    (0, mongoose_1.Prop)({ default: '' }),
     __metadata("design:type", Number)
 ], Card.prototype, "age", void 0);
 __decorate([
-    (0, mongoose_1.Prop)(),
+    (0, mongoose_1.Prop)({ default: '' }),
     __metadata("design:type", Number)
 ], Card.prototype, "duration", void 0);
 __decorate([
-    (0, mongoose_1.Prop)(),
+    (0, mongoose_1.Prop)({ default: '' }),
     __metadata("design:type", Array)
 ], Card.prototype, "production", void 0);
 __decorate([
-    (0, mongoose_1.Prop)(),
+    (0, mongoose_1.Prop)({ default: '' }),
     __metadata("design:type", Array)
 ], Card.prototype, "specialEffects", void 0);
 __decorate([
-    (0, mongoose_1.Prop)(),
+    (0, mongoose_1.Prop)({ default: '' }),
     __metadata("design:type", Array)
 ], Card.prototype, "dubbingStudios", void 0);
 __decorate([
-    (0, mongoose_1.Prop)(),
+    (0, mongoose_1.Prop)({
+        type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Person' }],
+        default: [],
+    }),
     __metadata("design:type", Array)
 ], Card.prototype, "persons", void 0);
 __decorate([
-    (0, mongoose_1.Prop)(),
+    (0, mongoose_1.Prop)({ default: '' }),
     __metadata("design:type", Array)
 ], Card.prototype, "trailers", void 0);
 __decorate([
@@ -141,11 +154,11 @@ __decorate([
     __metadata("design:type", Array)
 ], Card.prototype, "awards", void 0);
 __decorate([
-    (0, mongoose_1.Prop)(),
+    (0, mongoose_1.Prop)({ default: '' }),
     __metadata("design:type", Array)
 ], Card.prototype, "posters", void 0);
 __decorate([
-    (0, mongoose_1.Prop)(),
+    (0, mongoose_1.Prop)({ default: '' }),
     __metadata("design:type", Array)
 ], Card.prototype, "shots", void 0);
 __decorate([
@@ -156,7 +169,10 @@ __decorate([
     __metadata("design:type", Array)
 ], Card.prototype, "sequelAndPrequels", void 0);
 __decorate([
-    (0, mongoose_1.Prop)(),
+    (0, mongoose_1.Prop)({
+        type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Quote' }],
+        default: [],
+    }),
     __metadata("design:type", Array)
 ], Card.prototype, "quotes", void 0);
 __decorate([
@@ -167,7 +183,9 @@ __decorate([
     __metadata("design:type", Array)
 ], Card.prototype, "seemFilms", void 0);
 __decorate([
-    (0, mongoose_1.Prop)(),
+    (0, mongoose_1.Prop)({
+        default: '',
+    }),
     __metadata("design:type", String)
 ], Card.prototype, "description", void 0);
 exports.Card = Card = __decorate([

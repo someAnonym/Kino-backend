@@ -15,6 +15,7 @@ export class PersonMapper {
     return new PersonEntity(
       id,
       person.name,
+      person.avatarImage,
       person.englishName,
       person.linkToBiography,
       person.career,

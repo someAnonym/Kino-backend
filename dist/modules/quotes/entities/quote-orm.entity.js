@@ -11,13 +11,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.QuoteSchema = exports.Quote = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
-class Quote {
-}
-exports.Quote = Quote;
-__decorate([
-    (0, mongoose_1.Prop)(),
-    __metadata("design:type", String)
-], Quote.prototype, "picture", void 0);
+let Quote = exports.Quote = class Quote {
+};
 __decorate([
     (0, mongoose_1.Prop)(),
     __metadata("design:type", String)
@@ -26,5 +21,8 @@ __decorate([
     (0, mongoose_1.Prop)(),
     __metadata("design:type", String)
 ], Quote.prototype, "whoseText", void 0);
+exports.Quote = Quote = __decorate([
+    (0, mongoose_1.Schema)()
+], Quote);
 exports.QuoteSchema = mongoose_1.SchemaFactory.createForClass(Quote);
 //# sourceMappingURL=quote-orm.entity.js.map

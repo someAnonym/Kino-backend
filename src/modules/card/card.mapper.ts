@@ -13,20 +13,25 @@ export class CardMapper {
     const seemFilms = card.seemFilms.map((i) => i.valueOf() as string);
     const awards = card.awards.map((i) => i.valueOf() as string);
     const reviews = card.reviews.map((i) => i.valueOf() as string);
+    const persons = card.persons.map((i) => i.valueOf() as string);
+    const quotes = card.quotes.map((i) => i.valueOf() as string);
+    const ratings = card.ratings.map((i) => i.valueOf() as string);
+    const directors = card.directors.map((i) => i.valueOf() as string);
     return new CardEntity(
       id,
       card.posterImage,
+      card.backgroundImage,
       reviews,
       card.name,
       card.secondName,
-      card.ratings,
+      ratings,
       card.userLike,
       card.userDislike,
       card.favorites,
       card.year,
       card.country,
       card.slogan,
-      card.directors,
+      directors,
       card.screenwriters,
       card.producers,
       card.operators,
@@ -42,13 +47,13 @@ export class CardMapper {
       card.production,
       card.specialEffects,
       card.dubbingStudios,
-      card.persons,
+      persons,
       card.trailers,
       awards,
       card.posters,
       card.shots,
       sequelAndPrequels,
-      card.quotes,
+      quotes,
       seemFilms,
       card.description,
     );

@@ -11,6 +11,7 @@ export class CardEntity {
     private readonly _id: string,
     // first
     private readonly _posterImage: string,
+    private readonly _backgroundImage: string,
     private _reviews: string[],
     private readonly _name: string,
     private readonly _secondName: string,
@@ -19,7 +20,7 @@ export class CardEntity {
     private _userDislike: number,
     private _favourites: number,
     private readonly _year: number,
-    private readonly _country: string,
+    private readonly _country: string[],
     private readonly _slogan: string,
     private readonly _directors: string[],
     private readonly _screenwriters: string[],
@@ -28,7 +29,7 @@ export class CardEntity {
     private readonly _composers: string[],
     private readonly _artists: string[],
     private readonly _editors: string[],
-    private readonly _genres: Genres[],
+    private readonly _genres: string[],
     private readonly _collecting: number,
     private readonly _premiereInWorld: string,
     private readonly _premiereInRussia: string,
@@ -70,6 +71,10 @@ export class CardEntity {
     return this._reviews;
   }
 
+  public get backgroundImage(): string {
+    return this._backgroundImage;
+  }
+
   public get secondName(): string {
     return this._secondName;
   }
@@ -94,7 +99,7 @@ export class CardEntity {
     return this._year;
   }
 
-  public get country(): string {
+  public get country(): string[] {
     return this._country;
   }
 
@@ -124,7 +129,7 @@ export class CardEntity {
   public get editors(): string[] {
     return this._editors;
   }
-  public get genres(): Genres[] {
+  public get genres(): string[] {
     return this._genres;
   }
   public get collecting(): number {

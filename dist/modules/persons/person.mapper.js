@@ -9,7 +9,7 @@ class PersonMapper {
         const bestFilms = person.films.map((i) => i.valueOf());
         const awards = person.awards.map((i) => i.valueOf());
         const comments = person.comments.map((i) => i.valueOf());
-        return new person_entity_1.PersonEntity(id, person.name, person.englishName, person.linkToBiography, person.career, person.height, person.birthday, person.bornPlace, person.genres, person.totalCountOfFilmsAndYears, person.favorites, awards, bestFilms, person.lastNews, person.photos, films, comments);
+        return new person_entity_1.PersonEntity(id, person.name, person.avatarImage, person.englishName, person.linkToBiography, person.career, person.height, person.birthday, person.bornPlace, person.genres, person.totalCountOfFilmsAndYears, person.favorites, awards, bestFilms, person.lastNews, person.photos, films, comments);
     }
 }
 exports.PersonMapper = PersonMapper;

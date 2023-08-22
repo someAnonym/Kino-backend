@@ -7,6 +7,7 @@ import { User, UserDocument } from './entities/user-orm.entity';
 import { Model } from 'mongoose';
 import { errorMonitor } from 'events';
 import { InjectModel } from '@nestjs/mongoose';
+import { ObjectId } from 'mongodb';
 
 @Injectable()
 export class UsersRepository implements UserRepositoryPort {
@@ -25,6 +26,9 @@ export class UsersRepository implements UserRepositoryPort {
     try {
       const updatedUser = user.getUserData();
       const currentUser = await this.repository.findById(user.id);
+      // // updatedUser.friends =  updatedUser.friends.filter(i => i.valueOf() as string !== );
+      // const upd = new Set(updatedUser.friends);
+      // updatedUser.friends = Array.from(upd);
 
       currentUser.vk = updatedUser.vk;
       currentUser.instagram = updatedUser.instagram;
@@ -41,6 +45,7 @@ export class UsersRepository implements UserRepositoryPort {
       currentUser.city = updatedUser.city;
       currentUser.country = updatedUser.country;
       currentUser.favoriteGenres = updatedUser.favoriteGenres;
+      // currentUser.friends = updatedUser.friends.map((i) => new ObjectId(i));
 
       return this.repository.findOneAndUpdate(currentUser._id, currentUser);
     } catch (error) {

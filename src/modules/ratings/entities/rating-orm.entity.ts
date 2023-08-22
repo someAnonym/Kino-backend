@@ -1,6 +1,8 @@
-import { Prop, SchemaFactory } from '@nestjs/mongoose';
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 
 export type RatingDocument = Rating & Document;
+
+@Schema()
 export class Rating {
   @Prop()
   rate: string;

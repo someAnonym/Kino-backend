@@ -25,6 +25,10 @@ __decorate([
 __decorate([
     (0, mongoose_1.Prop)(),
     __metadata("design:type", String)
+], Person.prototype, "avatarImage", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", String)
 ], Person.prototype, "linkToBiography", void 0);
 __decorate([
     (0, mongoose_1.Prop)(),

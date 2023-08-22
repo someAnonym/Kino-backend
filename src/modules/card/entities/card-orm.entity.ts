@@ -1,12 +1,13 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { ObjectId } from 'mongodb';
-import { Genres } from 'src/modules/users/entities/genges.entity';
-import { User } from 'src/modules/users/entities/user-orm.entity';
 import * as mongoose from 'mongoose';
 export type CardDocument = Card & Document;
 
 @Schema()
 export class Card {
+  @Prop()
+  backgroundImage: string;
+
   @Prop()
   posterImage: string;
 
@@ -14,87 +15,96 @@ export class Card {
     type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Review' }],
     default: [],
   })
-  reviews: string[];
+  reviews: ObjectId[];
 
-  @Prop()
+  @Prop({ default: '' })
   name: string;
 
-  @Prop()
+  @Prop({ default: '' })
   secondName: string;
 
-  @Prop()
-  ratings: string[];
+  @Prop({
+    type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Rating' }],
+    default: [],
+  })
+  ratings: ObjectId[];
 
-  @Prop()
+  @Prop({ default: 0 })
   userLike: number;
 
-  @Prop()
+  @Prop({ default: 0 })
   userDislike: number;
 
-  @Prop()
+  @Prop({ default: 0 })
   favorites: number;
 
-  @Prop()
+  @Prop({ default: 0 })
   year: number;
 
-  @Prop()
-  country: string;
+  @Prop({ default: [] })
+  country: string[];
 
-  @Prop()
+  @Prop({ default: '' })
   slogan: string;
 
-  @Prop()
-  directors: string[];
+  @Prop({
+    type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Director' }],
+    default: [],
+  })
+  directors: ObjectId[];
 
-  @Prop()
+  @Prop({ default: '' })
   screenwriters: string[];
 
-  @Prop()
+  @Prop({ default: '' })
   producers: string[];
 
-  @Prop()
+  @Prop({ default: '' })
   operators: string[];
 
-  @Prop()
+  @Prop({ default: '' })
   composers: string[];
 
-  @Prop()
+  @Prop({ default: '' })
   artists: string[];
 
-  @Prop()
+  @Prop({ default: '' })
   editors: string[];
 
-  @Prop()
-  genres: Genres[];
+  @Prop({ default: '' })
+  genres: string[];
 
-  @Prop()
+  @Prop({ default: '' })
   collecting: number;
 
-  @Prop()
+  @Prop({ default: '' })
   premiereInWorld: string;
 
-  @Prop()
+  @Prop({ default: '' })
   premiereInRussia: string;
 
-  @Prop()
+  @Prop({ default: '' })
   age: number;
 
-  @Prop()
+  @Prop({ default: '' })
   duration: number;
 
-  @Prop()
+  @Prop({ default: '' })
   production: string[];
 
-  @Prop()
+  @Prop({ default: '' })
   specialEffects: string[];
 
-  @Prop()
+  @Prop({ default: '' })
   dubbingStudios: string[];
 
-  @Prop()
-  persons: string[];
+  @Prop({
+    type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Person' }],
+    default: [],
+  })
+  persons: ObjectId[];
 
-  @Prop()
+  @Prop({ default: '' })
   trailers: string[];
 
   @Prop({
@@ -103,10 +113,10 @@ export class Card {
   })
   awards: ObjectId[];
 
-  @Prop()
+  @Prop({ default: '' })
   posters: string[];
 
-  @Prop()
+  @Prop({ default: '' })
   shots: string[];
 
   @Prop({
@@ -115,8 +125,11 @@ export class Card {
   })
   sequelAndPrequels: ObjectId[];
 
-  @Prop()
-  quotes: string[];
+  @Prop({
+    type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Quote' }],
+    default: [],
+  })
+  quotes: ObjectId[];
 
   @Prop({
     type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Card' }],
@@ -124,7 +137,9 @@ export class Card {
   })
   seemFilms: ObjectId[];
 
-  @Prop()
+  @Prop({
+    default: '',
+  })
   description: string;
 }
 

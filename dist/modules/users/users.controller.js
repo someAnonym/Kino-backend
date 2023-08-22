@@ -31,7 +31,9 @@ let UsersController = exports.UsersController = class UsersController {
         this.usersRepository = usersRepository;
     }
     getMe(id) {
-        return this.usersRepository.findById(id);
+        return this.usersRepository
+            .findById(id)
+            .populate('friends', 'avatarImage name secondName wasOnline');
     }
     async update(id, dto) {
         const command = new update_user_command_1.UpdateUserCommand(id, dto.email, dto.name, dto.secondName, dto.vk, dto.instagram, dto.youtube, dto.twitter, dto.facebook, dto.aboutMe, dto.avatarImage, dto.gender, dto.birthday, dto.country, dto.city, dto.favoriteGenres);

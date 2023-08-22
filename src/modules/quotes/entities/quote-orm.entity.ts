@@ -1,10 +1,9 @@
-import { Prop, SchemaFactory } from '@nestjs/mongoose';
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 
 export type QuoteDocuments = Quote & Document;
-export class Quote {
-  @Prop()
-  picture: string;
 
+@Schema()
+export class Quote {
   @Prop()
   text: string;
 

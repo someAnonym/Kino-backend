@@ -160,6 +160,14 @@ class UserEntity {
             wasOnline: this._wasOnline,
         };
     }
+    updateFriends(friends) {
+        try {
+            this._friends = [...this._friends, ...friends];
+        }
+        catch (error) {
+            throw new Error('Ошибка при обновлении количества друзей!');
+        }
+    }
     updateGender(gender) {
         try {
             this._gender = gender;

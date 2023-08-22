@@ -1,7 +1,7 @@
-import { Genres } from './genges.entity';
 export declare class CardEntity {
     private readonly _id;
     private readonly _posterImage;
+    private readonly _backgroundImage;
     private _reviews;
     private readonly _name;
     private readonly _secondName;
@@ -37,19 +37,20 @@ export declare class CardEntity {
     private readonly _quotes;
     private readonly _seemFilms;
     private readonly _description;
-    constructor(_id: string, _posterImage: string, _reviews: string[], _name: string, _secondName: string, _ratings: string[], _userLike: number, _userDislike: number, _favourites: number, _year: number, _country: string, _slogan: string, _directors: string[], _screenwriters: string[], _producers: string[], _operators: string[], _composers: string[], _artists: string[], _editors: string[], _genres: Genres[], _collecting: number, _premiereInWorld: string, _premiereInRussia: string, _age: number, _duration: number, _production: string[], _specialEffects: string[], _dubbingStudios: string[], _persons: string[], _trailers: string[], _awards: string[], _posters: string[], _shots: string[], _sequelAndPrequels: string[], _quotes: string[], _seemFilms: string[], _description: string);
+    constructor(_id: string, _posterImage: string, _backgroundImage: string, _reviews: string[], _name: string, _secondName: string, _ratings: string[], _userLike: number, _userDislike: number, _favourites: number, _year: number, _country: string[], _slogan: string, _directors: string[], _screenwriters: string[], _producers: string[], _operators: string[], _composers: string[], _artists: string[], _editors: string[], _genres: string[], _collecting: number, _premiereInWorld: string, _premiereInRussia: string, _age: number, _duration: number, _production: string[], _specialEffects: string[], _dubbingStudios: string[], _persons: string[], _trailers: string[], _awards: string[], _posters: string[], _shots: string[], _sequelAndPrequels: string[], _quotes: string[], _seemFilms: string[], _description: string);
     get id(): string;
     get description(): string;
     get posterImage(): string;
     get name(): string;
     get reviews(): string[];
+    get backgroundImage(): string;
     get secondName(): string;
     get ratings(): string[];
     get userLike(): number;
     get userDislike(): number;
     get favourites(): number;
     get year(): number;
-    get country(): string;
+    get country(): string[];
     get slogan(): string;
     get directors(): string[];
     get screenwriters(): string[];
@@ -58,7 +59,7 @@ export declare class CardEntity {
     get composers(): string[];
     get artisrs(): string[];
     get editors(): string[];
-    get genres(): Genres[];
+    get genres(): string[];
     get collecting(): number;
     get premiereInWorld(): string;
     get premiereInRussia(): string;
@@ -90,7 +91,7 @@ export declare class CardEntity {
         userDislike: number;
         favourites: number;
         year: number;
-        country: string;
+        country: string[];
         slogan: string;
         directors: string[];
         screenwriters: string[];
@@ -99,7 +100,7 @@ export declare class CardEntity {
         composers: string[];
         artists: string[];
         editors: string[];
-        genres: Genres[];
+        genres: string[];
         collecting: number;
         oremiereImWorld: string;
         premiereInRussia: string;

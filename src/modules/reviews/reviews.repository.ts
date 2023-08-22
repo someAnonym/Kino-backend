@@ -22,9 +22,10 @@ export class ReviewsRepository implements ReviewRepositoryPort {
       const updatedReview = review.getReviewData();
       const currentReview = await this.repository.findById(review.id);
 
-      (currentReview.likes = updatedReview.likes),
-        (currentReview.dislikes = updatedReview.dislikes),
-        (currentReview.comments = updatedReview.comments);
+      currentReview.likes = updatedReview.likes;
+      currentReview.dislikes = updatedReview.dislikes;
+      currentReview.comments = updatedReview.comments;
+
       return this.repository.findByIdAndUpdate(currentReview._id, currentReview);
     } catch (error) {}
   }

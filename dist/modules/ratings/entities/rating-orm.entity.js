@@ -11,9 +11,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RatingSchema = exports.Rating = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
-class Rating {
-}
-exports.Rating = Rating;
+let Rating = exports.Rating = class Rating {
+};
 __decorate([
     (0, mongoose_1.Prop)(),
     __metadata("design:type", String)
@@ -22,5 +21,8 @@ __decorate([
     (0, mongoose_1.Prop)(),
     __metadata("design:type", String)
 ], Rating.prototype, "whoose", void 0);
+exports.Rating = Rating = __decorate([
+    (0, mongoose_1.Schema)()
+], Rating);
 exports.RatingSchema = mongoose_1.SchemaFactory.createForClass(Rating);
 //# sourceMappingURL=rating-orm.entity.js.map

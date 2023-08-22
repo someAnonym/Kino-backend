@@ -18,6 +18,7 @@ const person_orm_entity_1 = require("./entities/person-orm.entity");
 const mongoose_1 = require("mongoose");
 const mongoose_2 = require("@nestjs/mongoose");
 const person_mapper_1 = require("./person.mapper");
+const mongodb_1 = require("mongodb");
 let PersonsRepository = exports.PersonsRepository = class PersonsRepository {
     constructor(repository) {
         this.repository = repository;
@@ -34,9 +35,7 @@ let PersonsRepository = exports.PersonsRepository = class PersonsRepository {
             const mongoose = require('mongoose');
             const updatedPerson = person.getData();
             const currentPerson = await this.repository.findById(person.id);
-            for (let i = 0; i < currentPerson.comments.length; i++) {
-                currentPerson.comments[i] = mongoose.Types.ObjectId(updatedPerson.comments[i]);
-            }
+            currentPerson.comments = updatedPerson.comments.map((i) => new mongodb_1.ObjectId(i));
             return this.repository.findOneAndUpdate(currentPerson._id, currentPerson);
         }
         catch (error) {

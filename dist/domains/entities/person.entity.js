@@ -2,9 +2,10 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PersonEntity = void 0;
 class PersonEntity {
-    constructor(_id, _name, _englishName, _linkToBiography, _career, _height, _birthday, _bornPlace, _genres, _totalCountOfFilmsAndYears, _favorites, _awards, _bestFilms, _lastNews, _photos, _films, _comments) {
+    constructor(_id, _name, _avatarImage, _englishName, _linkToBiography, _career, _height, _birthday, _bornPlace, _genres, _totalCountOfFilmsAndYears, _favorites, _awards, _bestFilms, _lastNews, _photos, _films, _comments) {
         this._id = _id;
         this._name = _name;
+        this._avatarImage = _avatarImage;
         this._englishName = _englishName;
         this._linkToBiography = _linkToBiography;
         this._career = _career;
@@ -26,6 +27,9 @@ class PersonEntity {
     }
     get englishName() {
         return this._englishName;
+    }
+    get avatarImage() {
+        return this._avatarImage;
     }
     get linkToBiography() {
         return this._linkToBiography;

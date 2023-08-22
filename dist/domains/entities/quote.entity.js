@@ -2,17 +2,13 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.QuoteEntity = void 0;
 class QuoteEntity {
-    constructor(_id, _picture, _text, _whoseText) {
+    constructor(_id, _text, _whoseText) {
         this._id = _id;
-        this._picture = _picture;
         this._text = _text;
         this._whoseText = _whoseText;
     }
     get id() {
         return this._id;
-    }
-    get picture() {
-        return this._picture;
     }
     get text() {
         return this._text;

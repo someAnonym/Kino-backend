@@ -1,5 +1,4 @@
 export interface CreateQuoteDto {
-    picture: string;
     text: string;
     whoseText: string;
 }

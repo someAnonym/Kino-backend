@@ -2,9 +2,10 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CardEntity = void 0;
 class CardEntity {
-    constructor(_id, _posterImage, _reviews, _name, _secondName, _ratings, _userLike, _userDislike, _favourites, _year, _country, _slogan, _directors, _screenwriters, _producers, _operators, _composers, _artists, _editors, _genres, _collecting, _premiereInWorld, _premiereInRussia, _age, _duration, _production, _specialEffects, _dubbingStudios, _persons, _trailers, _awards, _posters, _shots, _sequelAndPrequels, _quotes, _seemFilms, _description) {
+    constructor(_id, _posterImage, _backgroundImage, _reviews, _name, _secondName, _ratings, _userLike, _userDislike, _favourites, _year, _country, _slogan, _directors, _screenwriters, _producers, _operators, _composers, _artists, _editors, _genres, _collecting, _premiereInWorld, _premiereInRussia, _age, _duration, _production, _specialEffects, _dubbingStudios, _persons, _trailers, _awards, _posters, _shots, _sequelAndPrequels, _quotes, _seemFilms, _description) {
         this._id = _id;
         this._posterImage = _posterImage;
+        this._backgroundImage = _backgroundImage;
         this._reviews = _reviews;
         this._name = _name;
         this._secondName = _secondName;
@@ -55,6 +56,9 @@ class CardEntity {
     }
     get reviews() {
         return this._reviews;
+    }
+    get backgroundImage() {
+        return this._backgroundImage;
     }
     get secondName() {
         return this._secondName;

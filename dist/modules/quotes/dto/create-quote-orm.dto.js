@@ -15,15 +15,11 @@ class CreateQuoteOrmDto {
 }
 exports.CreateQuoteOrmDto = CreateQuoteOrmDto;
 __decorate([
-    (0, swagger_1.ApiProperty)({ default: '' }),
-    __metadata("design:type", String)
-], CreateQuoteOrmDto.prototype, "picture", void 0);
-__decorate([
-    (0, swagger_1.ApiProperty)({ default: '' }),
+    (0, swagger_1.ApiProperty)({ default: 'asd' }),
     __metadata("design:type", String)
 ], CreateQuoteOrmDto.prototype, "text", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)({ default: '' }),
+    (0, swagger_1.ApiProperty)({ default: 'sss' }),
     __metadata("design:type", String)
 ], CreateQuoteOrmDto.prototype, "whoseText", void 0);
 //# sourceMappingURL=create-quote-orm.dto.js.map

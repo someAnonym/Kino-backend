@@ -27,7 +27,12 @@ let CardsController = exports.CardsController = class CardsController {
         this.cardsRepository = cardsRepository;
     }
     getMe(id) {
-        return this.cardsRepository.findById(id);
+        return this.cardsRepository
+            .findById(id)
+            .populate('ratings', 'whoose rate')
+            .populate('persons', 'name englishName avatarImage')
+            .populate('awards', 'picture name description year')
+            .populate('directors');
     }
     async update(id, dto) {
         const command = new update_card_command_1.UpdateCardCommand(id, dto._reviews, dto._likes, dto._dislikes, dto._favorites);
@@ -42,7 +47,7 @@ let CardsController = exports.CardsController = class CardsController {
     }
 };
 __decorate([
-    (0, common_1.Get)('/currentCard'),
+    (0, common_1.Get)('/:id'),
     (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuard),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),

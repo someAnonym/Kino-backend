@@ -16,7 +16,7 @@ export declare class UserEntity {
     private _city;
     private _favoriteGenres;
     private readonly _films;
-    private readonly _friends;
+    private _friends;
     private readonly _favoriteFilms;
     private readonly _expecredFilms;
     private readonly _persons;
@@ -86,6 +86,7 @@ export declare class UserEntity {
         avatarImage: string;
         wasOnline: Date;
     };
+    updateFriends(friends: string[]): void | never;
     updateGender(gender: string): void | never;
     updateBirthday(birthday: string): void | never;
     updateCity(city: string): void | never;

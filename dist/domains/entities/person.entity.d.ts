@@ -2,6 +2,7 @@ import { Genres } from './genges.entity';
 export declare class PersonEntity {
     private readonly _id;
     private readonly _name;
+    private readonly _avatarImage;
     private readonly _englishName;
     private readonly _linkToBiography;
     private readonly _career;
@@ -17,9 +18,10 @@ export declare class PersonEntity {
     private readonly _photos;
     private readonly _films;
     private _comments;
-    constructor(_id: string, _name: string, _englishName: string, _linkToBiography: string, _career: string[], _height: string, _birthday: string[], _bornPlace: string, _genres: Genres[], _totalCountOfFilmsAndYears: string[], _favorites: number, _awards: string[], _bestFilms: string[], _lastNews: string[], _photos: string[], _films: string[], _comments: string[]);
+    constructor(_id: string, _name: string, _avatarImage: string, _englishName: string, _linkToBiography: string, _career: string[], _height: string, _birthday: string[], _bornPlace: string, _genres: Genres[], _totalCountOfFilmsAndYears: string[], _favorites: number, _awards: string[], _bestFilms: string[], _lastNews: string[], _photos: string[], _films: string[], _comments: string[]);
     get id(): string;
     get englishName(): string;
+    get avatarImage(): string;
     get linkToBiography(): string;
     get career(): string[];
     get height(): string;

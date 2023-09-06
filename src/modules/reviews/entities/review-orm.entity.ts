@@ -4,10 +4,11 @@ import * as mongoose from 'mongoose';
 
 export type ReviewDocument = Review & Document;
 
+@Schema()
 export class Review {
   @Prop({
     type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
-    default: [],
+    default: {},
   })
   user: ObjectId;
 

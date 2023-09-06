@@ -24,13 +24,15 @@ export class ReviewController {
   @Get('/all')
   @UseGuards(JwtAuthGuard)
   getAll() {
-    return this._reviewsRepository.getAll();
+    return this._reviewsRepository.getAll().populate('user');
   }
 
   @Get('/:id')
   @UseGuards(JwtAuthGuard)
   getOne(@Param('id') id: string) {
-    return this._reviewsRepository.getOneById(id);
+    return this._reviewsRepository
+      .getOneById(id)
+      .populate('user', 'avatarImage reviews name secondName');
   }
 
   @Post('/create')

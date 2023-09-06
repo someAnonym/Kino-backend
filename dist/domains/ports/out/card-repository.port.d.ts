@@ -43,4 +43,5 @@ export interface CardRepositoryPort {
     findById(id: string): any;
     create(dto: CreateCardDto): any;
     search(query: string): any;
+    filterReviews(cardId: string, typeOfReview: string): any;
 }

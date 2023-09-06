@@ -1,6 +1,3 @@
-import { CommentEntity } from './comment.entity';
-import { UserEntity } from './user.entity';
-
 export class ReviewEntity {
   constructor(
     private readonly _id: string,

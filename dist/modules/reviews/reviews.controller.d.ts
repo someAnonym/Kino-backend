@@ -31,9 +31,9 @@ export declare class ReviewController {
     private readonly _updateReviewUseCase;
     private readonly _reviewsRepository;
     constructor(_updateReviewUseCase: UpdateReviewUseCase, _reviewsRepository: ReviewsRepository);
-    getAll(): import("mongoose").Query<(import("mongoose").Document<unknown, {}, import("./entities/review-orm.entity").ReviewDocument> & import("./entities/review-orm.entity").Review & Document & {
+    getAll(): import("mongoose").Query<Omit<import("mongoose").Document<unknown, {}, import("./entities/review-orm.entity").ReviewDocument> & import("./entities/review-orm.entity").Review & Document & {
         _id: import("mongoose").Types.ObjectId;
-    })[], import("mongoose").Document<unknown, {}, import("./entities/review-orm.entity").ReviewDocument> & import("./entities/review-orm.entity").Review & Document & {
+    }, never>[], import("mongoose").Document<unknown, {}, import("./entities/review-orm.entity").ReviewDocument> & import("./entities/review-orm.entity").Review & Document & {
         _id: import("mongoose").Types.ObjectId;
     }, {}, import("./entities/review-orm.entity").ReviewDocument, "find">;
     getOne(id: string): import("mongoose").Query<import("mongoose").Document<unknown, {}, import("./entities/review-orm.entity").ReviewDocument> & import("./entities/review-orm.entity").Review & Document & {

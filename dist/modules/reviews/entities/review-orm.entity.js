@@ -13,13 +13,12 @@ exports.ReviewSchema = exports.Review = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
 const mongodb_1 = require("mongodb");
 const mongoose = require("mongoose");
-class Review {
-}
-exports.Review = Review;
+let Review = exports.Review = class Review {
+};
 __decorate([
     (0, mongoose_1.Prop)({
         type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
-        default: [],
+        default: {},
     }),
     __metadata("design:type", mongodb_1.ObjectId)
 ], Review.prototype, "user", void 0);
@@ -58,5 +57,8 @@ __decorate([
     (0, mongoose_1.Prop)(),
     __metadata("design:type", Array)
 ], Review.prototype, "complaints", void 0);
+exports.Review = Review = __decorate([
+    (0, mongoose_1.Schema)()
+], Review);
 exports.ReviewSchema = mongoose_1.SchemaFactory.createForClass(Review);
 //# sourceMappingURL=review-orm.entity.js.map

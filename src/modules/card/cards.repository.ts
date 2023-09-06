@@ -1,4 +1,4 @@
-import { ForbiddenException, Injectable } from '@nestjs/common';
+import { ForbiddenException, Injectable, RequestTimeoutException } from '@nestjs/common';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { CardMapper } from './card.mapper';
@@ -7,12 +7,16 @@ import { CardRepositoryPort, CreateCardDto } from 'src/domains/ports/out/card-re
 import { Card, CardDocument } from './entities/card-orm.entity';
 import { CreateCardOrmDto } from './dto/create-card.dto';
 import { ObjectId } from 'mongodb';
+import { ReviewsRepository } from '../reviews/reviews.repository';
+import { Review } from '../reviews/entities/review-orm.entity';
 
 @Injectable()
 export class CardsRepository implements CardRepositoryPort {
   constructor(
     @InjectModel(Card.name)
     private repository: Model<CardDocument>,
+
+    private reviewsRepository: ReviewsRepository,
   ) {}
 
   async loadCard(cardId: string): Promise<CardEntity> {
@@ -51,5 +55,14 @@ export class CardsRepository implements CardRepositoryPort {
       ...cards.filter((i) => i.name.toLowerCase().includes(query.toLowerCase())),
       ...cards.filter((i) => i.secondName.toLowerCase().includes(query.toLowerCase())),
     ];
+  }
+
+  async filterReviews(cardId: string, typeOfReview: string) {
+    const card = await this.repository.findById(cardId);
+    const reviews = this.reviewsRepository.getAll().populate('user');
+    const filter = (await reviews).filter(
+      (i) => i.typeOfReview === typeOfReview && card.reviews.includes(i._id),
+    );
+    return filter;
   }
 }

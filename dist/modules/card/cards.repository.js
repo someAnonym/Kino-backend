@@ -19,9 +19,11 @@ const mongoose_2 = require("@nestjs/mongoose");
 const card_mapper_1 = require("./card.mapper");
 const card_orm_entity_1 = require("./entities/card-orm.entity");
 const mongodb_1 = require("mongodb");
+const reviews_repository_1 = require("../reviews/reviews.repository");
 let CardsRepository = exports.CardsRepository = class CardsRepository {
-    constructor(repository) {
+    constructor(repository, reviewsRepository) {
         this.repository = repository;
+        this.reviewsRepository = reviewsRepository;
     }
     async loadCard(cardId) {
         const card = await this.repository.findById(cardId);
@@ -54,10 +56,17 @@ let CardsRepository = exports.CardsRepository = class CardsRepository {
             ...cards.filter((i) => i.secondName.toLowerCase().includes(query.toLowerCase())),
         ];
     }
+    async filterReviews(cardId, typeOfReview) {
+        const card = await this.repository.findById(cardId);
+        const reviews = this.reviewsRepository.getAll().populate('user');
+        const filter = (await reviews).filter((i) => i.typeOfReview === typeOfReview && card.reviews.includes(i._id));
+        return filter;
+    }
 };
 exports.CardsRepository = CardsRepository = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, mongoose_2.InjectModel)(card_orm_entity_1.Card.name)),
-    __metadata("design:paramtypes", [mongoose_1.Model])
+    __metadata("design:paramtypes", [mongoose_1.Model,
+        reviews_repository_1.ReviewsRepository])
 ], CardsRepository);
 //# sourceMappingURL=cards.repository.js.map

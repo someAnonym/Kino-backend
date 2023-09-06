@@ -8,7 +8,6 @@ import {
   UpdateCardUseCase,
   UpdateCardUseCaseSymbol,
 } from 'src/domains/ports/in/update-card.use-case';
-import { CreateCardDto } from 'src/domains/ports/out/card-repository.port';
 import { CreateCardOrmDto } from './dto/create-card.dto';
 
 @Controller('cards')
@@ -30,6 +29,14 @@ export class CardsController {
       .populate('ratings', 'whoose rate')
       .populate('persons', 'name englishName avatarImage')
       .populate('awards', 'picture name description year')
+      .populate('quotes', 'text whoseText')
+      .populate('reviews', 'typeOfReview title user date text')
+      .populate({
+        path: 'reviews',
+        populate: {
+          path: 'user',
+        },
+      })
       .populate('directors');
   }
 
@@ -45,7 +52,6 @@ export class CardsController {
     );
     const updateCard = await this._updateCardUseCase.UpdateCard(command);
     return await this.cardsRepository.updateCard(updateCard);
-    // return (await this._updateUserUseCase.updateUser(command)).getUserData();
   }
 
   @Post('/create')
@@ -58,5 +64,11 @@ export class CardsController {
   @UseGuards(JwtAuthGuard)
   search(@Query('query') query: string) {
     return this.cardsRepository.search(query);
+  }
+
+  @Get('/:id/reviews')
+  @UseGuards(JwtAuthGuard)
+  filterReviews(@Param('id') id: string, @Query('type') typeOfReview: string) {
+    return this.cardsRepository.filterReviews(id, typeOfReview);
   }
 }

@@ -45,4 +45,7 @@ export declare class CardsController {
     search(query: string): Promise<(import("mongoose").Document<unknown, {}, import("./entities/card-orm.entity").CardDocument> & import("./entities/card-orm.entity").Card & Document & {
         _id: import("mongoose").Types.ObjectId;
     })[]>;
+    filterReviews(id: string, typeOfReview: string): Promise<Omit<import("mongoose").Document<unknown, {}, import("../reviews/entities/review-orm.entity").ReviewDocument> & import("../reviews/entities/review-orm.entity").Review & Document & {
+        _id: import("mongoose").Types.ObjectId;
+    }, never>[]>;
 }

@@ -27,10 +27,12 @@ let ReviewController = exports.ReviewController = class ReviewController {
         this._reviewsRepository = _reviewsRepository;
     }
     getAll() {
-        return this._reviewsRepository.getAll();
+        return this._reviewsRepository.getAll().populate('user');
     }
     getOne(id) {
-        return this._reviewsRepository.getOneById(id);
+        return this._reviewsRepository
+            .getOneById(id)
+            .populate('user', 'avatarImage reviews name secondName');
     }
     create(dto) {
         return this._reviewsRepository.create(dto);

@@ -32,6 +32,14 @@ let CardsController = exports.CardsController = class CardsController {
             .populate('ratings', 'whoose rate')
             .populate('persons', 'name englishName avatarImage')
             .populate('awards', 'picture name description year')
+            .populate('quotes', 'text whoseText')
+            .populate('reviews', 'typeOfReview title user date text')
+            .populate({
+            path: 'reviews',
+            populate: {
+                path: 'user',
+            },
+        })
             .populate('directors');
     }
     async update(id, dto) {
@@ -44,6 +52,9 @@ let CardsController = exports.CardsController = class CardsController {
     }
     search(query) {
         return this.cardsRepository.search(query);
+    }
+    filterReviews(id, typeOfReview) {
+        return this.cardsRepository.filterReviews(id, typeOfReview);
     }
 };
 __decorate([
@@ -79,6 +90,15 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
 ], CardsController.prototype, "search", null);
+__decorate([
+    (0, common_1.Get)('/:id/reviews'),
+    (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuard),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Query)('type')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, String]),
+    __metadata("design:returntype", void 0)
+], CardsController.prototype, "filterReviews", null);
 exports.CardsController = CardsController = __decorate([
     (0, common_1.Controller)('cards'),
     (0, swagger_1.ApiBearerAuth)(),

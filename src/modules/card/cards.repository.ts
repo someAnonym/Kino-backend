@@ -8,7 +8,6 @@ import { Card, CardDocument } from './entities/card-orm.entity';
 import { CreateCardOrmDto } from './dto/create-card.dto';
 import { ObjectId } from 'mongodb';
 import { ReviewsRepository } from '../reviews/reviews.repository';
-import { Review } from '../reviews/entities/review-orm.entity';
 
 @Injectable()
 export class CardsRepository implements CardRepositoryPort {
@@ -28,6 +27,7 @@ export class CardsRepository implements CardRepositoryPort {
   async updateCard(card: CardEntity) {
     try {
       const updatedCard = card.getCardData();
+
       const currentCard = await this.repository.findById(card.id);
 
       currentCard.reviews = updatedCard.reviews.map((i) => new ObjectId(i));
@@ -35,8 +35,10 @@ export class CardsRepository implements CardRepositoryPort {
       currentCard.userDislike = updatedCard.userDislike;
       currentCard.favorites = updatedCard.favourites;
 
-      return this.repository.findOneAndUpdate(currentCard._id, currentCard);
+      await currentCard.save();
+      return currentCard;
     } catch (error) {
+      console.log(error);
       throw new ForbiddenException('Ошибка при обновлении Карточки', error);
     }
   }

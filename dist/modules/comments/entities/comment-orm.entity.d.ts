@@ -5,7 +5,6 @@ export declare class Comment {
     user: ObjectId;
     likes: number;
     dislikes: number;
-    title: string;
     text: string;
     date: Date;
     comments: ObjectId[];

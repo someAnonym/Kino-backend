@@ -22,6 +22,9 @@ let AwardsController = exports.AwardsController = class AwardsController {
     constructor(_awardsRepository) {
         this._awardsRepository = _awardsRepository;
     }
+    getAll() {
+        return this._awardsRepository.getAll();
+    }
     create(dto) {
         return this._awardsRepository.create(dto);
     }
@@ -31,10 +34,14 @@ let AwardsController = exports.AwardsController = class AwardsController {
     getAward(id) {
         return this._awardsRepository.getOneById(id);
     }
-    getAll() {
-        return this._awardsRepository.getAll();
-    }
 };
+__decorate([
+    (0, common_1.Get)('/all'),
+    (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuard),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], AwardsController.prototype, "getAll", null);
 __decorate([
     (0, common_1.Post)('/create'),
     (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuard),
@@ -59,13 +66,6 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
 ], AwardsController.prototype, "getAward", null);
-__decorate([
-    (0, common_1.Get)('/all'),
-    (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuard),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
-    __metadata("design:returntype", void 0)
-], AwardsController.prototype, "getAll", null);
 exports.AwardsController = AwardsController = __decorate([
     (0, common_1.Controller)('awards'),
     (0, swagger_1.ApiBearerAuth)(),

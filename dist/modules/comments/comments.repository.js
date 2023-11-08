@@ -22,27 +22,28 @@ let CommentsRepository = exports.CommentsRepository = class CommentsRepository {
     constructor(repository) {
         this.repository = repository;
     }
-    async update(comment) {
+    create(dto) {
+        return this.repository.create(dto);
+    }
+    async updateComm(comment) {
         try {
             const mongoose = require('mongoose');
             const updatedComment = comment.getCommentData();
             const currentComment = await this.repository.findById(updatedComment.id);
             currentComment.likes = updatedComment.likes;
+            currentComment.text = updatedComment.text;
             currentComment.dislikes = updatedComment.dislikes;
-            for (let i = 0; i < currentComment.comments.length; i++) {
-                currentComment.comments[i] = mongoose.Types.ObjectId(updatedComment.comments[i]);
-            }
-            return this.repository.findByIdAndUpdate(currentComment._id, currentComment);
+            currentComment.comments = updatedComment.comments.map((i) => new mongoose.Types.ObjectId(i));
+            await currentComment.save();
+            return currentComment;
         }
         catch (error) {
+            console.log(error);
             throw new common_1.ForbiddenException('Ошибка при обновлении Комментария', error);
         }
     }
     delete(CommentId) {
         return this.repository.findByIdAndDelete(CommentId);
-    }
-    create(dto) {
-        return this.repository.create(dto);
     }
     getOneById(id) {
         return this.repository.findById(id);

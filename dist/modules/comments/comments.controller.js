@@ -26,21 +26,58 @@ let CommentsController = exports.CommentsController = class CommentsController {
         this._updateCommentUseCase = _updateCommentUseCase;
         this._commentsRepository = _commentsRepository;
     }
+    async create(dto) {
+        return await (await this._commentsRepository.create(dto)).populate('user');
+    }
     getAll() {
         return this._commentsRepository.getAll();
     }
     getOne(id) {
-        return this._commentsRepository.getOneById(id);
-    }
-    create(dto) {
-        return this._commentsRepository.create(dto);
+        return this._commentsRepository
+            .getOneById(id)
+            .populate('user')
+            .populate('comments')
+            .populate('comments', 'user')
+            .populate({
+            path: 'comments',
+            populate: {
+                path: 'user',
+            },
+        })
+            .populate({
+            path: 'comments',
+            populate: {
+                path: 'comments user',
+            },
+        });
     }
     async update(id, dto) {
         const command = new udpate_comment_command_1.UpdateCommentCommand(id, dto.comments, dto.likes, dto.dislikes);
-        const updatedComment = await this._updateCommentUseCase.UpdateComment(command);
-        return this._commentsRepository.update(updatedComment);
+        const updatedComment = await this._updateCommentUseCase.updateComment(command);
+        return await (await (await (await (await this._commentsRepository.updateComm(updatedComment)).populate('user')).populate('comments')).populate({
+            path: 'comments',
+            populate: {
+                path: 'user',
+            },
+        })).populate({
+            path: 'comments',
+            populate: {
+                path: 'comments user',
+            },
+        });
+    }
+    delete(id) {
+        return this._commentsRepository.delete(id);
     }
 };
+__decorate([
+    (0, common_1.Post)('/create'),
+    (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuard),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [create_comment_dto_1.createCommentOrmDto]),
+    __metadata("design:returntype", Promise)
+], CommentsController.prototype, "create", null);
 __decorate([
     (0, common_1.Get)('/all'),
     (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuard),
@@ -57,15 +94,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], CommentsController.prototype, "getOne", null);
 __decorate([
-    (0, common_1.Post)('/create'),
-    (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuard),
-    __param(0, (0, common_1.Body)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [create_comment_dto_1.createCommentOrmDto]),
-    __metadata("design:returntype", void 0)
-], CommentsController.prototype, "create", null);
-__decorate([
-    (0, common_1.Put)('update'),
+    (0, common_1.Put)('/update/:id'),
     (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuard),
     __param(0, (0, common_1.Param)('id')),
     __param(1, (0, common_1.Body)()),
@@ -73,10 +102,17 @@ __decorate([
     __metadata("design:paramtypes", [String, update_comment_dto_1.UpdateCommentsOrmDto]),
     __metadata("design:returntype", Promise)
 ], CommentsController.prototype, "update", null);
+__decorate([
+    (0, common_1.Delete)('/delete/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], CommentsController.prototype, "delete", null);
 exports.CommentsController = CommentsController = __decorate([
-    (0, common_1.Controller)('cards'),
+    (0, common_1.Controller)('comments'),
     (0, swagger_1.ApiBearerAuth)(),
-    (0, swagger_1.ApiTags)('Cards'),
+    (0, swagger_1.ApiTags)('Comments'),
     __param(0, (0, common_1.Inject)(update_comment_use_case_1.UpdateCommentUseCaseSymbol)),
     __metadata("design:paramtypes", [Object, comments_repository_1.CommentsRepository])
 ], CommentsController);

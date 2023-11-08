@@ -16,7 +16,7 @@ export class CreateReviewOrmDto {
   @ApiProperty({ default: '' })
   title: string;
 
-  @ApiProperty()
+  @ApiProperty({ default: Date.now() })
   date: Date;
 
   @ApiProperty({ default: '' })

@@ -99,7 +99,7 @@ class PersonEntity {
             this._comments = [...this._comments, ...comments];
         }
         catch (error) {
-            throw new Error('Ошибка обновления комментариев!');
+            throw new Error('Ошибка обновления комментариев у персоны!');
         }
     }
 }

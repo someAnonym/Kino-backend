@@ -185,6 +185,7 @@ class CardEntity {
             this._reviews = [...this._reviews, ...reviews];
         }
         catch (err) {
+            console.log(err);
             throw new Error('Ошибка при обновлении Рецензий!');
         }
     }

@@ -21,6 +21,25 @@ export declare class Person {
     films: ObjectId[];
     comments: ObjectId[];
 }
+export declare class MappedPerson {
+    name: string;
+    englishName: string;
+    avatarImage: string;
+    linkToBiography: string;
+    career: string[];
+    height: string;
+    birthday: string[];
+    bornPlace: string;
+    genres: Genres[];
+    totalCountOfFilmsAndYears: string[];
+    favorites: number;
+    awards: ObjectId[];
+    bestFilms: ObjectId[];
+    lastNews: string[];
+    photos: string[];
+    films: ObjectId[];
+    comments: Comment[];
+}
 export declare const PersonSchema: mongoose.Schema<Person, mongoose.Model<Person, any, any, any, mongoose.Document<unknown, any, Person> & Person & {
     _id: mongoose.Types.ObjectId;
 }, any>, {}, {}, {}, {}, mongoose.DefaultSchemaOptions, Person, mongoose.Document<unknown, {}, Person> & Person & {

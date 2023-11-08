@@ -13,9 +13,8 @@ exports.CommentSchema = exports.Comment = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
 const mongodb_1 = require("mongodb");
 const mongoose = require("mongoose");
-class Comment {
-}
-exports.Comment = Comment;
+let Comment = exports.Comment = class Comment {
+};
 __decorate([
     (0, mongoose_1.Prop)({
         type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
@@ -31,10 +30,6 @@ __decorate([
     (0, mongoose_1.Prop)(),
     __metadata("design:type", Number)
 ], Comment.prototype, "dislikes", void 0);
-__decorate([
-    (0, mongoose_1.Prop)(),
-    __metadata("design:type", String)
-], Comment.prototype, "title", void 0);
 __decorate([
     (0, mongoose_1.Prop)(),
     __metadata("design:type", String)
@@ -54,5 +49,8 @@ __decorate([
     (0, mongoose_1.Prop)(),
     __metadata("design:type", Array)
 ], Comment.prototype, "complaints", void 0);
+exports.Comment = Comment = __decorate([
+    (0, mongoose_1.Schema)()
+], Comment);
 exports.CommentSchema = mongoose_1.SchemaFactory.createForClass(Comment);
 //# sourceMappingURL=comment-orm.entity.js.map

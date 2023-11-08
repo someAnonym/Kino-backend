@@ -14,11 +14,15 @@ const persons_controller_1 = require("./persons.controller");
 const persons_repository_1 = require("./persons.repository");
 const update_person_use_case_1 = require("../../domains/ports/in/update-person.use-case");
 const update_person_service_1 = require("../../domains/services/update-person.service");
+const comments_module_1 = require("../comments/comments.module");
 let PersonsModule = exports.PersonsModule = class PersonsModule {
 };
 exports.PersonsModule = PersonsModule = __decorate([
     (0, common_1.Module)({
-        imports: [mongoose_1.MongooseModule.forFeature([{ name: person_orm_entity_1.Person.name, schema: person_orm_entity_1.PersonSchema }])],
+        imports: [
+            mongoose_1.MongooseModule.forFeature([{ name: person_orm_entity_1.Person.name, schema: person_orm_entity_1.PersonSchema }]),
+            comments_module_1.CommentsModule,
+        ],
         controllers: [persons_controller_1.PersonsController],
         exports: [persons_repository_1.PersonsRepository],
         providers: [

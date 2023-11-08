@@ -4,5 +4,5 @@ import { UpdateCommentCommand } from './udpate-comment.command';
 export const UpdateCommentUseCaseSymbol = Symbol('UpdateCommentUseCase');
 
 export interface UpdateCommentUseCase {
-  UpdateComment(command: UpdateCommentCommand): Promise<CommentEntity>;
+  updateComment(command: UpdateCommentCommand): Promise<CommentEntity>;
 }

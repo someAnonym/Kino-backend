@@ -12,6 +12,10 @@ export class AwardsRepository implements AwardRepositoryPort {
     private repository: Model<AwardDocument>,
   ) {}
 
+  getAll() {
+    return this.repository.find();
+  }
+
   create(dto: CreateAwardOrmDto) {
     return this.repository.create(dto);
   }
@@ -22,9 +26,5 @@ export class AwardsRepository implements AwardRepositoryPort {
 
   getOneById(id: string) {
     return this.repository.findById(id);
-  }
-
-  getAll() {
-    return this.repository.find();
   }
 }

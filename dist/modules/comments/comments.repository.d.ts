@@ -23,13 +23,17 @@
 /// <reference types="mongoose/types/virtuals" />
 /// <reference types="mongoose/types/inferschematype" />
 import { Model } from 'mongoose';
-import { CommentRepositoryPort, CreateCommentDto } from 'src/domains/ports/out/comment.repository';
+import { CommentRepositoryPort } from 'src/domains/ports/out/comment.repository';
 import { Comment, CommentDocument } from './entities/comment-orm.entity';
 import { CommentEntity } from 'src/domains/entities/comment.entity';
+import { createCommentOrmDto } from './dto/create-comment.dto';
 export declare class CommentsRepository implements CommentRepositoryPort {
     private repository;
     constructor(repository: Model<CommentDocument>);
-    update(comment: CommentEntity): Promise<import("mongoose").Document<unknown, {}, CommentDocument> & Comment & Document & {
+    create(dto: createCommentOrmDto): Promise<import("mongoose").Document<unknown, {}, CommentDocument> & Comment & Document & {
+        _id: import("mongoose").Types.ObjectId;
+    }>;
+    updateComm(comment: CommentEntity): Promise<import("mongoose").Document<unknown, {}, CommentDocument> & Comment & Document & {
         _id: import("mongoose").Types.ObjectId;
     }>;
     delete(CommentId: string): import("mongoose").Query<import("mongoose").Document<unknown, {}, CommentDocument> & Comment & Document & {
@@ -37,9 +41,6 @@ export declare class CommentsRepository implements CommentRepositoryPort {
     }, import("mongoose").Document<unknown, {}, CommentDocument> & Comment & Document & {
         _id: import("mongoose").Types.ObjectId;
     }, {}, CommentDocument, "findOneAndDelete">;
-    create(dto: CreateCommentDto): Promise<import("mongoose").Document<unknown, {}, CommentDocument> & Comment & Document & {
-        _id: import("mongoose").Types.ObjectId;
-    }>;
     getOneById(id: string): import("mongoose").Query<import("mongoose").Document<unknown, {}, CommentDocument> & Comment & Document & {
         _id: import("mongoose").Types.ObjectId;
     }, import("mongoose").Document<unknown, {}, CommentDocument> & Comment & Document & {

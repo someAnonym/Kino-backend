@@ -28,7 +28,6 @@ import { CardRepositoryPort } from 'src/domains/ports/out/card-repository.port';
 import { Card, CardDocument } from './entities/card-orm.entity';
 import { CreateCardOrmDto } from './dto/create-card.dto';
 import { ReviewsRepository } from '../reviews/reviews.repository';
-import { Review } from '../reviews/entities/review-orm.entity';
 export declare class CardsRepository implements CardRepositoryPort {
     private repository;
     private reviewsRepository;
@@ -48,7 +47,7 @@ export declare class CardsRepository implements CardRepositoryPort {
     search(query: string): Promise<(import("mongoose").Document<unknown, {}, CardDocument> & Card & Document & {
         _id: import("mongoose").Types.ObjectId;
     })[]>;
-    filterReviews(cardId: string, typeOfReview: string): Promise<Omit<import("mongoose").Document<unknown, {}, import("../reviews/entities/review-orm.entity").ReviewDocument> & Review & Document & {
+    filterReviews(cardId: string, typeOfReview: string): Promise<Omit<import("mongoose").Document<unknown, {}, import("../reviews/entities/review-orm.entity").ReviewDocument> & import("../reviews/entities/review-orm.entity").Review & Document & {
         _id: import("mongoose").Types.ObjectId;
     }, never>[]>;
 }

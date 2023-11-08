@@ -2,12 +2,11 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CommentEntity = void 0;
 class CommentEntity {
-    constructor(_id, _user, _likes, _dislikes, _title, _date, _text, _comments, _complaints) {
+    constructor(_id, _user, _likes, _dislikes, _date, _text, _comments, _complaints) {
         this._id = _id;
         this._user = _user;
         this._likes = _likes;
         this._dislikes = _dislikes;
-        this._title = _title;
         this._date = _date;
         this._text = _text;
         this._comments = _comments;
@@ -25,9 +24,6 @@ class CommentEntity {
     get dislikes() {
         return this._dislikes;
     }
-    get title() {
-        return this._title;
-    }
     get date() {
         return this._date;
     }
@@ -41,7 +37,12 @@ class CommentEntity {
         return this._complaints;
     }
     updateComments(comments) {
-        return (this._comments = [...this._comments, ...comments]);
+        try {
+            return (this._comments = [...this._comments, ...comments]);
+        }
+        catch (error) {
+            console.warn('Ошибка при изменении комментариев комментария', error);
+        }
     }
     updateLikes(likes) {
         return (this._likes = likes);
@@ -55,7 +56,6 @@ class CommentEntity {
             user: this._user,
             likes: this._likes,
             dislikes: this._dislikes,
-            title: this._title,
             date: this._date,
             text: this._text,
             comments: this._comments,

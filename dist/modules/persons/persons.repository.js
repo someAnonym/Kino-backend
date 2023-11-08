@@ -32,11 +32,11 @@ let PersonsRepository = exports.PersonsRepository = class PersonsRepository {
     }
     async update(person) {
         try {
-            const mongoose = require('mongoose');
             const updatedPerson = person.getData();
             const currentPerson = await this.repository.findById(person.id);
             currentPerson.comments = updatedPerson.comments.map((i) => new mongodb_1.ObjectId(i));
-            return this.repository.findOneAndUpdate(currentPerson._id, currentPerson);
+            await currentPerson.save();
+            return currentPerson;
         }
         catch (error) {
             throw new common_1.ForbiddenException('Ошибка при обновлении Актера', error);

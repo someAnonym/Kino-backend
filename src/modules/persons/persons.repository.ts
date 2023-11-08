@@ -9,6 +9,9 @@ import { InjectModel } from '@nestjs/mongoose';
 import { PersonEntity } from 'src/domains/entities/person.entity';
 import { PersonMapper } from './person.mapper';
 import { ObjectId } from 'mongodb';
+import { Comment, CommentDocument } from '../comments/entities/comment-orm.entity';
+import { ReviewDocument } from '../reviews/entities/review-orm.entity';
+import { CommentsRepository } from '../comments/comments.repository';
 
 @Injectable()
 export class PersonsRepository implements PersonsRepositoryPort {
@@ -27,13 +30,13 @@ export class PersonsRepository implements PersonsRepositoryPort {
 
   async update(person: PersonEntity) {
     try {
-      const mongoose = require('mongoose');
       const updatedPerson = person.getData();
       const currentPerson = await this.repository.findById(person.id);
 
       currentPerson.comments = updatedPerson.comments.map((i) => new ObjectId(i));
 
-      return this.repository.findOneAndUpdate(currentPerson._id, currentPerson);
+      await currentPerson.save();
+      return currentPerson;
     } catch (error) {
       throw new ForbiddenException('Ошибка при обновлении Актера', error);
     }

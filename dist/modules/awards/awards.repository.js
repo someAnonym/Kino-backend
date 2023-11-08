@@ -21,6 +21,9 @@ let AwardsRepository = exports.AwardsRepository = class AwardsRepository {
     constructor(repository) {
         this.repository = repository;
     }
+    getAll() {
+        return this.repository.find();
+    }
     create(dto) {
         return this.repository.create(dto);
     }
@@ -29,9 +32,6 @@ let AwardsRepository = exports.AwardsRepository = class AwardsRepository {
     }
     getOneById(id) {
         return this.repository.findById(id);
-    }
-    getAll() {
-        return this.repository.find();
     }
 };
 exports.AwardsRepository = AwardsRepository = __decorate([

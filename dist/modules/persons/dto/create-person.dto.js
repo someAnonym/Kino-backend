@@ -25,6 +25,10 @@ __decorate([
 __decorate([
     (0, swagger_1.ApiProperty)({ default: '' }),
     __metadata("design:type", String)
+], CreatePersonOrmDto.prototype, "avatarImage", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({ default: '' }),
+    __metadata("design:type", String)
 ], CreatePersonOrmDto.prototype, "linkToBiography", void 0);
 __decorate([
     (0, swagger_1.ApiProperty)({ default: [] }),

@@ -21,10 +21,12 @@ const create_person_dto_1 = require("./dto/create-person.dto");
 const update_person_dto_1 = require("./dto/update-person.dto");
 const update_person_command_1 = require("../../domains/ports/in/update-person.command");
 const jwt_guard_1 = require("../auth/guards/jwt.guard");
+const comments_repository_1 = require("../comments/comments.repository");
 let PersonsController = exports.PersonsController = class PersonsController {
-    constructor(_updatePersonUseCase, _personsRepository) {
+    constructor(_updatePersonUseCase, _personsRepository, commentsRepository) {
         this._updatePersonUseCase = _updatePersonUseCase;
         this._personsRepository = _personsRepository;
+        this.commentsRepository = commentsRepository;
     }
     getAll() {
         return this._personsRepository.getAll();
@@ -32,8 +34,44 @@ let PersonsController = exports.PersonsController = class PersonsController {
     search(query) {
         return this._personsRepository.search(query);
     }
-    getOne(id) {
-        return this._personsRepository.getOneById(id);
+    async getOne(id) {
+        return await this._personsRepository
+            .getOneById(id)
+            .populate('awards')
+            .populate('bestFilms')
+            .populate('films')
+            .populate('comments')
+            .populate('comments', 'comments user')
+            .populate({
+            path: 'comments',
+            populate: {
+                path: 'user',
+            },
+        })
+            .populate({
+            path: 'comments',
+            populate: {
+                path: 'comments user',
+            },
+        })
+            .populate({
+            path: 'comments',
+            populate: {
+                path: 'comments',
+            },
+        })
+            .populate({
+            path: 'bestFilms',
+            populate: {
+                path: 'ratings',
+            },
+        })
+            .populate({
+            path: 'films',
+            populate: {
+                path: 'ratings',
+            },
+        });
     }
     delete(id) {
         return this._personsRepository.delete(id);
@@ -43,8 +81,13 @@ let PersonsController = exports.PersonsController = class PersonsController {
     }
     async update(id, dto) {
         const command = new update_person_command_1.UpdatePersonCommand(id, dto.comments);
-        const updatedPerson = await this._updatePersonUseCase.UpdatePerson(command);
-        return await this._personsRepository.update(updatedPerson);
+        const updatedPerson = await this._updatePersonUseCase.updatePerson(command);
+        return await (await (await (await (await (await this._personsRepository.update(updatedPerson)).populate('comments')).populate({
+            path: 'comments',
+            populate: {
+                path: 'comments user',
+            },
+        })).populate('awards')).populate('bestFilms')).populate('films');
     }
 };
 __decorate([
@@ -68,7 +111,7 @@ __decorate([
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], PersonsController.prototype, "getOne", null);
 __decorate([
     (0, common_1.Delete)('/delete'),
@@ -87,7 +130,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], PersonsController.prototype, "create", null);
 __decorate([
-    (0, common_1.Put)('/update'),
+    (0, common_1.Put)('/update/:id'),
     (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuard),
     __param(0, (0, common_1.Param)('id')),
     __param(1, (0, common_1.Body)()),
@@ -100,6 +143,7 @@ exports.PersonsController = PersonsController = __decorate([
     (0, swagger_1.ApiBearerAuth)(),
     (0, swagger_1.ApiTags)('Persons'),
     __param(0, (0, common_1.Inject)(update_person_use_case_1.UpdatePersonUseCaseSymbol)),
-    __metadata("design:paramtypes", [Object, persons_repository_1.PersonsRepository])
+    __metadata("design:paramtypes", [Object, persons_repository_1.PersonsRepository,
+        comments_repository_1.CommentsRepository])
 ], PersonsController);
 //# sourceMappingURL=persons.controller.js.map

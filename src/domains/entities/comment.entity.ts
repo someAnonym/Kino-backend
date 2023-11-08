@@ -6,11 +6,10 @@ export class CommentEntity {
     private readonly _user: string,
     private _likes: number,
     private _dislikes: number,
-    private readonly _title: string,
-    private readonly _date: Date,
-    private readonly _text: string,
+    private _date: Date,
+    private _text: string,
     private _comments: string[],
-    private readonly _complaints: string[],
+    private _complaints: string[],
   ) {}
 
   public get id(): string {
@@ -29,10 +28,6 @@ export class CommentEntity {
     return this._dislikes;
   }
 
-  public get title(): string {
-    return this._title;
-  }
-
   public get date(): Date {
     return this._date;
   }
@@ -49,7 +44,11 @@ export class CommentEntity {
   }
 
   public updateComments(comments: string[]): string[] {
-    return (this._comments = [...this._comments, ...comments]);
+    try {
+      return (this._comments = [...this._comments, ...comments]);
+    } catch (error) {
+      console.warn('Ошибка при изменении комментариев комментария', error);
+    }
   }
 
   public updateLikes(likes: number): number {
@@ -66,7 +65,6 @@ export class CommentEntity {
       user: this._user,
       likes: this._likes,
       dislikes: this._dislikes,
-      title: this._title,
       date: this._date,
       text: this._text,
       comments: this._comments,

@@ -7,7 +7,7 @@ class CommentMapper {
         const id = comment._id.valueOf();
         const user = comment.user.valueOf();
         const comments = comment.comments.map((i) => i.valueOf());
-        return new comment_entity_1.CommentEntity(id, user, comment.likes, comment.dislikes, comment.title, comment.date, comment.text, comments, comment.complaints);
+        return new comment_entity_1.CommentEntity(id, user, comment.likes, comment.dislikes, comment.date, comment.text, comments, comment.complaints);
     }
 }
 exports.CommentMapper = CommentMapper;

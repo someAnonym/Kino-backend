@@ -35,7 +35,7 @@ __decorate([
     __metadata("design:type", String)
 ], CreateReviewOrmDto.prototype, "title", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)(),
+    (0, swagger_1.ApiProperty)({ default: Date.now() }),
     __metadata("design:type", Date)
 ], CreateReviewOrmDto.prototype, "date", void 0);
 __decorate([

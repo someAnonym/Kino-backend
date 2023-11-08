@@ -21,6 +21,11 @@ import { CreatePersonOrmDto } from './dto/create-person.dto';
 import { UpdatePersonOrmDto } from './dto/update-person.dto';
 import { UpdatePersonCommand } from 'src/domains/ports/in/update-person.command';
 import { JwtAuthGuard } from '../auth/guards/jwt.guard';
+import { CommentsRepository } from '../comments/comments.repository';
+import { MappedPerson, Person } from './entities/person-orm.entity';
+import { Comment } from '../comments/entities/comment-orm.entity';
+
+type PersonWithParse = Person & { comments: Comment };
 
 @Controller('persons')
 @ApiBearerAuth()
@@ -30,6 +35,7 @@ export class PersonsController {
     @Inject(UpdatePersonUseCaseSymbol)
     private readonly _updatePersonUseCase: UpdatePersonUseCase,
     private readonly _personsRepository: PersonsRepository,
+    private readonly commentsRepository: CommentsRepository,
   ) {}
 
   @Get('/all')
@@ -46,8 +52,49 @@ export class PersonsController {
 
   @Get('/:id')
   @UseGuards(JwtAuthGuard)
-  getOne(@Param('id') id: string) {
-    return this._personsRepository.getOneById(id);
+  async getOne(@Param('id') id: string) {
+    return await this._personsRepository
+      .getOneById(id)
+      .populate('awards')
+      .populate('bestFilms')
+      .populate('films')
+      .populate('comments')
+      .populate('comments', 'comments user')
+      .populate({
+        path: 'comments',
+        populate: {
+          path: 'user',
+        },
+      })
+      .populate({
+        path: 'comments',
+        populate: {
+          path: 'comments user',
+        },
+      })
+      .populate({
+        path: 'comments',
+        populate: {
+          path: 'comments',
+        },
+      })
+      .populate({
+        path: 'bestFilms',
+        populate: {
+          path: 'ratings',
+        },
+      })
+      .populate({
+        path: 'films',
+        populate: {
+          path: 'ratings',
+        },
+      });
+    // const comments = person.comments.map(
+    //   async (i) => (await this.commentsRepository.getOneById(i.valueOf() as string)).user,
+    // );
+    // // console.log(comments);
+    // return person;
   }
 
   @Delete('/delete')
@@ -62,13 +109,25 @@ export class PersonsController {
     return this._personsRepository.create(dto);
   }
 
-  @Put('/update')
+  @Put('/update/:id')
   @UseGuards(JwtAuthGuard)
   async update(@Param('id') id: string, @Body() dto: UpdatePersonOrmDto) {
-    // return this._personsRepository.update()
     const command = new UpdatePersonCommand(id, dto.comments);
 
-    const updatedPerson = await this._updatePersonUseCase.UpdatePerson(command);
-    return await this._personsRepository.update(updatedPerson);
+    const updatedPerson = await this._updatePersonUseCase.updatePerson(command);
+    return await (
+      await (
+        await (
+          await (
+            await (await this._personsRepository.update(updatedPerson)).populate('comments')
+          ).populate({
+            path: 'comments',
+            populate: {
+              path: 'comments user',
+            },
+          })
+        ).populate('awards')
+      ).populate('bestFilms')
+    ).populate('films');
   }
 }

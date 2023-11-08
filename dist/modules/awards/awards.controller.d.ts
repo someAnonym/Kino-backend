@@ -28,6 +28,11 @@ import { CreateAwardOrmDto } from './dto/create-award.dto';
 export declare class AwardsController {
     private readonly _awardsRepository;
     constructor(_awardsRepository: AwardsRepository);
+    getAll(): import("mongoose").Query<(import("mongoose").Document<unknown, {}, import("./entities/award.entity").AwardDocument> & import("./entities/award.entity").Award & Document & {
+        _id: import("mongoose").Types.ObjectId;
+    })[], import("mongoose").Document<unknown, {}, import("./entities/award.entity").AwardDocument> & import("./entities/award.entity").Award & Document & {
+        _id: import("mongoose").Types.ObjectId;
+    }, {}, import("./entities/award.entity").AwardDocument, "find">;
     create(dto: CreateAwardOrmDto): Promise<import("mongoose").Document<unknown, {}, import("./entities/award.entity").AwardDocument> & import("./entities/award.entity").Award & Document & {
         _id: import("mongoose").Types.ObjectId;
     }>;
@@ -41,9 +46,4 @@ export declare class AwardsController {
     }, import("mongoose").Document<unknown, {}, import("./entities/award.entity").AwardDocument> & import("./entities/award.entity").Award & Document & {
         _id: import("mongoose").Types.ObjectId;
     }, {}, import("./entities/award.entity").AwardDocument, "findOne">;
-    getAll(): import("mongoose").Query<(import("mongoose").Document<unknown, {}, import("./entities/award.entity").AwardDocument> & import("./entities/award.entity").Award & Document & {
-        _id: import("mongoose").Types.ObjectId;
-    })[], import("mongoose").Document<unknown, {}, import("./entities/award.entity").AwardDocument> & import("./entities/award.entity").Award & Document & {
-        _id: import("mongoose").Types.ObjectId;
-    }, {}, import("./entities/award.entity").AwardDocument, "find">;
 }

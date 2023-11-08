@@ -4,5 +4,5 @@ import { CommentRepositoryPort } from '../ports/out/comment.repository';
 export declare class UpdateCommentService {
     private readonly _commentRepositoryPort;
     constructor(_commentRepositoryPort: CommentRepositoryPort);
-    updatePerson(command: UpdateCommentCommand): Promise<CommentEntity>;
+    updateComment(command: UpdateCommentCommand): Promise<CommentEntity>;
 }

@@ -4,7 +4,6 @@ export interface CreateCommentDto {
   likes: number;
   user: string;
   dislikes: number;
-  title: string;
   date: Date;
   text: string;
   comments: string[];
@@ -15,7 +14,7 @@ export interface CommentRepositoryPort {
   delete(CommentId: string);
   getOneById(id: string);
   loadComment(commentId: string);
-  update(comment: CommentEntity);
+  updateComm(comment: CommentEntity);
   getAll();
   create(dto: CreateCommentDto);
 }

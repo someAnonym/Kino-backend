@@ -2,6 +2,7 @@ import { Genres } from 'src/modules/users/entities/genges.entity';
 export declare class CreatePersonOrmDto {
     name: string;
     englishName: string;
+    avatarImage: string;
     linkToBiography: string;
     career: string[];
     height: string;

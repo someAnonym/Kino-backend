@@ -37,9 +37,11 @@ let CardsRepository = exports.CardsRepository = class CardsRepository {
             currentCard.userLike = updatedCard.userLike;
             currentCard.userDislike = updatedCard.userDislike;
             currentCard.favorites = updatedCard.favourites;
-            return this.repository.findOneAndUpdate(currentCard._id, currentCard);
+            await currentCard.save();
+            return currentCard;
         }
         catch (error) {
+            console.log(error);
             throw new common_1.ForbiddenException('Ошибка при обновлении Карточки', error);
         }
     }

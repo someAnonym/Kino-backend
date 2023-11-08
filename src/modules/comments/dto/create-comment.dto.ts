@@ -11,12 +11,9 @@ export class createCommentOrmDto {
   dislikes: number;
 
   @ApiProperty({ default: '' })
-  title: string;
-
-  @ApiProperty({ default: '' })
   text: string;
 
-  @ApiProperty()
+  @ApiProperty({ default: Date.now() })
   date: Date;
 
   @ApiProperty({ default: [] })

@@ -29,6 +29,11 @@ import { AwardRepositoryPort } from 'src/domains/ports/out/award-repository.port
 export declare class AwardsRepository implements AwardRepositoryPort {
     private repository;
     constructor(repository: Model<AwardDocument>);
+    getAll(): import("mongoose").Query<(import("mongoose").Document<unknown, {}, AwardDocument> & Award & Document & {
+        _id: import("mongoose").Types.ObjectId;
+    })[], import("mongoose").Document<unknown, {}, AwardDocument> & Award & Document & {
+        _id: import("mongoose").Types.ObjectId;
+    }, {}, AwardDocument, "find">;
     create(dto: CreateAwardOrmDto): Promise<import("mongoose").Document<unknown, {}, AwardDocument> & Award & Document & {
         _id: import("mongoose").Types.ObjectId;
     }>;
@@ -42,9 +47,4 @@ export declare class AwardsRepository implements AwardRepositoryPort {
     }, import("mongoose").Document<unknown, {}, AwardDocument> & Award & Document & {
         _id: import("mongoose").Types.ObjectId;
     }, {}, AwardDocument, "findOne">;
-    getAll(): import("mongoose").Query<(import("mongoose").Document<unknown, {}, AwardDocument> & Award & Document & {
-        _id: import("mongoose").Types.ObjectId;
-    })[], import("mongoose").Document<unknown, {}, AwardDocument> & Award & Document & {
-        _id: import("mongoose").Types.ObjectId;
-    }, {}, AwardDocument, "find">;
 }

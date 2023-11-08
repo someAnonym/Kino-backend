@@ -1,10 +1,10 @@
-import { Prop, SchemaFactory } from '@nestjs/mongoose';
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { ObjectId } from 'mongodb';
 
 import * as mongoose from 'mongoose';
 
 export type CommentDocument = Comment & Document;
-
+@Schema()
 export class Comment {
   @Prop({
     type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
@@ -17,9 +17,6 @@ export class Comment {
 
   @Prop()
   dislikes: number;
-
-  @Prop()
-  title: string;
 
   @Prop()
   text: string;

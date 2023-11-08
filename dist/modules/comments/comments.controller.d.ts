@@ -31,6 +31,9 @@ export declare class CommentsController {
     private readonly _updateCommentUseCase;
     private readonly _commentsRepository;
     constructor(_updateCommentUseCase: UpdateCommentUseCase, _commentsRepository: CommentsRepository);
+    create(dto: createCommentOrmDto): Promise<Omit<import("mongoose").Document<unknown, {}, import("./entities/comment-orm.entity").CommentDocument> & import("./entities/comment-orm.entity").Comment & Document & {
+        _id: import("mongoose").Types.ObjectId;
+    }, never>>;
     getAll(): import("mongoose").Query<(import("mongoose").Document<unknown, {}, import("./entities/comment-orm.entity").CommentDocument> & import("./entities/comment-orm.entity").Comment & Document & {
         _id: import("mongoose").Types.ObjectId;
     })[], import("mongoose").Document<unknown, {}, import("./entities/comment-orm.entity").CommentDocument> & import("./entities/comment-orm.entity").Comment & Document & {
@@ -41,10 +44,12 @@ export declare class CommentsController {
     }, import("mongoose").Document<unknown, {}, import("./entities/comment-orm.entity").CommentDocument> & import("./entities/comment-orm.entity").Comment & Document & {
         _id: import("mongoose").Types.ObjectId;
     }, {}, import("./entities/comment-orm.entity").CommentDocument, "findOne">;
-    create(dto: createCommentOrmDto): Promise<import("mongoose").Document<unknown, {}, import("./entities/comment-orm.entity").CommentDocument> & import("./entities/comment-orm.entity").Comment & Document & {
+    update(id: string, dto: UpdateCommentsOrmDto): Promise<Omit<import("mongoose").Document<unknown, {}, import("./entities/comment-orm.entity").CommentDocument> & import("./entities/comment-orm.entity").Comment & Document & {
         _id: import("mongoose").Types.ObjectId;
-    }>;
-    update(id: string, dto: UpdateCommentsOrmDto): Promise<import("mongoose").Document<unknown, {}, import("./entities/comment-orm.entity").CommentDocument> & import("./entities/comment-orm.entity").Comment & Document & {
+    }, never>>;
+    delete(id: string): import("mongoose").Query<import("mongoose").Document<unknown, {}, import("./entities/comment-orm.entity").CommentDocument> & import("./entities/comment-orm.entity").Comment & Document & {
         _id: import("mongoose").Types.ObjectId;
-    }>;
+    }, import("mongoose").Document<unknown, {}, import("./entities/comment-orm.entity").CommentDocument> & import("./entities/comment-orm.entity").Comment & Document & {
+        _id: import("mongoose").Types.ObjectId;
+    }, {}, import("./entities/comment-orm.entity").CommentDocument, "findOneAndDelete">;
 }

@@ -5,6 +5,7 @@ import { PersonEntity } from 'src/domains/entities/person.entity';
 export interface CreatePersonDto {
   readonly name: string;
   readonly englishName: string;
+  readonly avatarImage: string;
   readonly linkToBiography: string;
   readonly career: string[];
   readonly height: string;
@@ -24,7 +25,7 @@ export interface CreatePersonDto {
 export interface PersonsRepositoryPort {
   delete(PersonId: string);
   getOneById(id: string);
-  loadPerson(personId: string);
+  loadPerson(personId: string): Promise<PersonEntity>;
   update(person: PersonEntity);
   getAll();
   create(dto: CreatePersonDto);

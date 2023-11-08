@@ -6,7 +6,7 @@ export class UpdatePersonService {
   constructor(private readonly _personRepositoryPort: PersonsRepositoryPort) {}
 
   async updatePerson(command: UpdatePersonCommand): Promise<PersonEntity> {
-    const person = this._personRepositoryPort.loadPerson(command.personId);
+    const person = await this._personRepositoryPort.loadPerson(command.personId);
 
     person.updateComments(command.comments);
 

@@ -43,7 +43,7 @@ let CardsController = exports.CardsController = class CardsController {
             .populate('directors');
     }
     async update(id, dto) {
-        const command = new update_card_command_1.UpdateCardCommand(id, dto._reviews, dto._likes, dto._dislikes, dto._favorites);
+        const command = new update_card_command_1.UpdateCardCommand(id, dto.reviews, dto.likes, dto.dislikes, dto.favorites);
         const updateCard = await this._updateCardUseCase.UpdateCard(command);
         return await this.cardsRepository.updateCard(updateCard);
     }
@@ -66,7 +66,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], CardsController.prototype, "getMe", null);
 __decorate([
-    (0, common_1.Put)('/update'),
+    (0, common_1.Put)('/update/:id'),
     (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuard),
     __param(0, (0, common_1.Param)('id')),
     __param(1, (0, common_1.Body)()),

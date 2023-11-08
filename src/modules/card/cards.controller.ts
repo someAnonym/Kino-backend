@@ -40,16 +40,10 @@ export class CardsController {
       .populate('directors');
   }
 
-  @Put('/update')
+  @Put('/update/:id')
   @UseGuards(JwtAuthGuard)
   async update(@Param('id') id: string, @Body() dto: UpdateCardDto) {
-    const command = new UpdateCardCommand(
-      id,
-      dto._reviews,
-      dto._likes,
-      dto._dislikes,
-      dto._favorites,
-    );
+    const command = new UpdateCardCommand(id, dto.reviews, dto.likes, dto.dislikes, dto.favorites);
     const updateCard = await this._updateCardUseCase.UpdateCard(command);
     return await this.cardsRepository.updateCard(updateCard);
   }

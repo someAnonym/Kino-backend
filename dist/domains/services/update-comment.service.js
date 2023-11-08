@@ -5,12 +5,12 @@ class UpdateCommentService {
     constructor(_commentRepositoryPort) {
         this._commentRepositoryPort = _commentRepositoryPort;
     }
-    async updatePerson(command) {
-        const comment = this._commentRepositoryPort.loadComment(command.commentId);
+    async updateComment(command) {
+        const comment = await this._commentRepositoryPort.loadComment(command.commentId);
         comment.updateComments(command.comments);
         comment.updateLikes(command.likes);
         comment.updateDislikes(command.dislikes);
-        await this._commentRepositoryPort.update(comment);
+        await this._commentRepositoryPort.updateComm(comment);
         return comment;
     }
 }

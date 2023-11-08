@@ -9,6 +9,9 @@ export class CreatePersonOrmDto {
   englishName: string;
 
   @ApiProperty({ default: '' })
+  avatarImage: string;
+
+  @ApiProperty({ default: '' })
   linkToBiography: string;
 
   @ApiProperty({ default: [] })

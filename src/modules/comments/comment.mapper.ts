@@ -15,7 +15,6 @@ export class CommentMapper {
       user,
       comment.likes,
       comment.dislikes,
-      comment.title,
       comment.date,
       comment.text,
       comments,

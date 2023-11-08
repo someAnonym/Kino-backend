@@ -21,6 +21,12 @@ import { JwtAuthGuard } from '../auth/guards/jwt.guard';
 export class AwardsController {
   constructor(private readonly _awardsRepository: AwardsRepository) {}
 
+  @Get('/all')
+  @UseGuards(JwtAuthGuard)
+  getAll() {
+    return this._awardsRepository.getAll();
+  }
+
   @Post('/create')
   @UseGuards(JwtAuthGuard)
   create(@Body() dto: CreateAwardOrmDto) {
@@ -37,11 +43,5 @@ export class AwardsController {
   @UseGuards(JwtAuthGuard)
   getAward(@Param('id') id: string) {
     return this._awardsRepository.getOneById(id);
-  }
-
-  @Get('/all')
-  @UseGuards(JwtAuthGuard)
-  getAll() {
-    return this._awardsRepository.getAll();
   }
 }

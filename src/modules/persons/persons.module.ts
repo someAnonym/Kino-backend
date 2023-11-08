@@ -6,9 +6,13 @@ import { PersonsRepository } from './persons.repository';
 import { UpdatePersonUseCaseSymbol } from 'src/domains/ports/in/update-person.use-case';
 import { UpdatePersonService } from 'src/domains/services/update-person.service';
 import { PersonsRepositoryPort } from 'src/domains/ports/out/person-repository.port';
+import { CommentsModule } from '../comments/comments.module';
 
 @Module({
-  imports: [MongooseModule.forFeature([{ name: Person.name, schema: PersonSchema }])],
+  imports: [
+    MongooseModule.forFeature([{ name: Person.name, schema: PersonSchema }]),
+    CommentsModule,
+  ],
   controllers: [PersonsController],
   exports: [PersonsRepository],
   providers: [

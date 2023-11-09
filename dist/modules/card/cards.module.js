@@ -10,11 +10,11 @@ exports.CardsModule = void 0;
 const common_1 = require("@nestjs/common");
 const mongoose_1 = require("@nestjs/mongoose");
 const card_orm_entity_1 = require("./entities/card-orm.entity");
-const cards_controller_1 = require("./cards.controller");
 const cards_repository_1 = require("./cards.repository");
 const update_card_service_1 = require("../../domains/services/update-card.service");
 const update_card_use_case_1 = require("../../domains/ports/in/update-card.use-case");
 const reviews_module_1 = require("../reviews/reviews.module");
+const cards_controller_1 = require("./cards.controller");
 let CardsModule = exports.CardsModule = class CardsModule {
 };
 exports.CardsModule = CardsModule = __decorate([

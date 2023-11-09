@@ -34,8 +34,8 @@ let ReviewController = exports.ReviewController = class ReviewController {
             .getOneById(id)
             .populate('user', 'avatarImage reviews name secondName');
     }
-    create(dto) {
-        return this._reviewsRepository.create(dto);
+    async create(dto) {
+        return (await this._reviewsRepository.create(dto)).populate('user');
     }
     async update(id, dto) {
         const command = new update_review_command_1.UpdateReviewCommand(id, dto.likes, dto.dislikes, dto.comments);
@@ -67,7 +67,7 @@ __decorate([
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [create_review_dto_1.CreateReviewOrmDto]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], ReviewController.prototype, "create", null);
 __decorate([
     (0, common_1.Put)('/update'),

@@ -9,9 +9,6 @@ import { InjectModel } from '@nestjs/mongoose';
 import { PersonEntity } from 'src/domains/entities/person.entity';
 import { PersonMapper } from './person.mapper';
 import { ObjectId } from 'mongodb';
-import { Comment, CommentDocument } from '../comments/entities/comment-orm.entity';
-import { ReviewDocument } from '../reviews/entities/review-orm.entity';
-import { CommentsRepository } from '../comments/comments.repository';
 
 @Injectable()
 export class PersonsRepository implements PersonsRepositoryPort {

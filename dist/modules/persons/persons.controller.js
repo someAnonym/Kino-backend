@@ -40,26 +40,6 @@ let PersonsController = exports.PersonsController = class PersonsController {
             .populate('awards')
             .populate('bestFilms')
             .populate('films')
-            .populate('comments')
-            .populate('comments', 'comments user')
-            .populate({
-            path: 'comments',
-            populate: {
-                path: 'user',
-            },
-        })
-            .populate({
-            path: 'comments',
-            populate: {
-                path: 'comments user',
-            },
-        })
-            .populate({
-            path: 'comments',
-            populate: {
-                path: 'comments',
-            },
-        })
             .populate({
             path: 'bestFilms',
             populate: {
@@ -71,6 +51,36 @@ let PersonsController = exports.PersonsController = class PersonsController {
             populate: {
                 path: 'ratings',
             },
+        })
+            .populate({
+            strictPopulate: false,
+            path: 'comments',
+            populate: {
+                path: 'comments user',
+            },
+        })
+            .populate({
+            strictPopulate: true,
+            path: 'comments',
+            populate: {
+                path: 'comments',
+                populate: {
+                    path: 'comments user',
+                },
+            },
+        })
+            .populate({
+            strictPopulate: true,
+            path: 'comments',
+            populate: {
+                path: 'comments',
+                populate: {
+                    path: 'comments',
+                    populate: {
+                        path: 'comments user',
+                    },
+                },
+            },
         });
     }
     delete(id) {
@@ -81,13 +91,19 @@ let PersonsController = exports.PersonsController = class PersonsController {
     }
     async update(id, dto) {
         const command = new update_person_command_1.UpdatePersonCommand(id, dto.comments);
-        const updatedPerson = await this._updatePersonUseCase.updatePerson(command);
-        return await (await (await (await (await (await this._personsRepository.update(updatedPerson)).populate('comments')).populate({
+        const updatedPersonEntity = await this._updatePersonUseCase.updatePerson(command);
+        const updatedPerson = this._personsRepository.getOneById(updatedPersonEntity.id);
+        return updatedPerson
+            .populate('comments')
+            .populate({
             path: 'comments',
             populate: {
                 path: 'comments user',
             },
-        })).populate('awards')).populate('bestFilms')).populate('films');
+        })
+            .populate('awards')
+            .populate('bestFilms')
+            .populate('films');
     }
 };
 __decorate([

@@ -44,9 +44,9 @@ let CardsController = exports.CardsController = class CardsController {
     }
     async update(id, dto) {
         const command = new update_card_command_1.UpdateCardCommand(id, dto.reviews, dto.likes, dto.dislikes, dto.favorites);
-        const updateCardEntity = await this._updateCardUseCase.UpdateCard(command);
-        const updatedCard = this.cardsRepository.findById(updateCardEntity.id);
-        return updatedCard
+        const updateCard = await this._updateCardUseCase.UpdateCard(command);
+        return await this.cardsRepository
+            .updateCard(updateCard)
             .populate('ratings', 'whoose rate')
             .populate('persons', 'name englishName avatarImage')
             .populate('awards', 'picture name description year')
@@ -119,4 +119,4 @@ exports.CardsController = CardsController = __decorate([
     __param(0, (0, common_1.Inject)(update_card_use_case_1.UpdateCardUseCaseSymbol)),
     __metadata("design:paramtypes", [Object, cards_repository_1.CardsRepository])
 ], CardsController);
-//# sourceMappingURL=cards.controller.js.map
+//# sourceMappingURL=CardsController.js.map

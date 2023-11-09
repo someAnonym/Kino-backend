@@ -44,8 +44,21 @@ export class CardsController {
   @UseGuards(JwtAuthGuard)
   async update(@Param('id') id: string, @Body() dto: UpdateCardDto) {
     const command = new UpdateCardCommand(id, dto.reviews, dto.likes, dto.dislikes, dto.favorites);
-    const updateCard = await this._updateCardUseCase.UpdateCard(command);
-    return await this.cardsRepository.updateCard(updateCard);
+    const updateCardEntity = await this._updateCardUseCase.UpdateCard(command);
+    const updatedCard = this.cardsRepository.findById(updateCardEntity.id);
+    return updatedCard
+      .populate('ratings', 'whoose rate')
+      .populate('persons', 'name englishName avatarImage')
+      .populate('awards', 'picture name description year')
+      .populate('quotes', 'text whoseText')
+      .populate('reviews', 'typeOfReview title user date text')
+      .populate({
+        path: 'reviews',
+        populate: {
+          path: 'user',
+        },
+      })
+      .populate('directors');
   }
 
   @Post('/create')

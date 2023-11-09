@@ -11,8 +11,7 @@ class UpdateCardService {
         card.updateFavorite(command.favorites);
         card.updateLikes(command.likes);
         card.updateReviews(command.reviews);
-        await this._cardRepository.updateCard(card);
-        return card;
+        return this._cardRepository.updateCard(card);
     }
 }
 exports.UpdateCardService = UpdateCardService;

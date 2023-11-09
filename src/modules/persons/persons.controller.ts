@@ -58,26 +58,6 @@ export class PersonsController {
       .populate('awards')
       .populate('bestFilms')
       .populate('films')
-      .populate('comments')
-      .populate('comments', 'comments user')
-      .populate({
-        path: 'comments',
-        populate: {
-          path: 'user',
-        },
-      })
-      .populate({
-        path: 'comments',
-        populate: {
-          path: 'comments user',
-        },
-      })
-      .populate({
-        path: 'comments',
-        populate: {
-          path: 'comments',
-        },
-      })
       .populate({
         path: 'bestFilms',
         populate: {
@@ -89,12 +69,37 @@ export class PersonsController {
         populate: {
           path: 'ratings',
         },
+      })
+      .populate({
+        strictPopulate: false,
+        path: 'comments',
+        populate: {
+          path: 'comments user',
+        },
+      })
+      .populate({
+        strictPopulate: true,
+        path: 'comments',
+        populate: {
+          path: 'comments',
+          populate: {
+            path: 'comments user',
+          },
+        },
+      })
+      .populate({
+        strictPopulate: true,
+        path: 'comments',
+        populate: {
+          path: 'comments',
+          populate: {
+            path: 'comments',
+            populate: {
+              path: 'comments user',
+            },
+          },
+        },
       });
-    // const comments = person.comments.map(
-    //   async (i) => (await this.commentsRepository.getOneById(i.valueOf() as string)).user,
-    // );
-    // // console.log(comments);
-    // return person;
   }
 
   @Delete('/delete')
@@ -114,20 +119,18 @@ export class PersonsController {
   async update(@Param('id') id: string, @Body() dto: UpdatePersonOrmDto) {
     const command = new UpdatePersonCommand(id, dto.comments);
 
-    const updatedPerson = await this._updatePersonUseCase.updatePerson(command);
-    return await (
-      await (
-        await (
-          await (
-            await (await this._personsRepository.update(updatedPerson)).populate('comments')
-          ).populate({
-            path: 'comments',
-            populate: {
-              path: 'comments user',
-            },
-          })
-        ).populate('awards')
-      ).populate('bestFilms')
-    ).populate('films');
+    const updatedPersonEntity = await this._updatePersonUseCase.updatePerson(command);
+    const updatedPerson = this._personsRepository.getOneById(updatedPersonEntity.id);
+    return updatedPerson
+      .populate('comments')
+      .populate({
+        path: 'comments',
+        populate: {
+          path: 'comments user',
+        },
+      })
+      .populate('awards')
+      .populate('bestFilms')
+      .populate('films');
   }
 }

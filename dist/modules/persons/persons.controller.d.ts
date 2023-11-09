@@ -53,7 +53,7 @@ export declare class PersonsController {
     create(dto: CreatePersonOrmDto): Promise<import("mongoose").Document<unknown, {}, import("./entities/person-orm.entity").PersonDocument> & Person & Document & {
         _id: import("mongoose").Types.ObjectId;
     }>;
-    update(id: string, dto: UpdatePersonOrmDto): Promise<Omit<import("mongoose").Document<unknown, {}, import("./entities/person-orm.entity").PersonDocument> & Person & Document & {
+    update(id: string, dto: UpdatePersonOrmDto): Promise<import("mongoose").Document<unknown, {}, import("./entities/person-orm.entity").PersonDocument> & Person & Document & {
         _id: import("mongoose").Types.ObjectId;
-    }, never>>;
+    }>;
 }

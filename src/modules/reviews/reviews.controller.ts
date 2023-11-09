@@ -37,8 +37,8 @@ export class ReviewController {
 
   @Post('/create')
   @UseGuards(JwtAuthGuard)
-  create(@Body() dto: CreateReviewOrmDto) {
-    return this._reviewsRepository.create(dto);
+  async create(@Body() dto: CreateReviewOrmDto) {
+    return (await this._reviewsRepository.create(dto)).populate('user');
   }
 
   @Put('/update')

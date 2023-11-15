@@ -39,8 +39,9 @@ let ReviewController = exports.ReviewController = class ReviewController {
     }
     async update(id, dto) {
         const command = new update_review_command_1.UpdateReviewCommand(id, dto.likes, dto.dislikes, dto.comments);
-        const updatedReview = await this._updateReviewUseCase.UpdateReview(command);
-        return await this._reviewsRepository.update(updatedReview);
+        const updatedReviewEntity = await this._updateReviewUseCase.updateReview(command);
+        const updatedReview = await this._reviewsRepository.getOneById(updatedReviewEntity.id);
+        return updatedReview.populate('user', 'avatarImage reviews name secondName');
     }
     delete(id) {
         return this._reviewsRepository.delete(id);
@@ -70,7 +71,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], ReviewController.prototype, "create", null);
 __decorate([
-    (0, common_1.Put)('/update'),
+    (0, common_1.Put)('/update/:id'),
     (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuard),
     __param(0, (0, common_1.Param)('id')),
     __param(1, (0, common_1.Body)()),

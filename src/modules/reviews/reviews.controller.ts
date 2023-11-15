@@ -41,14 +41,14 @@ export class ReviewController {
     return (await this._reviewsRepository.create(dto)).populate('user');
   }
 
-  @Put('/update')
+  @Put('/update/:id')
   @UseGuards(JwtAuthGuard)
   async update(@Param('id') id: string, @Body() dto: UpdateReviewOrmDto) {
     const command = new UpdateReviewCommand(id, dto.likes, dto.dislikes, dto.comments);
 
-    const updatedReview = await this._updateReviewUseCase.UpdateReview(command);
-
-    return await this._reviewsRepository.update(updatedReview);
+    const updatedReviewEntity = await this._updateReviewUseCase.updateReview(command);
+    const updatedReview = await this._reviewsRepository.getOneById(updatedReviewEntity.id);
+    return updatedReview.populate('user', 'avatarImage reviews name secondName');
   }
 
   @Delete('/delete')

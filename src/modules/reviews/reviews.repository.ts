@@ -27,7 +27,9 @@ export class ReviewsRepository implements ReviewRepositoryPort {
       currentReview.comments = updatedReview.comments;
 
       return this.repository.findByIdAndUpdate(currentReview._id, currentReview);
-    } catch (error) {}
+    } catch (error) {
+      console.warn(error);
+    }
   }
 
   delete(reviewId: string) {

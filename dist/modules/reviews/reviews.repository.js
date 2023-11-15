@@ -34,7 +34,9 @@ let ReviewsRepository = exports.ReviewsRepository = class ReviewsRepository {
             currentReview.comments = updatedReview.comments;
             return this.repository.findByIdAndUpdate(currentReview._id, currentReview);
         }
-        catch (error) { }
+        catch (error) {
+            console.warn(error);
+        }
     }
     delete(reviewId) {
         return this.repository.findByIdAndRemove(reviewId);

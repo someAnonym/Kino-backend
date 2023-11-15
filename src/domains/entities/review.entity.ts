@@ -66,7 +66,7 @@ export class ReviewEntity {
     };
   }
 
-  public updateLikes(likes: number) {
+  public updateLikes(likes: number): void | never {
     this._likes = likes;
   }
 

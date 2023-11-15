@@ -5,13 +5,12 @@ class UpdateReviewService {
     constructor(_reviewRepositoryPort) {
         this._reviewRepositoryPort = _reviewRepositoryPort;
     }
-    async updatePerson(command) {
-        const review = this._reviewRepositoryPort.loadReview(command.reviewId);
+    async updateReview(command) {
+        const review = await this._reviewRepositoryPort.loadReview(command.reviewId);
         review.updateLikes(command.likes);
         review.updateDislikes(command.dislikes);
         review.updateComments(command.comments);
-        await this._reviewRepositoryPort.update(review);
-        return review;
+        return await this._reviewRepositoryPort.update(review);
     }
 }
 exports.UpdateReviewService = UpdateReviewService;

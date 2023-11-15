@@ -44,9 +44,9 @@ export declare class ReviewController {
     create(dto: CreateReviewOrmDto): Promise<Omit<import("mongoose").Document<unknown, {}, import("./entities/review-orm.entity").ReviewDocument> & import("./entities/review-orm.entity").Review & Document & {
         _id: import("mongoose").Types.ObjectId;
     }, never>>;
-    update(id: string, dto: UpdateReviewOrmDto): Promise<import("mongoose").Document<unknown, {}, import("./entities/review-orm.entity").ReviewDocument> & import("./entities/review-orm.entity").Review & Document & {
+    update(id: string, dto: UpdateReviewOrmDto): Promise<Omit<import("mongoose").Document<unknown, {}, import("./entities/review-orm.entity").ReviewDocument> & import("./entities/review-orm.entity").Review & Document & {
         _id: import("mongoose").Types.ObjectId;
-    }>;
+    }, never>>;
     delete(id: string): import("mongoose").Query<import("mongoose").Document<unknown, {}, import("./entities/review-orm.entity").ReviewDocument> & import("./entities/review-orm.entity").Review & Document & {
         _id: import("mongoose").Types.ObjectId;
     }, import("mongoose").Document<unknown, {}, import("./entities/review-orm.entity").ReviewDocument> & import("./entities/review-orm.entity").Review & Document & {

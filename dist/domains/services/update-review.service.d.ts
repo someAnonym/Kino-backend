@@ -4,5 +4,5 @@ import { ReviewRepositoryPort } from '../ports/out/review-repository.port';
 export declare class UpdateReviewService {
     private readonly _reviewRepositoryPort;
     constructor(_reviewRepositoryPort: ReviewRepositoryPort);
-    updatePerson(command: UpdateReviewCommand): Promise<ReviewEntity>;
+    updateReview(command: UpdateReviewCommand): Promise<ReviewEntity>;
 }

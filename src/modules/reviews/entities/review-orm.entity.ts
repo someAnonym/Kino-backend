@@ -34,7 +34,7 @@ export class Review {
     type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }],
     default: [],
   })
-  comments: string[];
+  comments: ObjectId[];
 
   @Prop()
   complaints: string[];

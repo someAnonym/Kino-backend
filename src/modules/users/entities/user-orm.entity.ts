@@ -85,8 +85,11 @@ export class User {
   })
   expectedFilms: ObjectId[];
 
-  @Prop({ default: [] })
-  persons: string[];
+  @Prop({
+    type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Person' }],
+    default: [],
+  })
+  persons: ObjectId[];
 
   @Prop({ default: [] })
   favoritePersons: string[];

@@ -7,6 +7,7 @@ class UpdatePersonService {
     }
     async updatePerson(command) {
         const person = await this._personRepositoryPort.loadPerson(command.personId);
+        person.updateFavorites(command.favorites);
         person.updateComments(command.comments);
         await this._personRepositoryPort.update(person);
         return person;

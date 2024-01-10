@@ -111,7 +111,10 @@ __decorate([
     __metadata("design:type", Array)
 ], User.prototype, "expectedFilms", void 0);
 __decorate([
-    (0, mongoose_1.Prop)({ default: [] }),
+    (0, mongoose_1.Prop)({
+        type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Person' }],
+        default: [],
+    }),
     __metadata("design:type", Array)
 ], User.prototype, "persons", void 0);
 __decorate([

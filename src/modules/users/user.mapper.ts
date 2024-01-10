@@ -14,6 +14,7 @@ export class UserMapper {
     const films = user.films.map((i) => i.valueOf() as string);
     const expectedFilms = user.expectedFilms.map((i) => i.valueOf() as string);
     const favoriteFilms = user.favoriteFilms.map((i) => i.valueOf() as string);
+    const persons = user.persons.map((i) => i.valueOf() as string);
     return new UserEntity(
       id,
       user.email,
@@ -35,7 +36,7 @@ export class UserMapper {
       friends,
       favoriteFilms,
       expectedFilms,
-      user.persons,
+      persons,
       user.favoritePersons,
       user.reviews,
       user.comments,

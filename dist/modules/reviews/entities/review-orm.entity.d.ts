@@ -9,7 +9,7 @@ export declare class Review {
     title: string;
     date: Date;
     text: string;
-    comments: string[];
+    comments: ObjectId[];
     complaints: string[];
 }
 export declare const ReviewSchema: mongoose.Schema<Review, mongoose.Model<Review, any, any, any, mongoose.Document<unknown, any, Review> & Review & {

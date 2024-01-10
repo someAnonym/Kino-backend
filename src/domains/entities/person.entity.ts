@@ -13,7 +13,7 @@ export class PersonEntity {
     private readonly _bornPlace: string,
     private readonly _genres: Genres[],
     private readonly _totalCountOfFilmsAndYears: string[],
-    private readonly _favorites: number,
+    private _favorites: number,
     private readonly _awards: string[],
     private readonly _bestFilms: string[],
     private readonly _lastNews: string[],
@@ -114,6 +114,13 @@ export class PersonEntity {
   public updateComments(comments: string[]): void | never {
     try {
       this._comments = [...this._comments, ...comments];
+    } catch (error) {
+      throw new Error('Ошибка обновления комментариев у персоны!');
+    }
+  }
+  public updateFavorites(favorites: number): void | never {
+    try {
+      this._favorites = this._favorites + favorites;
     } catch (error) {
       throw new Error('Ошибка обновления комментариев у персоны!');
     }

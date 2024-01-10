@@ -102,6 +102,14 @@ class PersonEntity {
             throw new Error('Ошибка обновления комментариев у персоны!');
         }
     }
+    updateFavorites(favorites) {
+        try {
+            this._favorites = this._favorites + favorites;
+        }
+        catch (error) {
+            throw new Error('Ошибка обновления комментариев у персоны!');
+        }
+    }
 }
 exports.PersonEntity = PersonEntity;
 //# sourceMappingURL=person.entity.js.map

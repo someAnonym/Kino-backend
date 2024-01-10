@@ -34,6 +34,7 @@ let PersonsRepository = exports.PersonsRepository = class PersonsRepository {
         try {
             const updatedPerson = person.getData();
             const currentPerson = await this.repository.findById(person.id);
+            currentPerson.favorites = updatedPerson.favorites;
             currentPerson.comments = updatedPerson.comments.map((i) => new mongodb_1.ObjectId(i));
             await currentPerson.save();
             return currentPerson;

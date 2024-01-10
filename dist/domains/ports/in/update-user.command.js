@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UpdateUserCommand = void 0;
 class UpdateUserCommand {
-    constructor(_userId, _email, _name, _secondName, _vk, _instagram, _youtube, _twitter, _facebook, _aboutMe, _avatarImage, _gender, _birthday, _country, _city, _favoriteGenres) {
+    constructor(_userId, _email, _name, _secondName, _vk, _instagram, _youtube, _twitter, _facebook, _aboutMe, _avatarImage, _gender, _birthday, _country, _city, _favoriteGenres, _person) {
         this._userId = _userId;
         this._email = _email;
         this._name = _name;
@@ -19,6 +19,7 @@ class UpdateUserCommand {
         this._country = _country;
         this._city = _city;
         this._favoriteGenres = _favoriteGenres;
+        this._person = _person;
     }
     get userId() {
         return this._userId;
@@ -67,6 +68,9 @@ class UpdateUserCommand {
     }
     get birthday() {
         return this._birthday;
+    }
+    get person() {
+        return this._person;
     }
 }
 exports.UpdateUserCommand = UpdateUserCommand;

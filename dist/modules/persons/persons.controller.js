@@ -90,7 +90,7 @@ let PersonsController = exports.PersonsController = class PersonsController {
         return this._personsRepository.create(dto);
     }
     async update(id, dto) {
-        const command = new update_person_command_1.UpdatePersonCommand(id, dto.comments);
+        const command = new update_person_command_1.UpdatePersonCommand(id, dto.favorites, dto.comments);
         const updatedPersonEntity = await this._updatePersonUseCase.updatePerson(command);
         const updatedPerson = this._personsRepository.getOneById(updatedPersonEntity.id);
         return updatedPerson

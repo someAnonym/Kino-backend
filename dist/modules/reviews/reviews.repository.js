@@ -17,6 +17,7 @@ const mongoose_1 = require("@nestjs/mongoose");
 const review_orm_entity_1 = require("./entities/review-orm.entity");
 const mongoose_2 = require("mongoose");
 const review_mapper_1 = require("./review.mapper");
+const mongodb_1 = require("mongodb");
 let ReviewsRepository = exports.ReviewsRepository = class ReviewsRepository {
     constructor(repository) {
         this.repository = repository;
@@ -31,7 +32,7 @@ let ReviewsRepository = exports.ReviewsRepository = class ReviewsRepository {
             const currentReview = await this.repository.findById(review.id);
             currentReview.likes = updatedReview.likes;
             currentReview.dislikes = updatedReview.dislikes;
-            currentReview.comments = updatedReview.comments;
+            currentReview.comments = updatedReview.comments.map((i) => new mongodb_1.ObjectId(i));
             return this.repository.findByIdAndUpdate(currentReview._id, currentReview);
         }
         catch (error) {

@@ -23,7 +23,7 @@ export declare class User {
     friends: ObjectId[];
     favoriteFilms: ObjectId[];
     expectedFilms: ObjectId[];
-    persons: string[];
+    persons: ObjectId[];
     favoritePersons: string[];
     reviews: string[];
     comments: string[];

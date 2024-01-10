@@ -16,6 +16,7 @@ export class UpdateUserCommand {
     private _country: string,
     private _city: string,
     private _favoriteGenres: string[],
+    private _person: string,
   ) {}
 
   public get userId(): string {
@@ -80,5 +81,8 @@ export class UpdateUserCommand {
 
   public get birthday(): string {
     return this._birthday;
+  }
+  public get person(): string {
+    return this._person;
   }
 }

@@ -32,7 +32,9 @@ export class ReviewController {
   getOne(@Param('id') id: string) {
     return this._reviewsRepository
       .getOneById(id)
-      .populate('user', 'avatarImage reviews name secondName');
+      .populate('user', 'avatarImage reviews name secondName')
+      .populate('comments')
+      .populate('comments', 'user');
   }
 
   @Post('/create')
@@ -48,7 +50,11 @@ export class ReviewController {
 
     const updatedReviewEntity = await this._updateReviewUseCase.updateReview(command);
     const updatedReview = await this._reviewsRepository.getOneById(updatedReviewEntity.id);
-    return updatedReview.populate('user', 'avatarImage reviews name secondName');
+    return (
+      await (
+        await updatedReview.populate('user', 'avatarImage reviews name secondName')
+      ).populate('comments')
+    ).populate('comments', 'user');
   }
 
   @Delete('/delete')

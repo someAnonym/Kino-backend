@@ -22,6 +22,7 @@ class UpdateUserService {
         user.updateCity(command.city);
         user.updateCountry(command.country);
         user.updateGenres(command.favoriteGenres);
+        user.updatePersons(command.person);
         await this._userRepository.updateUser(user);
         return user;
     }

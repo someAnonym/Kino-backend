@@ -30,6 +30,7 @@ export class PersonsRepository implements PersonsRepositoryPort {
       const updatedPerson = person.getData();
       const currentPerson = await this.repository.findById(person.id);
 
+      currentPerson.favorites = updatedPerson.favorites;
       currentPerson.comments = updatedPerson.comments.map((i) => new ObjectId(i));
 
       await currentPerson.save();

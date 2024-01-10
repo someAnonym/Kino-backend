@@ -1,9 +1,3 @@
-import { CardEntity } from './card.entity';
-import { CommentEntity } from './comment.entity';
-import { Genres } from './genges.entity';
-import { PersonEntity } from './person.entity';
-import { ReviewEntity } from './review.entity';
-
 const USER_CONFIG = {
   password: {
     minLength: 6,
@@ -41,7 +35,7 @@ export class UserEntity {
     private _friends: string[],
     private readonly _favoriteFilms: string[],
     private readonly _expecredFilms: string[],
-    private readonly _persons: string[],
+    private _persons: string[],
     private readonly _favoritePersons: string[],
     private _reviews: string[],
     private _comments: string[],
@@ -329,6 +323,14 @@ export class UserEntity {
       this._avatarImage = avatar;
     } else {
       throw new Error('Новый аватар не валиден');
+    }
+  }
+
+  public updatePersons(person: string): void | never {
+    if (!this._persons.includes(person)) {
+      this._persons = [...this._persons, person];
+    } else {
+      this._persons = this._persons.filter((i) => i !== person);
     }
   }
 

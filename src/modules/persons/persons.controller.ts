@@ -117,7 +117,7 @@ export class PersonsController {
   @Put('/update/:id')
   @UseGuards(JwtAuthGuard)
   async update(@Param('id') id: string, @Body() dto: UpdatePersonOrmDto) {
-    const command = new UpdatePersonCommand(id, dto.comments);
+    const command = new UpdatePersonCommand(id, dto.favorites, dto.comments);
 
     const updatedPersonEntity = await this._updatePersonUseCase.updatePerson(command);
     const updatedPerson = this._personsRepository.getOneById(updatedPersonEntity.id);

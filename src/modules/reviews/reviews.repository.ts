@@ -7,6 +7,7 @@ import {
 import { Review, ReviewDocument } from './entities/review-orm.entity';
 import { Model } from 'mongoose';
 import { ReviewMapper } from './review.mapper';
+import { ObjectId } from 'mongodb';
 
 export class ReviewsRepository implements ReviewRepositoryPort {
   constructor(@InjectModel(Review.name) private repository: Model<ReviewDocument>) {}
@@ -24,7 +25,7 @@ export class ReviewsRepository implements ReviewRepositoryPort {
 
       currentReview.likes = updatedReview.likes;
       currentReview.dislikes = updatedReview.dislikes;
-      currentReview.comments = updatedReview.comments;
+      currentReview.comments = updatedReview.comments.map((i) => new ObjectId(i));
 
       return this.repository.findByIdAndUpdate(currentReview._id, currentReview);
     } catch (error) {

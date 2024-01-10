@@ -30,11 +30,18 @@ export class CardsController {
       .populate('persons', 'name englishName avatarImage')
       .populate('awards', 'picture name description year')
       .populate('quotes', 'text whoseText')
-      .populate('reviews', 'typeOfReview title user date text')
+      .populate('reviews', 'typeOfReview title user date text comments')
       .populate({
         path: 'reviews',
         populate: {
           path: 'user',
+        },
+      })
+      .populate({
+        path: 'reviews',
+        populate: {
+          path: 'comments',
+          populate: { path: 'comments user' },
         },
       })
       .populate('directors');
@@ -51,11 +58,18 @@ export class CardsController {
       .populate('persons', 'name englishName avatarImage')
       .populate('awards', 'picture name description year')
       .populate('quotes', 'text whoseText')
-      .populate('reviews', 'typeOfReview title user date text')
+      .populate('reviews', 'typeOfReview title user date text comments')
       .populate({
         path: 'reviews',
         populate: {
           path: 'user',
+        },
+      })
+      .populate({
+        path: 'reviews',
+        populate: {
+          path: 'comments',
+          populate: { path: 'comments user' },
         },
       })
       .populate('directors');

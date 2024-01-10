@@ -11,7 +11,7 @@ export declare class PersonEntity {
     private readonly _bornPlace;
     private readonly _genres;
     private readonly _totalCountOfFilmsAndYears;
-    private readonly _favorites;
+    private _favorites;
     private readonly _awards;
     private readonly _bestFilms;
     private readonly _lastNews;
@@ -56,4 +56,5 @@ export declare class PersonEntity {
         comments: string[];
     };
     updateComments(comments: string[]): void | never;
+    updateFavorites(favorites: number): void | never;
 }

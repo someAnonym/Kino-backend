@@ -296,6 +296,14 @@ class UserEntity {
             throw new Error('Новый аватар не валиден');
         }
     }
+    updatePersons(person) {
+        if (!this._persons.includes(person)) {
+            this._persons = [...this._persons, person];
+        }
+        else {
+            this._persons = this._persons.filter((i) => i !== person);
+        }
+    }
     _validateUserEmail(email) {
         const isEmailLengthValid = email.length >= USER_CONFIG.email.minLength;
         const isEmailTruthy = email.match(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i);

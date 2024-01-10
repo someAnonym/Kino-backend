@@ -19,7 +19,7 @@ export declare class UserEntity {
     private _friends;
     private readonly _favoriteFilms;
     private readonly _expecredFilms;
-    private readonly _persons;
+    private _persons;
     private readonly _favoritePersons;
     private _reviews;
     private _comments;
@@ -103,6 +103,7 @@ export declare class UserEntity {
     updatePassword(password: string): void | never;
     updateUserEmail(email: string): void | never;
     updateUserAvatar(avatar: string): void | never;
+    updatePersons(person: string): void | never;
     private _validateUserEmail;
     private _validateUserPassword;
     private _validateUserAvatar;

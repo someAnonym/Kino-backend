@@ -45,6 +45,8 @@ export class UsersRepository implements UserRepositoryPort {
       currentUser.city = updatedUser.city;
       currentUser.country = updatedUser.country;
       currentUser.favoriteGenres = updatedUser.favoriteGenres;
+      currentUser.persons = updatedUser.persons.map((i) => new ObjectId(i));
+
       // currentUser.friends = updatedUser.friends.map((i) => new ObjectId(i));
 
       return this.repository.findOneAndUpdate(currentUser._id, currentUser);

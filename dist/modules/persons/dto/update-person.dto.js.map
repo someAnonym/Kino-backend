@@ -1,1 +1,1 @@
-{"version":3,"file":"update-person.dto.js","sourceRoot":"","sources":["../../../../src/modules/persons/dto/update-person.dto.ts"],"names":[],"mappings":";;;AAAA,MAAa,kBAAkB;CAE9B;AAFD,gDAEC"}
+{"version":3,"file":"update-person.dto.js","sourceRoot":"","sources":["../../../../src/modules/persons/dto/update-person.dto.ts"],"names":[],"mappings":";;;AAAA,MAAa,kBAAkB;CAG9B;AAHD,gDAGC"}

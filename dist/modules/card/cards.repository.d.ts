@@ -44,10 +44,20 @@ export declare class CardsRepository implements CardRepositoryPort {
     }, import("mongoose").Document<unknown, {}, CardDocument> & Card & Document & {
         _id: import("mongoose").Types.ObjectId;
     }, {}, CardDocument, "findOne">;
-    search(query: string): Promise<(import("mongoose").Document<unknown, {}, CardDocument> & Card & Document & {
+    search(query: string): Promise<Omit<import("mongoose").Document<unknown, {}, CardDocument> & Card & Document & {
         _id: import("mongoose").Types.ObjectId;
-    })[]>;
+    }, never>[]>;
     filterReviews(cardId: string, typeOfReview: string): Promise<Omit<import("mongoose").Document<unknown, {}, import("../reviews/entities/review-orm.entity").ReviewDocument> & import("../reviews/entities/review-orm.entity").Review & Document & {
         _id: import("mongoose").Types.ObjectId;
     }, never>[]>;
+    delete(cardId: string): import("mongoose").Query<import("mongoose").Document<unknown, {}, CardDocument> & Card & Document & {
+        _id: import("mongoose").Types.ObjectId;
+    }, import("mongoose").Document<unknown, {}, CardDocument> & Card & Document & {
+        _id: import("mongoose").Types.ObjectId;
+    }, {}, CardDocument, "findOneAndDelete">;
+    getAll(): import("mongoose").Query<(import("mongoose").Document<unknown, {}, CardDocument> & Card & Document & {
+        _id: import("mongoose").Types.ObjectId;
+    })[], import("mongoose").Document<unknown, {}, CardDocument> & Card & Document & {
+        _id: import("mongoose").Types.ObjectId;
+    }, {}, CardDocument, "find">;
 }

@@ -1,4 +1,15 @@
-import { Body, Controller, Get, Inject, Param, Post, Put, Query, UseGuards } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Inject,
+  Param,
+  Post,
+  Put,
+  Query,
+  UseGuards,
+} from '@nestjs/common';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { JwtAuthGuard } from '../auth/guards/jwt.guard';
 import { UpdateCardDto } from './dto/update-card.dto';
@@ -20,6 +31,18 @@ export class CardsController {
 
     private readonly cardsRepository: CardsRepository,
   ) {}
+
+  @Get('/search')
+  @UseGuards(JwtAuthGuard)
+  search(@Query('query') query: string) {
+    return this.cardsRepository.search(query);
+  }
+
+  @Get('/all')
+  @UseGuards(JwtAuthGuard)
+  getAll() {
+    return this.cardsRepository.getAll().populate('ratings', 'whoose rate');
+  }
 
   @Get('/:id')
   @UseGuards(JwtAuthGuard)
@@ -81,15 +104,15 @@ export class CardsController {
     return await this.cardsRepository.create(dto);
   }
 
-  @Get('/search')
-  @UseGuards(JwtAuthGuard)
-  search(@Query('query') query: string) {
-    return this.cardsRepository.search(query);
-  }
-
   @Get('/:id/reviews')
   @UseGuards(JwtAuthGuard)
   filterReviews(@Param('id') id: string, @Query('type') typeOfReview: string) {
     return this.cardsRepository.filterReviews(id, typeOfReview);
+  }
+
+  @Delete('/delete/:id')
+  @UseGuards(JwtAuthGuard)
+  delete(@Param('id') id: string) {
+    return this.cardsRepository.delete(id);
   }
 }

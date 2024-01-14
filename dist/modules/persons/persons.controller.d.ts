@@ -28,32 +28,31 @@ import { UpdatePersonUseCase } from 'src/domains/ports/in/update-person.use-case
 import { CreatePersonOrmDto } from './dto/create-person.dto';
 import { UpdatePersonOrmDto } from './dto/update-person.dto';
 import { CommentsRepository } from '../comments/comments.repository';
-import { Person } from './entities/person-orm.entity';
 export declare class PersonsController {
     private readonly _updatePersonUseCase;
     private readonly _personsRepository;
     private readonly commentsRepository;
     constructor(_updatePersonUseCase: UpdatePersonUseCase, _personsRepository: PersonsRepository, commentsRepository: CommentsRepository);
-    getAll(): import("mongoose").Query<(import("mongoose").Document<unknown, {}, import("./entities/person-orm.entity").PersonDocument> & Person & Document & {
+    getAll(): import("mongoose").Query<(import("mongoose").Document<unknown, {}, import("./entities/person-orm.entity").PersonDocument> & import("./entities/person-orm.entity").Person & Document & {
         _id: import("mongoose").Types.ObjectId;
-    })[], import("mongoose").Document<unknown, {}, import("./entities/person-orm.entity").PersonDocument> & Person & Document & {
+    })[], import("mongoose").Document<unknown, {}, import("./entities/person-orm.entity").PersonDocument> & import("./entities/person-orm.entity").Person & Document & {
         _id: import("mongoose").Types.ObjectId;
     }, {}, import("./entities/person-orm.entity").PersonDocument, "find">;
-    search(query: string): Promise<(import("mongoose").Document<unknown, {}, import("./entities/person-orm.entity").PersonDocument> & Person & Document & {
+    search(query: string): Promise<(import("mongoose").Document<unknown, {}, import("./entities/person-orm.entity").PersonDocument> & import("./entities/person-orm.entity").Person & Document & {
         _id: import("mongoose").Types.ObjectId;
     })[]>;
-    getOne(id: string): Promise<import("mongoose").Document<unknown, {}, import("./entities/person-orm.entity").PersonDocument> & Person & Document & {
+    getOne(id: string): Promise<import("mongoose").Document<unknown, {}, import("./entities/person-orm.entity").PersonDocument> & import("./entities/person-orm.entity").Person & Document & {
         _id: import("mongoose").Types.ObjectId;
     }>;
-    delete(id: string): import("mongoose").Query<import("mongoose").Document<unknown, {}, import("./entities/person-orm.entity").PersonDocument> & Person & Document & {
+    delete(id: string): import("mongoose").Query<import("mongoose").Document<unknown, {}, import("./entities/person-orm.entity").PersonDocument> & import("./entities/person-orm.entity").Person & Document & {
         _id: import("mongoose").Types.ObjectId;
-    }, import("mongoose").Document<unknown, {}, import("./entities/person-orm.entity").PersonDocument> & Person & Document & {
+    }, import("mongoose").Document<unknown, {}, import("./entities/person-orm.entity").PersonDocument> & import("./entities/person-orm.entity").Person & Document & {
         _id: import("mongoose").Types.ObjectId;
     }, {}, import("./entities/person-orm.entity").PersonDocument, "findOneAndDelete">;
-    create(dto: CreatePersonOrmDto): Promise<import("mongoose").Document<unknown, {}, import("./entities/person-orm.entity").PersonDocument> & Person & Document & {
+    create(dto: CreatePersonOrmDto): Promise<import("mongoose").Document<unknown, {}, import("./entities/person-orm.entity").PersonDocument> & import("./entities/person-orm.entity").Person & Document & {
         _id: import("mongoose").Types.ObjectId;
     }>;
-    update(id: string, dto: UpdatePersonOrmDto): Promise<import("mongoose").Document<unknown, {}, import("./entities/person-orm.entity").PersonDocument> & Person & Document & {
+    update(id: string, dto: UpdatePersonOrmDto): Promise<import("mongoose").Document<unknown, {}, import("./entities/person-orm.entity").PersonDocument> & import("./entities/person-orm.entity").Person & Document & {
         _id: import("mongoose").Types.ObjectId;
     }>;
 }

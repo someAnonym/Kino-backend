@@ -130,7 +130,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], PersonsController.prototype, "getOne", null);
 __decorate([
-    (0, common_1.Delete)('/delete'),
+    (0, common_1.Delete)('/delete/:id'),
     (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuard),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),

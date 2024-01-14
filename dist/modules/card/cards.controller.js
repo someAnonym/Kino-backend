@@ -26,6 +26,12 @@ let CardsController = exports.CardsController = class CardsController {
         this._updateCardUseCase = _updateCardUseCase;
         this.cardsRepository = cardsRepository;
     }
+    search(query) {
+        return this.cardsRepository.search(query);
+    }
+    getAll() {
+        return this.cardsRepository.getAll().populate('ratings', 'whoose rate');
+    }
     getMe(id) {
         return this.cardsRepository
             .findById(id)
@@ -77,13 +83,28 @@ let CardsController = exports.CardsController = class CardsController {
     async create(dto) {
         return await this.cardsRepository.create(dto);
     }
-    search(query) {
-        return this.cardsRepository.search(query);
-    }
     filterReviews(id, typeOfReview) {
         return this.cardsRepository.filterReviews(id, typeOfReview);
     }
+    delete(id) {
+        return this.cardsRepository.delete(id);
+    }
 };
+__decorate([
+    (0, common_1.Get)('/search'),
+    (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuard),
+    __param(0, (0, common_1.Query)('query')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], CardsController.prototype, "search", null);
+__decorate([
+    (0, common_1.Get)('/all'),
+    (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuard),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], CardsController.prototype, "getAll", null);
 __decorate([
     (0, common_1.Get)('/:id'),
     (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuard),
@@ -110,14 +131,6 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], CardsController.prototype, "create", null);
 __decorate([
-    (0, common_1.Get)('/search'),
-    (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuard),
-    __param(0, (0, common_1.Query)('query')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", void 0)
-], CardsController.prototype, "search", null);
-__decorate([
     (0, common_1.Get)('/:id/reviews'),
     (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuard),
     __param(0, (0, common_1.Param)('id')),
@@ -126,6 +139,14 @@ __decorate([
     __metadata("design:paramtypes", [String, String]),
     __metadata("design:returntype", void 0)
 ], CardsController.prototype, "filterReviews", null);
+__decorate([
+    (0, common_1.Delete)('/delete/:id'),
+    (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuard),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], CardsController.prototype, "delete", null);
 exports.CardsController = CardsController = __decorate([
     (0, common_1.Controller)('cards'),
     (0, swagger_1.ApiBearerAuth)(),

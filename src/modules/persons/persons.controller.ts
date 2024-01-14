@@ -22,10 +22,8 @@ import { UpdatePersonOrmDto } from './dto/update-person.dto';
 import { UpdatePersonCommand } from 'src/domains/ports/in/update-person.command';
 import { JwtAuthGuard } from '../auth/guards/jwt.guard';
 import { CommentsRepository } from '../comments/comments.repository';
-import { MappedPerson, Person } from './entities/person-orm.entity';
-import { Comment } from '../comments/entities/comment-orm.entity';
 
-type PersonWithParse = Person & { comments: Comment };
+// type PersonWithParse = Person & { comments: Comment };
 
 @Controller('persons')
 @ApiBearerAuth()
@@ -102,7 +100,7 @@ export class PersonsController {
       });
   }
 
-  @Delete('/delete')
+  @Delete('/delete/:id')
   @UseGuards(JwtAuthGuard)
   delete(@Param('id') id: string) {
     return this._personsRepository.delete(id);

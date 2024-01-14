@@ -31,6 +31,14 @@ export declare class CardsController {
     private readonly _updateCardUseCase;
     private readonly cardsRepository;
     constructor(_updateCardUseCase: UpdateCardUseCase, cardsRepository: CardsRepository);
+    search(query: string): Promise<Omit<import("mongoose").Document<unknown, {}, import("./entities/card-orm.entity").CardDocument> & import("./entities/card-orm.entity").Card & Document & {
+        _id: import("mongoose").Types.ObjectId;
+    }, never>[]>;
+    getAll(): import("mongoose").Query<Omit<import("mongoose").Document<unknown, {}, import("./entities/card-orm.entity").CardDocument> & import("./entities/card-orm.entity").Card & Document & {
+        _id: import("mongoose").Types.ObjectId;
+    }, never>[], import("mongoose").Document<unknown, {}, import("./entities/card-orm.entity").CardDocument> & import("./entities/card-orm.entity").Card & Document & {
+        _id: import("mongoose").Types.ObjectId;
+    }, {}, import("./entities/card-orm.entity").CardDocument, "find">;
     getMe(id: string): import("mongoose").Query<import("mongoose").Document<unknown, {}, import("./entities/card-orm.entity").CardDocument> & import("./entities/card-orm.entity").Card & Document & {
         _id: import("mongoose").Types.ObjectId;
     }, import("mongoose").Document<unknown, {}, import("./entities/card-orm.entity").CardDocument> & import("./entities/card-orm.entity").Card & Document & {
@@ -42,10 +50,12 @@ export declare class CardsController {
     create(dto: CreateCardOrmDto): Promise<import("mongoose").Document<unknown, {}, import("./entities/card-orm.entity").CardDocument> & import("./entities/card-orm.entity").Card & Document & {
         _id: import("mongoose").Types.ObjectId;
     }>;
-    search(query: string): Promise<(import("mongoose").Document<unknown, {}, import("./entities/card-orm.entity").CardDocument> & import("./entities/card-orm.entity").Card & Document & {
-        _id: import("mongoose").Types.ObjectId;
-    })[]>;
     filterReviews(id: string, typeOfReview: string): Promise<Omit<import("mongoose").Document<unknown, {}, import("../reviews/entities/review-orm.entity").ReviewDocument> & import("../reviews/entities/review-orm.entity").Review & Document & {
         _id: import("mongoose").Types.ObjectId;
     }, never>[]>;
+    delete(id: string): import("mongoose").Query<import("mongoose").Document<unknown, {}, import("./entities/card-orm.entity").CardDocument> & import("./entities/card-orm.entity").Card & Document & {
+        _id: import("mongoose").Types.ObjectId;
+    }, import("mongoose").Document<unknown, {}, import("./entities/card-orm.entity").CardDocument> & import("./entities/card-orm.entity").Card & Document & {
+        _id: import("mongoose").Types.ObjectId;
+    }, {}, import("./entities/card-orm.entity").CardDocument, "findOneAndDelete">;
 }

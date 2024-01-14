@@ -52,7 +52,7 @@ export class CardsRepository implements CardRepositoryPort {
   }
 
   async search(query: string) {
-    const cards = await this.repository.find();
+    const cards = await this.repository.find().populate('ratings', 'whoose rate');
     return [
       ...cards.filter((i) => i.name.toLowerCase().includes(query.toLowerCase())),
       ...cards.filter((i) => i.secondName.toLowerCase().includes(query.toLowerCase())),
@@ -66,5 +66,13 @@ export class CardsRepository implements CardRepositoryPort {
       (i) => i.typeOfReview === typeOfReview && card.reviews.includes(i._id),
     );
     return filter;
+  }
+
+  delete(cardId: string) {
+    return this.repository.findByIdAndDelete(cardId);
+  }
+
+  getAll() {
+    return this.repository.find();
   }
 }

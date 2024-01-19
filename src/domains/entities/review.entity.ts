@@ -1,27 +1,22 @@
-import { CommentEntity } from './comment.entity';
-import { UserEntity } from './user.entity';
-
 export class ReviewEntity {
   constructor(
     private readonly _id: string,
-    private readonly _user: UserEntity,
+    private readonly _user: string,
     private readonly _typeOfReview: string,
-    private readonly _likes: number,
-    private readonly _dislikes: number,
+    private _likes: number,
+    private _dislikes: number,
     private readonly _title: string,
     private readonly _date: Date,
     private readonly _text: string,
-    private readonly _comments: CommentEntity[],
-    private readonly _link: string,
-    private readonly _complaint: string,
-    private readonly _answer?: string,
+    private _comments: string[],
+    private readonly _complaints: string[],
   ) {}
 
   public get id(): string {
     return this._id;
   }
 
-  public get user(): UserEntity {
+  public get user(): string {
     return this._user;
   }
 
@@ -48,19 +43,38 @@ export class ReviewEntity {
   public get text(): string {
     return this._text;
   }
-  public get comments(): CommentEntity[] {
+  public get comments(): string[] {
     return this._comments;
   }
 
-  public get link(): string {
-    return this._link;
+  public get complaints(): string[] {
+    return this._complaints;
   }
 
-  public get complaint(): string {
-    return this._complaint;
+  public getReviewData() {
+    return {
+      id: this._id,
+      user: this._user,
+      typeOfReview: this._typeOfReview,
+      likes: this._likes,
+      dislikes: this._dislikes,
+      title: this._title,
+      date: this._date,
+      text: this._text,
+      comments: this._comments,
+      complaints: this._complaints,
+    };
   }
 
-  public get answer(): string {
-    return this?._answer;
+  public updateLikes(likes: number): void | never {
+    this._likes = likes;
+  }
+
+  public updateDislikes(dislikes: number) {
+    this._dislikes = dislikes;
+  }
+
+  public updateComments(comments: string[]) {
+    this._comments = [...this._comments, ...comments];
   }
 }

@@ -1,4 +1,3 @@
-import { Genres } from './genges.entity';
 export declare class UserEntity {
     private readonly _id;
     private _email;
@@ -17,10 +16,10 @@ export declare class UserEntity {
     private _city;
     private _favoriteGenres;
     private readonly _films;
-    private readonly _friends;
-    private readonly _favoriteFilms;
+    private _friends;
+    private _favoriteFilms;
     private readonly _expecredFilms;
-    private readonly _persons;
+    private _persons;
     private readonly _favoritePersons;
     private _reviews;
     private _comments;
@@ -28,7 +27,7 @@ export declare class UserEntity {
     private _dislikedFilms;
     private _avatarImage?;
     private _wasOnline?;
-    constructor(_id: string, _email: string, _password: string, _name: string, _secondName: string, _vk: string, _instagram: string, _youtube: string, _twitter: string, _facebook: string, _aboutMe: string, _gender: string, _birthday: string, _country: string, _city: string, _favoriteGenres: Genres[], _films: string[], _friends: string[], _favoriteFilms: string[], _expecredFilms: string[], _persons: string[], _favoritePersons: string[], _reviews: string[], _comments: string[], _likedFilms: string[], _dislikedFilms: string[], _avatarImage?: string, _wasOnline?: Date);
+    constructor(_id: string, _email: string, _password: string, _name: string, _secondName: string, _vk: string, _instagram: string, _youtube: string, _twitter: string, _facebook: string, _aboutMe: string, _gender: string, _birthday: string, _country: string, _city: string, _favoriteGenres: string[], _films: string[], _friends: string[], _favoriteFilms: string[], _expecredFilms: string[], _persons: string[], _favoritePersons: string[], _reviews: string[], _comments: string[], _likedFilms: string[], _dislikedFilms: string[], _avatarImage?: string, _wasOnline?: Date);
     get id(): string;
     get email(): string;
     get password(): string;
@@ -44,7 +43,7 @@ export declare class UserEntity {
     get birthday(): string;
     get country(): string;
     get city(): string;
-    get favoriteGenres(): Genres[];
+    get favoriteGenres(): string[];
     get films(): string[];
     get friends(): string[];
     get favoriteFilms(): string[];
@@ -73,7 +72,7 @@ export declare class UserEntity {
         birthday: string;
         country: string;
         city: string;
-        favoriteGenres: Genres[];
+        favoriteGenres: string[];
         favoriteFilms: string[];
         films: string[];
         friends: string[];
@@ -87,10 +86,12 @@ export declare class UserEntity {
         avatarImage: string;
         wasOnline: Date;
     };
+    updateFriends(friends: string[]): void | never;
     updateGender(gender: string): void | never;
     updateBirthday(birthday: string): void | never;
     updateCity(city: string): void | never;
     updateCountry(country: string): void | never;
+    updateGenres(genres: string[]): void | never;
     updateAboutMe(about: string): void | never;
     updateName(name: string): void | never;
     updateSecondName(secondName: string): void | never;
@@ -102,6 +103,10 @@ export declare class UserEntity {
     updatePassword(password: string): void | never;
     updateUserEmail(email: string): void | never;
     updateUserAvatar(avatar: string): void | never;
+    updatePersons(person: string): void | never;
+    updateFavoriteFilms(favoriteFilm: string): void | never;
+    updateLikedFilms(likedFilm: string): void | never;
+    updateDislikedFilms(dislikedFilm: string): void | never;
     private _validateUserEmail;
     private _validateUserPassword;
     private _validateUserAvatar;

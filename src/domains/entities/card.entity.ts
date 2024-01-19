@@ -3,29 +3,33 @@ import { DirectorEntity } from './director.entity';
 import { Genres } from './genges.entity';
 import { PersonEntity } from './person.entity';
 import { QuoteEntity } from './quote.entity';
+import { RatingEntity } from './rating.entity';
+import { ReviewEntity } from './review.entity';
 
 export class CardEntity {
   constructor(
     private readonly _id: string,
     // first
     private readonly _posterImage: string,
+    private readonly _backgroundImage: string,
+    private _reviews: string[],
     private readonly _name: string,
     private readonly _secondName: string,
-    private readonly _ratings: number[],
-    private readonly _userLike: number,
-    private readonly _userDislike: number,
-    private readonly _favourites: string[],
-    private readonly _year: string,
-    private readonly _country: string,
+    private readonly _ratings: string[],
+    private _userLike: number,
+    private _userDislike: number,
+    private _favourites: number,
+    private readonly _year: number,
+    private readonly _country: string[],
     private readonly _slogan: string,
-    private readonly _directors: DirectorEntity[],
+    private readonly _directors: string[],
     private readonly _screenwriters: string[],
     private readonly _producers: string[],
     private readonly _operators: string[],
     private readonly _composers: string[],
     private readonly _artists: string[],
     private readonly _editors: string[],
-    private readonly _genres: Genres[],
+    private readonly _genres: string[],
     private readonly _collecting: number,
     private readonly _premiereInWorld: string,
     private readonly _premiereInRussia: string,
@@ -35,143 +39,231 @@ export class CardEntity {
     private readonly _production: string[],
     private readonly _specialEffects: string[],
     private readonly _dubbingStudios: string[],
-    private readonly _persons: PersonEntity[],
+    private readonly _persons: string[],
     // third
     private readonly _trailers: string[],
-    private readonly _awards: AwardEntity[],
+    private readonly _awards: string[],
     private readonly _posters: string[],
     private readonly _shots: string[],
-    private readonly _sequelAndPrequels: CardEntity[],
-    private readonly _quotes: QuoteEntity[],
-    private readonly _seemFilms: CardEntity[],
+    private readonly _sequelAndPrequels: string[],
+    private readonly _quotes: string[],
+    private readonly _seemFilms: string[],
+    private readonly _description: string,
   ) {}
 
-  public id(): string {
+  public get id(): string {
     return this._id;
   }
 
-  public posterImage(): string {
+  public get description(): string {
+    return this._description;
+  }
+
+  public get posterImage(): string {
     return this._posterImage;
   }
 
-  public name(): string {
+  public get name(): string {
     return this._name;
   }
 
-  public secondName(): string {
+  public get reviews(): string[] {
+    return this._reviews;
+  }
+
+  public get backgroundImage(): string {
+    return this._backgroundImage;
+  }
+
+  public get secondName(): string {
     return this._secondName;
   }
 
-  public ratings(): number[] {
+  public get ratings(): string[] {
     return this._ratings;
   }
 
-  public userLike(): number {
+  public get userLike(): number {
     return this._userLike;
   }
 
-  public userDislike(): number {
+  public get userDislike(): number {
     return this._userDislike;
   }
 
-  public favourites(): string[] {
+  public get favourites(): number {
     return this._favourites;
   }
 
-  public year(): string {
+  public get year(): number {
     return this._year;
   }
 
-  public country(): string {
+  public get country(): string[] {
     return this._country;
   }
 
-  public slogan(): string {
+  public get slogan(): string {
     return this._slogan;
   }
 
-  public directors(): DirectorEntity[] {
+  public get directors(): string[] {
     return this._directors;
   }
 
-  public screenwriters(): string[] {
+  public get screenwriters(): string[] {
     return this._screenwriters;
   }
-  public producers(): string[] {
+  public get producers(): string[] {
     return this._producers;
   }
-  public operators(): string[] {
+  public get operators(): string[] {
     return this._operators;
   }
-  public composers(): string[] {
+  public get composers(): string[] {
     return this._composers;
   }
-  public artisrs(): string[] {
+  public get artisrs(): string[] {
     return this._artists;
   }
-  public editors(): string[] {
+  public get editors(): string[] {
     return this._editors;
   }
-  public genres(): Genres[] {
+  public get genres(): string[] {
     return this._genres;
   }
-  public collecting(): number {
+  public get collecting(): number {
     return this._collecting;
   }
-  public premiereInWorld(): string {
+  public get premiereInWorld(): string {
     return this._premiereInWorld;
   }
-  public premiereInRussia(): string {
+  public get premiereInRussia(): string {
     return this._premiereInRussia;
   }
-  public age(): number {
+  public get age(): number {
     return this._age;
   }
-  public duration(): number {
+  public get duration(): number {
     return this._duration;
   }
 
-  public production(): string[] {
+  public get production(): string[] {
     return this._production;
   }
 
-  public specialEffects(): string[] {
+  public get specialEffects(): string[] {
     return this._specialEffects;
   }
 
-  public dubbingStudios(): string[] {
+  public get dubbingStudios(): string[] {
     return this._dubbingStudios;
   }
 
-  public persons(): PersonEntity[] {
+  public get persons(): string[] {
     return this._persons;
   }
 
-  public trailers(): string[] {
+  public get trailers(): string[] {
     return this._trailers;
   }
 
-  public awards(): AwardEntity[] {
+  public get awards(): string[] {
     return this._awards;
   }
 
-  public posters(): string[] {
+  public get posters(): string[] {
     return this._posters;
   }
 
-  public shots(): string[] {
+  public get shots(): string[] {
     return this._shots;
   }
 
-  public sequelAndPrequels(): CardEntity[] {
+  public get sequelAndPrequels(): string[] {
     return this._sequelAndPrequels;
   }
 
-  public quotes(): QuoteEntity[] {
+  public get quotes(): string[] {
     return this._quotes;
   }
 
-  public seemFilms(): CardEntity[] {
+  public get seemFilms(): string[] {
     return this._seemFilms;
+  }
+
+  public updateFavorite(favorite: number): void | never {
+    try {
+      this._favourites = this._favourites + favorite;
+    } catch (err) {
+      throw new Error('Ошибка при изменении избранных!');
+    }
+  }
+
+  public updateLikes(like: number): void | never {
+    try {
+      this._userLike = this._userLike + like;
+    } catch (err) {
+      throw new Error('Ошибка при изменении лайков!');
+    }
+  }
+
+  public updateDislikes(dislike: number): void | never {
+    try {
+      this._userDislike = this._userDislike + dislike;
+    } catch (err) {
+      throw new Error('Ошибка при изменении дизлайков!');
+    }
+  }
+
+  public updateReviews(reviews: string[]): void | never {
+    try {
+      this._reviews = [...this._reviews, ...reviews];
+    } catch (err) {
+      console.log(err);
+      throw new Error('Ошибка при обновлении Рецензий!');
+    }
+  }
+
+  public getCardData() {
+    return {
+      id: this._id,
+      posterImage: this._posterImage,
+      reviews: this._reviews,
+      name: this._name,
+      secondName: this._secondName,
+      ratings: this._ratings,
+      userLike: this._userLike,
+      userDislike: this._userDislike,
+      favourites: this._favourites,
+      year: this._year,
+      country: this._country,
+      slogan: this._slogan,
+      directors: this._directors,
+      screenwriters: this._screenwriters,
+      producers: this._producers,
+      operators: this._operators,
+      composers: this._composers,
+      artists: this._artists,
+      editors: this._editors,
+      genres: this._genres,
+      collecting: this._collecting,
+      oremiereImWorld: this._premiereInWorld,
+      premiereInRussia: this._premiereInRussia,
+      age: this._age,
+      duration: this.duration,
+      production: this._production,
+      specialEffects: this._specialEffects,
+      dubbingStudios: this._dubbingStudios,
+      persons: this._persons,
+      trailers: this._trailers,
+      awards: this._awards,
+      posters: this._posters,
+      shots: this._shots,
+      sequelAndPrequels: this._sequelAndPrequels,
+      quotes: this._quotes,
+      seemFilms: this._seemFilms,
+      description: this._description,
+    };
   }
 }

@@ -1,13 +1,4 @@
-import {
-  Body,
-  Controller,
-  Get,
-  Inject,
-  Param,
-  Post,
-  Put,
-  UseGuards,
-} from '@nestjs/common';
+import { Body, Controller, Get, Inject, Param, Post, Put, Query, UseGuards } from '@nestjs/common';
 import { ObjectId } from 'mongodb';
 import { UsersRepository } from './users.repository';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
@@ -31,19 +22,6 @@ import { UpdateUserPasswordDto } from './dto/update-user-password.dto';
 @ApiBearerAuth()
 @ApiTags('Users')
 export class UsersController {
-  // constructor(private readonly usersRepository: UsersRepository) {}
-
-  // @Get(':id')
-  // @UseGuards(JwtAuthGuard)
-  // getById(@Param('id') id: ObjectId) {
-  //   return this.usersRepository.findById(id.valueOf() as string);
-  // }
-
-  // @Post('/create')
-  // create(dto: CreateUserDto) {
-  //   return this.usersRepository.create(dto);
-  // }
-
   constructor(
     @Inject(UpdateUserUseCaseSymbol)
     private readonly _updateUserUseCase: UpdateUserUseCase,
@@ -55,7 +33,9 @@ export class UsersController {
   @Get('/me')
   @UseGuards(JwtAuthGuard)
   getMe(@UserId() id: string) {
-    return this.usersRepository.findById(id);
+    return this.usersRepository
+      .findById(id)
+      .populate('friends', 'avatarImage name secondName wasOnline');
   }
 
   @Put('/update')
@@ -77,6 +57,11 @@ export class UsersController {
       dto.birthday,
       dto.country,
       dto.city,
+      dto.favoriteGenres,
+      dto.person,
+      dto.favoriteFilm,
+      dto.likedFilm,
+      dto.dislikedFilm,
     );
     const updUser = await this._updateUserUseCase.updateUser(command);
     return await this.usersRepository.updateUser(updUser);
@@ -85,14 +70,15 @@ export class UsersController {
 
   @Put('/update/password')
   @UseGuards(JwtAuthGuard)
-  async updatePassword(
-    @UserId() id: string,
-    @Body() dto: UpdateUserPasswordDto,
-  ) {
+  async updatePassword(@UserId() id: string, @Body() dto: UpdateUserPasswordDto) {
     const command = new UpdateUserPasswordCommand(id, dto.password);
-    const updUser = await this._updateUserPasswordUseCase.updateUserPassword(
-      command,
-    );
+    const updUser = await this._updateUserPasswordUseCase.updateUserPassword(command);
     return this.usersRepository.updateUser(updUser);
+  }
+
+  @Get('/search')
+  @UseGuards(JwtAuthGuard)
+  search(@Query('query') query: string) {
+    return this.usersRepository.search(query);
   }
 }

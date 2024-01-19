@@ -6,6 +6,14 @@ import { ServeStaticModule } from '@nestjs/serve-static';
 import { ConfigModule } from '@nestjs/config';
 import { FilesModule } from './modules/files/files.module';
 import { AuthModule } from './modules/auth/auth.module';
+import { CardsModule } from './modules/card/cards.module';
+import { AwardModule } from './modules/awards/awards.module';
+import { PersonsModule } from './modules/persons/persons.module';
+import { ReviewsModule } from './modules/reviews/reviews.module';
+import { CommentsModule } from './modules/comments/comments.module';
+import { DirectorsModule } from './modules/directors/directors.module';
+import { RatingsModule } from './modules/ratings/ratings.module';
+import { QuotesModule } from './modules/quotes/quotes.module';
 
 @Module({
   imports: [
@@ -14,6 +22,14 @@ import { AuthModule } from './modules/auth/auth.module';
     UsersModule,
     FilesModule,
     AuthModule,
+    CardsModule,
+    AwardModule,
+    PersonsModule,
+    ReviewsModule,
+    CommentsModule,
+    DirectorsModule,
+    RatingsModule,
+    QuotesModule,
   ],
   controllers: [],
   providers: [],

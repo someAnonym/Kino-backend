@@ -18,6 +18,7 @@ const user_mapper_1 = require("./user.mapper");
 const user_orm_entity_1 = require("./entities/user-orm.entity");
 const mongoose_1 = require("mongoose");
 const mongoose_2 = require("@nestjs/mongoose");
+const mongodb_1 = require("mongodb");
 let UsersRepository = exports.UsersRepository = class UsersRepository {
     constructor(repository) {
         this.repository = repository;
@@ -44,6 +45,11 @@ let UsersRepository = exports.UsersRepository = class UsersRepository {
             currentUser.birthday = updatedUser.birthday;
             currentUser.city = updatedUser.city;
             currentUser.country = updatedUser.country;
+            currentUser.favoriteGenres = updatedUser.favoriteGenres;
+            currentUser.persons = updatedUser.persons.map((i) => new mongodb_1.ObjectId(i));
+            currentUser.favoriteFilms = updatedUser.favoriteFilms.map((i) => new mongodb_1.ObjectId(i));
+            currentUser.likedFilms = updatedUser.likedFilms.map((i) => new mongodb_1.ObjectId(i));
+            currentUser.dislikedFilms = updatedUser.dislikedfilms.map((i) => new mongodb_1.ObjectId(i));
             return this.repository.findOneAndUpdate(currentUser._id, currentUser);
         }
         catch (error) {
@@ -58,7 +64,11 @@ let UsersRepository = exports.UsersRepository = class UsersRepository {
     }
     findById(id) {
         const user = this.repository.findById(id);
-        return user;
+        return user.populate('reviews').populate('comments');
+    }
+    async search(query) {
+        const users = await this.repository.find();
+        return users.filter((i) => i.name.toLowerCase().includes(query.toLowerCase()));
     }
 };
 exports.UsersRepository = UsersRepository = __decorate([

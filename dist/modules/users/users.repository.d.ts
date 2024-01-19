@@ -47,4 +47,7 @@ export declare class UsersRepository implements UserRepositoryPort {
     }, import("mongoose").Document<unknown, {}, UserDocument> & User & Document & {
         _id: import("mongoose").Types.ObjectId;
     }, {}, UserDocument, "findOne">;
+    search(query: string): Promise<(import("mongoose").Document<unknown, {}, UserDocument> & User & Document & {
+        _id: import("mongoose").Types.ObjectId;
+    })[]>;
 }

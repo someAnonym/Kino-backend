@@ -83,7 +83,10 @@ __decorate([
     __metadata("design:type", Array)
 ], User.prototype, "favoriteGenres", void 0);
 __decorate([
-    (0, mongoose_1.Prop)({ default: [] }),
+    (0, mongoose_1.Prop)({
+        type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Card' }],
+        default: [],
+    }),
     __metadata("design:type", Array)
 ], User.prototype, "films", void 0);
 __decorate([
@@ -94,15 +97,24 @@ __decorate([
     __metadata("design:type", Array)
 ], User.prototype, "friends", void 0);
 __decorate([
-    (0, mongoose_1.Prop)({ default: [] }),
+    (0, mongoose_1.Prop)({
+        type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Card' }],
+        default: [],
+    }),
     __metadata("design:type", Array)
 ], User.prototype, "favoriteFilms", void 0);
 __decorate([
-    (0, mongoose_1.Prop)({ default: [] }),
+    (0, mongoose_1.Prop)({
+        type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Card' }],
+        default: [],
+    }),
     __metadata("design:type", Array)
 ], User.prototype, "expectedFilms", void 0);
 __decorate([
-    (0, mongoose_1.Prop)({ default: [] }),
+    (0, mongoose_1.Prop)({
+        type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Person' }],
+        default: [],
+    }),
     __metadata("design:type", Array)
 ], User.prototype, "persons", void 0);
 __decorate([
@@ -118,11 +130,17 @@ __decorate([
     __metadata("design:type", Array)
 ], User.prototype, "comments", void 0);
 __decorate([
-    (0, mongoose_1.Prop)({ default: [] }),
+    (0, mongoose_1.Prop)({
+        type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Card' }],
+        default: [],
+    }),
     __metadata("design:type", Array)
 ], User.prototype, "likedFilms", void 0);
 __decorate([
-    (0, mongoose_1.Prop)({ default: [] }),
+    (0, mongoose_1.Prop)({
+        type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Card' }],
+        default: [],
+    }),
     __metadata("design:type", Array)
 ], User.prototype, "dislikedFilms", void 0);
 exports.User = User = __decorate([

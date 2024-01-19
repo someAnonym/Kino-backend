@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ReviewEntity = void 0;
 class ReviewEntity {
-    constructor(_id, _user, _typeOfReview, _likes, _dislikes, _title, _date, _text, _comments, _link, _complaint, _answer) {
+    constructor(_id, _user, _typeOfReview, _likes, _dislikes, _title, _date, _text, _comments, _complaints) {
         this._id = _id;
         this._user = _user;
         this._typeOfReview = _typeOfReview;
@@ -12,9 +12,7 @@ class ReviewEntity {
         this._date = _date;
         this._text = _text;
         this._comments = _comments;
-        this._link = _link;
-        this._complaint = _complaint;
-        this._answer = _answer;
+        this._complaints = _complaints;
     }
     get id() {
         return this._id;
@@ -43,14 +41,31 @@ class ReviewEntity {
     get comments() {
         return this._comments;
     }
-    get link() {
-        return this._link;
+    get complaints() {
+        return this._complaints;
     }
-    get complaint() {
-        return this._complaint;
+    getReviewData() {
+        return {
+            id: this._id,
+            user: this._user,
+            typeOfReview: this._typeOfReview,
+            likes: this._likes,
+            dislikes: this._dislikes,
+            title: this._title,
+            date: this._date,
+            text: this._text,
+            comments: this._comments,
+            complaints: this._complaints,
+        };
     }
-    get answer() {
-        return this?._answer;
+    updateLikes(likes) {
+        this._likes = likes;
+    }
+    updateDislikes(dislikes) {
+        this._dislikes = dislikes;
+    }
+    updateComments(comments) {
+        this._comments = [...this._comments, ...comments];
     }
 }
 exports.ReviewEntity = ReviewEntity;

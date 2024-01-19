@@ -160,6 +160,14 @@ class UserEntity {
             wasOnline: this._wasOnline,
         };
     }
+    updateFriends(friends) {
+        try {
+            this._friends = [...this._friends, ...friends];
+        }
+        catch (error) {
+            throw new Error('Ошибка при обновлении количества друзей!');
+        }
+    }
     updateGender(gender) {
         try {
             this._gender = gender;
@@ -190,6 +198,14 @@ class UserEntity {
         }
         catch (err) {
             throw new Error('Слишком мало символов!');
+        }
+    }
+    updateGenres(genres) {
+        try {
+            this._favoriteGenres = genres;
+        }
+        catch (err) {
+            throw new Error('Ошибка при обновлении жанров!');
         }
     }
     updateAboutMe(about) {
@@ -278,6 +294,46 @@ class UserEntity {
         }
         else {
             throw new Error('Новый аватар не валиден');
+        }
+    }
+    updatePersons(person) {
+        if (person) {
+            if (!this._persons.includes(person)) {
+                this._persons = [...this._persons, person];
+            }
+            else {
+                this._persons = this._persons.filter((i) => i !== person);
+            }
+        }
+    }
+    updateFavoriteFilms(favoriteFilm) {
+        if (favoriteFilm) {
+            if (!this._favoriteFilms.includes(favoriteFilm)) {
+                this._favoriteFilms = [...this._favoriteFilms, favoriteFilm];
+            }
+            else {
+                this._favoriteFilms = this._favoriteFilms.filter((i) => i !== favoriteFilm);
+            }
+        }
+    }
+    updateLikedFilms(likedFilm) {
+        if (likedFilm) {
+            if (!this._likedFilms.includes(likedFilm)) {
+                this._likedFilms = [...this._likedFilms, likedFilm];
+            }
+            else {
+                this._likedFilms = this._likedFilms.filter((i) => i !== likedFilm);
+            }
+        }
+    }
+    updateDislikedFilms(dislikedFilm) {
+        if (dislikedFilm) {
+            if (!this._dislikedFilms.includes(dislikedFilm)) {
+                this._dislikedFilms = [...this._dislikedFilms, dislikedFilm];
+            }
+            else {
+                this._dislikedFilms = this._dislikedFilms.filter((i) => i !== dislikedFilm);
+            }
         }
     }
     _validateUserEmail(email) {

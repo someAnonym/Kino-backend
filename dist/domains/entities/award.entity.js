@@ -9,6 +9,9 @@ class AwardEntity {
         this._description = _description;
         this._year = _year;
     }
+    get id() {
+        return this._id;
+    }
     get picture() {
         return this._picture;
     }

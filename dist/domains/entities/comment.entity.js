@@ -2,18 +2,15 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CommentEntity = void 0;
 class CommentEntity {
-    constructor(_id, _user, _likes, _dislikes, _title, _date, _text, _comments, _link, _complaint, _answer) {
+    constructor(_id, _user, _likes, _dislikes, _date, _text, _comments, _complaints) {
         this._id = _id;
         this._user = _user;
         this._likes = _likes;
         this._dislikes = _dislikes;
-        this._title = _title;
         this._date = _date;
         this._text = _text;
         this._comments = _comments;
-        this._link = _link;
-        this._complaint = _complaint;
-        this._answer = _answer;
+        this._complaints = _complaints;
     }
     get id() {
         return this._id;
@@ -27,9 +24,6 @@ class CommentEntity {
     get dislikes() {
         return this._dislikes;
     }
-    get title() {
-        return this._title;
-    }
     get date() {
         return this._date;
     }
@@ -39,14 +33,34 @@ class CommentEntity {
     get comments() {
         return this._comments;
     }
-    get link() {
-        return this._link;
+    get complaints() {
+        return this._complaints;
     }
-    get complaint() {
-        return this._complaint;
+    updateComments(comments) {
+        try {
+            return (this._comments = [...this._comments, ...comments]);
+        }
+        catch (error) {
+            console.warn('Ошибка при изменении комментариев комментария', error);
+        }
     }
-    get answer() {
-        return this?._answer;
+    updateLikes(likes) {
+        return (this._likes = likes);
+    }
+    updateDislikes(dislikes) {
+        return (this._dislikes = dislikes);
+    }
+    getCommentData() {
+        return {
+            id: this._id,
+            user: this._user,
+            likes: this._likes,
+            dislikes: this._dislikes,
+            date: this._date,
+            text: this._text,
+            comments: this._comments,
+            complaints: this._complaints,
+        };
     }
 }
 exports.CommentEntity = CommentEntity;

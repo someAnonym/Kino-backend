@@ -78,4 +78,16 @@ __decorate([
     (0, swagger_1.ApiProperty)({ default: '' }),
     __metadata("design:type", String)
 ], UpdateUserDto.prototype, "person", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({ default: '' }),
+    __metadata("design:type", String)
+], UpdateUserDto.prototype, "favoriteFilm", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({ default: '' }),
+    __metadata("design:type", String)
+], UpdateUserDto.prototype, "likedFilm", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({ default: '' }),
+    __metadata("design:type", String)
+], UpdateUserDto.prototype, "dislikedFilm", void 0);
 //# sourceMappingURL=update-user.dto.js.map

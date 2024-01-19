@@ -33,7 +33,7 @@ export class UserEntity {
     // second
     private readonly _films: string[],
     private _friends: string[],
-    private readonly _favoriteFilms: string[],
+    private _favoriteFilms: string[],
     private readonly _expecredFilms: string[],
     private _persons: string[],
     private readonly _favoritePersons: string[],
@@ -327,10 +327,42 @@ export class UserEntity {
   }
 
   public updatePersons(person: string): void | never {
-    if (!this._persons.includes(person)) {
-      this._persons = [...this._persons, person];
-    } else {
-      this._persons = this._persons.filter((i) => i !== person);
+    if (person) {
+      if (!this._persons.includes(person)) {
+        this._persons = [...this._persons, person];
+      } else {
+        this._persons = this._persons.filter((i) => i !== person);
+      }
+    }
+  }
+
+  public updateFavoriteFilms(favoriteFilm: string): void | never {
+    if (favoriteFilm) {
+      if (!this._favoriteFilms.includes(favoriteFilm)) {
+        this._favoriteFilms = [...this._favoriteFilms, favoriteFilm];
+      } else {
+        this._favoriteFilms = this._favoriteFilms.filter((i) => i !== favoriteFilm);
+      }
+    }
+  }
+
+  public updateLikedFilms(likedFilm: string): void | never {
+    if (likedFilm) {
+      if (!this._likedFilms.includes(likedFilm)) {
+        this._likedFilms = [...this._likedFilms, likedFilm];
+      } else {
+        this._likedFilms = this._likedFilms.filter((i) => i !== likedFilm);
+      }
+    }
+  }
+
+  public updateDislikedFilms(dislikedFilm: string): void | never {
+    if (dislikedFilm) {
+      if (!this._dislikedFilms.includes(dislikedFilm)) {
+        this._dislikedFilms = [...this._dislikedFilms, dislikedFilm];
+      } else {
+        this._dislikedFilms = this._dislikedFilms.filter((i) => i !== dislikedFilm);
+      }
     }
   }
 

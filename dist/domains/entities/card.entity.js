@@ -158,7 +158,7 @@ class CardEntity {
     }
     updateFavorite(favorite) {
         try {
-            this._favourites = favorite;
+            this._favourites = this._favourites + favorite;
         }
         catch (err) {
             throw new Error('Ошибка при изменении избранных!');
@@ -166,7 +166,7 @@ class CardEntity {
     }
     updateLikes(like) {
         try {
-            this._userLike = like;
+            this._userLike = this._userLike + like;
         }
         catch (err) {
             throw new Error('Ошибка при изменении лайков!');
@@ -174,7 +174,7 @@ class CardEntity {
     }
     updateDislikes(dislike) {
         try {
-            this._userDislike = dislike;
+            this._userDislike = this._userDislike + dislike;
         }
         catch (err) {
             throw new Error('Ошибка при изменении дизлайков!');

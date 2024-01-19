@@ -1,5 +1,3 @@
-import { ReviewEntity } from 'src/domains/entities/review.entity';
-
 export class UpdateCardCommand {
   constructor(
     private readonly _cardId: string,

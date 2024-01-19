@@ -194,7 +194,7 @@ export class CardEntity {
 
   public updateFavorite(favorite: number): void | never {
     try {
-      this._favourites = favorite;
+      this._favourites = this._favourites + favorite;
     } catch (err) {
       throw new Error('Ошибка при изменении избранных!');
     }
@@ -202,7 +202,7 @@ export class CardEntity {
 
   public updateLikes(like: number): void | never {
     try {
-      this._userLike = like;
+      this._userLike = this._userLike + like;
     } catch (err) {
       throw new Error('Ошибка при изменении лайков!');
     }
@@ -210,7 +210,7 @@ export class CardEntity {
 
   public updateDislikes(dislike: number): void | never {
     try {
-      this._userDislike = dislike;
+      this._userDislike = this._userDislike + dislike;
     } catch (err) {
       throw new Error('Ошибка при изменении дизлайков!');
     }

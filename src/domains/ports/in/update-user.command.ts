@@ -17,6 +17,9 @@ export class UpdateUserCommand {
     private _city: string,
     private _favoriteGenres: string[],
     private _person: string,
+    private _favoriteFilm: string,
+    private _likedFilm: string,
+    private _dislikedFilm: string,
   ) {}
 
   public get userId(): string {
@@ -84,5 +87,17 @@ export class UpdateUserCommand {
   }
   public get person(): string {
     return this._person;
+  }
+
+  public get favoriteFilm(): string {
+    return this._favoriteFilm;
+  }
+
+  public get likedFilm(): string {
+    return this._likedFilm;
+  }
+
+  public get dislikedFilm(): string {
+    return this._dislikedFilm;
   }
 }

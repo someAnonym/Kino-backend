@@ -107,7 +107,7 @@ class PersonEntity {
             this._favorites = this._favorites + favorites;
         }
         catch (error) {
-            throw new Error('Ошибка обновления комментариев у персоны!');
+            throw new Error('Ошибка обновления избранных у персоны!');
         }
     }
 }

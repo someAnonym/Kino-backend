@@ -15,4 +15,7 @@ export declare class UpdateUserDto {
     country: string;
     favoriteGenres: string[];
     person: string;
+    favoriteFilm: string;
+    likedFilm: string;
+    dislikedFilm: string;
 }

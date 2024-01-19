@@ -46,11 +46,14 @@ export class UsersRepository implements UserRepositoryPort {
       currentUser.country = updatedUser.country;
       currentUser.favoriteGenres = updatedUser.favoriteGenres;
       currentUser.persons = updatedUser.persons.map((i) => new ObjectId(i));
-
+      currentUser.favoriteFilms = updatedUser.favoriteFilms.map((i) => new ObjectId(i));
+      currentUser.likedFilms = updatedUser.likedFilms.map((i) => new ObjectId(i));
+      currentUser.dislikedFilms = updatedUser.dislikedfilms.map((i) => new ObjectId(i));
       // currentUser.friends = updatedUser.friends.map((i) => new ObjectId(i));
 
       return this.repository.findOneAndUpdate(currentUser._id, currentUser);
     } catch (error) {
+      // console.log(error);
       throw new ForbiddenException('Ошибка при обновлении пользователя', error);
     }
   }

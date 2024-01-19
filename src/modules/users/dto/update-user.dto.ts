@@ -33,4 +33,10 @@ export class UpdateUserDto {
   favoriteGenres: string[];
   @ApiProperty({ default: '' })
   person: string;
+  @ApiProperty({ default: '' })
+  favoriteFilm: string;
+  @ApiProperty({ default: '' })
+  likedFilm: string;
+  @ApiProperty({ default: '' })
+  dislikedFilm: string;
 }

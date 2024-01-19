@@ -17,7 +17,7 @@ export declare class UserEntity {
     private _favoriteGenres;
     private readonly _films;
     private _friends;
-    private readonly _favoriteFilms;
+    private _favoriteFilms;
     private readonly _expecredFilms;
     private _persons;
     private readonly _favoritePersons;
@@ -104,6 +104,9 @@ export declare class UserEntity {
     updateUserEmail(email: string): void | never;
     updateUserAvatar(avatar: string): void | never;
     updatePersons(person: string): void | never;
+    updateFavoriteFilms(favoriteFilm: string): void | never;
+    updateLikedFilms(likedFilm: string): void | never;
+    updateDislikedFilms(dislikedFilm: string): void | never;
     private _validateUserEmail;
     private _validateUserPassword;
     private _validateUserAvatar;

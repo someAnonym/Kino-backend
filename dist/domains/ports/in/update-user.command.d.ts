@@ -16,7 +16,10 @@ export declare class UpdateUserCommand {
     private _city;
     private _favoriteGenres;
     private _person;
-    constructor(_userId: string, _email: string, _name: string, _secondName: string, _vk: string, _instagram: string, _youtube: string, _twitter: string, _facebook: string, _aboutMe: string, _avatarImage: string, _gender: string, _birthday: string, _country: string, _city: string, _favoriteGenres: string[], _person: string);
+    private _favoriteFilm;
+    private _likedFilm;
+    private _dislikedFilm;
+    constructor(_userId: string, _email: string, _name: string, _secondName: string, _vk: string, _instagram: string, _youtube: string, _twitter: string, _facebook: string, _aboutMe: string, _avatarImage: string, _gender: string, _birthday: string, _country: string, _city: string, _favoriteGenres: string[], _person: string, _favoriteFilm: string, _likedFilm: string, _dislikedFilm: string);
     get userId(): string;
     get email(): string;
     get favoriteGenres(): string[];
@@ -34,4 +37,7 @@ export declare class UpdateUserCommand {
     get gender(): string;
     get birthday(): string;
     get person(): string;
+    get favoriteFilm(): string;
+    get likedFilm(): string;
+    get dislikedFilm(): string;
 }

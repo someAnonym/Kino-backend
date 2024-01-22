@@ -31,10 +31,12 @@ let UsersController = exports.UsersController = class UsersController {
         this.usersRepository = usersRepository;
     }
     getMe(id) {
-        return this.usersRepository.findById(id);
+        return this.usersRepository
+            .findById(id)
+            .populate('friends', 'avatarImage name secondName wasOnline');
     }
     async update(id, dto) {
-        const command = new update_user_command_1.UpdateUserCommand(id, dto.email, dto.name, dto.secondName, dto.vk, dto.instagram, dto.youtube, dto.twitter, dto.facebook, dto.aboutMe, dto.avatarImage, dto.gender, dto.birthday, dto.country, dto.city);
+        const command = new update_user_command_1.UpdateUserCommand(id, dto.email, dto.name, dto.secondName, dto.vk, dto.instagram, dto.youtube, dto.twitter, dto.facebook, dto.aboutMe, dto.avatarImage, dto.gender, dto.birthday, dto.country, dto.city, dto.favoriteGenres, dto.person, dto.favoriteFilm, dto.likedFilm, dto.dislikedFilm);
         const updUser = await this._updateUserUseCase.updateUser(command);
         return await this.usersRepository.updateUser(updUser);
     }
@@ -42,6 +44,9 @@ let UsersController = exports.UsersController = class UsersController {
         const command = new update_user_password_command_1.UpdateUserPasswordCommand(id, dto.password);
         const updUser = await this._updateUserPasswordUseCase.updateUserPassword(command);
         return this.usersRepository.updateUser(updUser);
+    }
+    search(query) {
+        return this.usersRepository.search(query);
     }
 };
 __decorate([
@@ -70,6 +75,14 @@ __decorate([
     __metadata("design:paramtypes", [String, update_user_password_dto_1.UpdateUserPasswordDto]),
     __metadata("design:returntype", Promise)
 ], UsersController.prototype, "updatePassword", null);
+__decorate([
+    (0, common_1.Get)('/search'),
+    (0, common_1.UseGuards)(jwt_guard_1.JwtAuthGuard),
+    __param(0, (0, common_1.Query)('query')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], UsersController.prototype, "search", null);
 exports.UsersController = UsersController = __decorate([
     (0, common_1.Controller)('users'),
     (0, swagger_1.ApiBearerAuth)(),

@@ -44,4 +44,7 @@ export declare class UsersController {
     updatePassword(id: string, dto: UpdateUserPasswordDto): Promise<import("mongoose").Document<unknown, {}, import("./entities/user-orm.entity").UserDocument> & import("./entities/user-orm.entity").User & Document & {
         _id: import("mongoose").Types.ObjectId;
     }>;
+    search(query: string): Promise<(import("mongoose").Document<unknown, {}, import("./entities/user-orm.entity").UserDocument> & import("./entities/user-orm.entity").User & Document & {
+        _id: import("mongoose").Types.ObjectId;
+    })[]>;
 }

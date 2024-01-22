@@ -47,7 +47,7 @@ __decorate([
         },
     }),
     __param(0, (0, common_1.UploadedFile)(new common_1.ParseFilePipe({
-        validators: [new common_1.MaxFileSizeValidator({ maxSize: 1024 * 1024 * 5 })],
+        validators: [new common_1.MaxFileSizeValidator({ maxSize: 1024 * 1024 * 7 })],
     }))),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),

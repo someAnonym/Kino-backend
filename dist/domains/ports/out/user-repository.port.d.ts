@@ -11,5 +11,6 @@ export interface UserRepositoryPort {
     findById(id: string): any;
     findByEmail(email: string): any;
     create(dto: CreateUserDto): any;
+    search(query: string): any;
 }
 export {};

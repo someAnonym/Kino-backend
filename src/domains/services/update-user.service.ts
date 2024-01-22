@@ -23,6 +23,11 @@ export class UpdateUserService implements UpdateUserUseCase {
     user.updateBirthday(command.birthday);
     user.updateCity(command.city);
     user.updateCountry(command.country);
+    user.updateGenres(command.favoriteGenres);
+    user.updatePersons(command.person);
+    user.updateFavoriteFilms(command.favoriteFilm);
+    user.updateLikedFilms(command.likedFilm);
+    user.updateDislikedFilms(command.dislikedFilm);
 
     await this._userRepository.updateUser(user);
     return user;

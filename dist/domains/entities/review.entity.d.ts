@@ -32,7 +32,7 @@ export declare class ReviewEntity {
         comments: string[];
         complaints: string[];
     };
-    updateLikes(likes: number): void | never;
-    updateDislikes(dislikes: number): void;
+    updateLikes(like: number): void | never;
+    updateDislikes(dislike: number): void | never;
     updateComments(comments: string[]): void;
 }

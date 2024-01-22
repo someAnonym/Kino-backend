@@ -31,19 +31,20 @@ export class UserEntity {
     private _city: string,
     private _favoriteGenres: string[],
     // second
-    private readonly _films: string[],
     private _friends: string[],
     private _favoriteFilms: string[],
-    private readonly _expecredFilms: string[],
     private _persons: string[],
-    private readonly _favoritePersons: string[],
     private _reviews: string[],
     private _comments: string[],
+
     // third
     private _likedFilms: string[],
     private _dislikedFilms: string[],
+    private _likedComments: string[],
+    private _dislikedComments: string[],
+    private _likedReviews: string[],
+    private _dislikedReviews: string[],
     private _avatarImage?: string,
-    private _wasOnline?: Date,
   ) {}
 
   get id(): string {
@@ -110,10 +111,6 @@ export class UserEntity {
     return this._favoriteGenres;
   }
 
-  public get films(): string[] {
-    return this._films;
-  }
-
   public get friends(): string[] {
     return this._friends;
   }
@@ -122,15 +119,8 @@ export class UserEntity {
     return this._favoriteFilms;
   }
 
-  public get expectedFilms(): string[] {
-    return this._expecredFilms;
-  }
   public get persons(): string[] {
     return this._persons;
-  }
-
-  public get favoritePersons(): string[] {
-    return this._favoritePersons;
   }
 
   public get reviews(): string[] {
@@ -153,10 +143,18 @@ export class UserEntity {
     return this?._avatarImage;
   }
 
-  public get wasOnline(): Date {
-    return this?._wasOnline;
+  public get likedComments(): string[] {
+    return this._likedComments;
   }
-
+  public get dislikedComments(): string[] {
+    return this._dislikedComments;
+  }
+  public get likedReviews(): string[] {
+    return this._likedReviews;
+  }
+  public get dislikedReviews(): string[] {
+    return this._dislikedReviews;
+  }
   public getUserData() {
     return {
       id: this._id,
@@ -176,17 +174,17 @@ export class UserEntity {
       city: this._city,
       favoriteGenres: this._favoriteGenres,
       favoriteFilms: this._favoriteFilms,
-      films: this._films,
       friends: this._friends,
-      expectedFilms: this._expecredFilms,
       persons: this._persons,
-      favoritePersons: this._favoritePersons,
       reviews: this._reviews,
       comments: this._comments,
       likedFilms: this._likedFilms,
-      dislikedfilms: this._dislikedFilms,
+      dislikedFilms: this._dislikedFilms,
+      likedComments: this._likedComments,
+      dislikedComments: this._dislikedComments,
+      likedReviews: this._likedReviews,
+      dislikedReviews: this._dislikedReviews,
       avatarImage: this._avatarImage,
-      wasOnline: this._wasOnline,
     };
   }
 
@@ -362,6 +360,46 @@ export class UserEntity {
         this._dislikedFilms = [...this._dislikedFilms, dislikedFilm];
       } else {
         this._dislikedFilms = this._dislikedFilms.filter((i) => i !== dislikedFilm);
+      }
+    }
+  }
+
+  public updateLikedComments(likedComment: string): void | never {
+    if (likedComment) {
+      if (!this._likedFilms.includes(likedComment)) {
+        this._likedComments = [...this._likedComments, likedComment];
+      } else {
+        this._likedComments = this._likedComments.filter((i) => i !== likedComment);
+      }
+    }
+  }
+
+  public updateDislikedComments(dislikedComment: string): void | never {
+    if (dislikedComment) {
+      if (!this._dislikedFilms.includes(dislikedComment)) {
+        this._dislikedComments = [...this._dislikedComments, dislikedComment];
+      } else {
+        this._dislikedComments = this._dislikedComments.filter((i) => i !== dislikedComment);
+      }
+    }
+  }
+
+  public updateLikedReviews(likedReview: string): void | never {
+    if (likedReview) {
+      if (!this._likedReviews.includes(likedReview)) {
+        this._likedReviews = [...this._likedReviews, likedReview];
+      } else {
+        this._likedReviews = this._likedReviews.filter((i) => i !== likedReview);
+      }
+    }
+  }
+
+  public updateDislikedReviews(dislikedReview: string): void | never {
+    if (dislikedReview) {
+      if (!this._dislikedReviews.includes(dislikedReview)) {
+        this._dislikedReviews = [...this._dislikedReviews, dislikedReview];
+      } else {
+        this._dislikedReviews = this._dislikedReviews.filter((i) => i !== dislikedReview);
       }
     }
   }

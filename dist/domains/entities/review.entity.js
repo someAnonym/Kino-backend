@@ -58,11 +58,21 @@ class ReviewEntity {
             complaints: this._complaints,
         };
     }
-    updateLikes(likes) {
-        this._likes = likes;
+    updateLikes(like) {
+        try {
+            this._likes = this._likes + like;
+        }
+        catch (error) {
+            throw new Error('Ошибка обновления лайков!');
+        }
     }
-    updateDislikes(dislikes) {
-        this._dislikes = dislikes;
+    updateDislikes(dislike) {
+        try {
+            this._dislikes = this._dislikes + dislike;
+        }
+        catch (error) {
+            throw new Error('Ошибка обновления лайков!');
+        }
     }
     updateComments(comments) {
         this._comments = [...this._comments, ...comments];

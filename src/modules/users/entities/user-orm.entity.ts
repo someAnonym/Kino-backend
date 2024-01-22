@@ -1,9 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { CardEntity } from 'src/domains/entities/card.entity';
-import { CommentEntity } from 'src/domains/entities/comment.entity';
 import * as mongoose from 'mongoose';
-import { ReviewEntity } from 'src/domains/entities/review.entity';
-import { Genres } from './genges.entity';
 import { ObjectId } from 'mongodb';
 
 export type UserDocument = User & Document;
@@ -43,9 +39,6 @@ export class User {
   @Prop({ default: '' })
   avatarImage?: string;
 
-  @Prop({ default: Date.now() })
-  wasOnline?: Date;
-
   @Prop({ default: '' })
   gender: string;
 
@@ -62,12 +55,6 @@ export class User {
   favoriteGenres: string[];
 
   @Prop({
-    type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Card' }],
-    default: [],
-  })
-  films: ObjectId[];
-
-  @Prop({
     type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
     default: [],
   })
@@ -80,25 +67,22 @@ export class User {
   favoriteFilms: ObjectId[];
 
   @Prop({
-    type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Card' }],
-    default: [],
-  })
-  expectedFilms: ObjectId[];
-
-  @Prop({
     type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Person' }],
     default: [],
   })
   persons: ObjectId[];
 
-  @Prop({ default: [] })
-  favoritePersons: string[];
+  @Prop({
+    type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Review' }],
+    default: [],
+  })
+  reviews: ObjectId[];
 
-  @Prop({ default: [] })
-  reviews: string[];
-
-  @Prop({ default: [] })
-  comments: string[];
+  @Prop({
+    type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }],
+    default: [],
+  })
+  comments: ObjectId[];
 
   @Prop({
     type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Card' }],
@@ -111,6 +95,29 @@ export class User {
     default: [],
   })
   dislikedFilms: ObjectId[];
+
+  @Prop({
+    type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }],
+    default: [],
+  })
+  dislikedComments: ObjectId[];
+
+  @Prop({
+    type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }],
+    default: [],
+  })
+  likedComments: ObjectId[];
+  @Prop({
+    type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Review' }],
+    default: [],
+  })
+  dislikedReviews: ObjectId[];
+
+  @Prop({
+    type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Review' }],
+    default: [],
+  })
+  likedReviews: ObjectId[];
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

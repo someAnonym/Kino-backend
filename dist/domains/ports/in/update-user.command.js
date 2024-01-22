@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UpdateUserCommand = void 0;
 class UpdateUserCommand {
-    constructor(_userId, _email, _name, _secondName, _vk, _instagram, _youtube, _twitter, _facebook, _aboutMe, _avatarImage, _gender, _birthday, _country, _city, _favoriteGenres, _person, _favoriteFilm, _likedFilm, _dislikedFilm) {
+    constructor(_userId, _email, _name, _secondName, _vk, _instagram, _youtube, _twitter, _facebook, _aboutMe, _avatarImage, _gender, _birthday, _country, _city, _favoriteGenres, _person, _favoriteFilm, _likedFilm, _dislikedFilm, _likedComment, _dislikedComment, _likedReview, _dislikedReview) {
         this._userId = _userId;
         this._email = _email;
         this._name = _name;
@@ -23,6 +23,10 @@ class UpdateUserCommand {
         this._favoriteFilm = _favoriteFilm;
         this._likedFilm = _likedFilm;
         this._dislikedFilm = _dislikedFilm;
+        this._likedComment = _likedComment;
+        this._dislikedComment = _dislikedComment;
+        this._likedReview = _likedReview;
+        this._dislikedReview = _dislikedReview;
     }
     get userId() {
         return this._userId;
@@ -83,6 +87,18 @@ class UpdateUserCommand {
     }
     get dislikedFilm() {
         return this._dislikedFilm;
+    }
+    get dislikedComment() {
+        return this._dislikedComment;
+    }
+    get likedComment() {
+        return this._likedComment;
+    }
+    get dislikedReview() {
+        return this._dislikedReview;
+    }
+    get likedReview() {
+        return this._likedReview;
     }
 }
 exports.UpdateUserCommand = UpdateUserCommand;

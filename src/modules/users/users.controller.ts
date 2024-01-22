@@ -62,6 +62,10 @@ export class UsersController {
       dto.favoriteFilm,
       dto.likedFilm,
       dto.dislikedFilm,
+      dto.likedComment,
+      dto.dislikedComment,
+      dto.likedReview,
+      dto.dislikedReview,
     );
     const updUser = await this._updateUserUseCase.updateUser(command);
     return await this.usersRepository.updateUser(updUser);

@@ -49,7 +49,11 @@ let UsersRepository = exports.UsersRepository = class UsersRepository {
             currentUser.persons = updatedUser.persons.map((i) => new mongodb_1.ObjectId(i));
             currentUser.favoriteFilms = updatedUser.favoriteFilms.map((i) => new mongodb_1.ObjectId(i));
             currentUser.likedFilms = updatedUser.likedFilms.map((i) => new mongodb_1.ObjectId(i));
-            currentUser.dislikedFilms = updatedUser.dislikedfilms.map((i) => new mongodb_1.ObjectId(i));
+            currentUser.dislikedFilms = updatedUser.dislikedFilms.map((i) => new mongodb_1.ObjectId(i));
+            currentUser.likedComments = updatedUser.likedComments.map((i) => new mongodb_1.ObjectId(i));
+            currentUser.dislikedComments = updatedUser.dislikedComments.map((i) => new mongodb_1.ObjectId(i));
+            currentUser.likedReviews = updatedUser.likedReviews.map((i) => new mongodb_1.ObjectId(i));
+            currentUser.dislikedReviews = updatedUser.dislikedReviews.map((i) => new mongodb_1.ObjectId(i));
             return this.repository.findOneAndUpdate(currentUser._id, currentUser);
         }
         catch (error) {

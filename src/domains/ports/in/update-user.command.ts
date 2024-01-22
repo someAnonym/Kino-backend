@@ -20,6 +20,10 @@ export class UpdateUserCommand {
     private _favoriteFilm: string,
     private _likedFilm: string,
     private _dislikedFilm: string,
+    private _likedComment: string,
+    private _dislikedComment: string,
+    private _likedReview: string,
+    private _dislikedReview: string,
   ) {}
 
   public get userId(): string {
@@ -99,5 +103,21 @@ export class UpdateUserCommand {
 
   public get dislikedFilm(): string {
     return this._dislikedFilm;
+  }
+
+  public get dislikedComment(): string {
+    return this._dislikedComment;
+  }
+
+  public get likedComment(): string {
+    return this._likedComment;
+  }
+
+  public get dislikedReview(): string {
+    return this._dislikedReview;
+  }
+
+  public get likedReview(): string {
+    return this._likedReview;
   }
 }

@@ -13,22 +13,22 @@ export declare class User {
     facebook: string;
     aboutMe: string;
     avatarImage?: string;
-    wasOnline?: Date;
     gender: string;
     birthday: string;
     country: string;
     city: string;
     favoriteGenres: string[];
-    films: ObjectId[];
     friends: ObjectId[];
     favoriteFilms: ObjectId[];
-    expectedFilms: ObjectId[];
     persons: ObjectId[];
-    favoritePersons: string[];
-    reviews: string[];
-    comments: string[];
+    reviews: ObjectId[];
+    comments: ObjectId[];
     likedFilms: ObjectId[];
     dislikedFilms: ObjectId[];
+    dislikedComments: ObjectId[];
+    likedComments: ObjectId[];
+    dislikedReviews: ObjectId[];
+    likedReviews: ObjectId[];
 }
 export declare const UserSchema: mongoose.Schema<User, mongoose.Model<User, any, any, any, mongoose.Document<unknown, any, User> & User & {
     _id: mongoose.Types.ObjectId;

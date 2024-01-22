@@ -18,4 +18,8 @@ export declare class UpdateUserDto {
     favoriteFilm: string;
     likedFilm: string;
     dislikedFilm: string;
+    likedComment: string;
+    dislikedComment: string;
+    likedReview: string;
+    dislikedReview: string;
 }

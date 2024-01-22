@@ -39,4 +39,12 @@ export class UpdateUserDto {
   likedFilm: string;
   @ApiProperty({ default: '' })
   dislikedFilm: string;
+  @ApiProperty({ default: '' })
+  likedComment: string;
+  @ApiProperty({ default: '' })
+  dislikedComment: string;
+  @ApiProperty({ default: '' })
+  likedReview: string;
+  @ApiProperty({ default: '' })
+  dislikedReview: string;
 }

@@ -59,10 +59,6 @@ __decorate([
     __metadata("design:type", String)
 ], User.prototype, "avatarImage", void 0);
 __decorate([
-    (0, mongoose_1.Prop)({ default: Date.now() }),
-    __metadata("design:type", Date)
-], User.prototype, "wasOnline", void 0);
-__decorate([
     (0, mongoose_1.Prop)({ default: '' }),
     __metadata("design:type", String)
 ], User.prototype, "gender", void 0);
@@ -84,13 +80,6 @@ __decorate([
 ], User.prototype, "favoriteGenres", void 0);
 __decorate([
     (0, mongoose_1.Prop)({
-        type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Card' }],
-        default: [],
-    }),
-    __metadata("design:type", Array)
-], User.prototype, "films", void 0);
-__decorate([
-    (0, mongoose_1.Prop)({
         type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
         default: [],
     }),
@@ -105,28 +94,23 @@ __decorate([
 ], User.prototype, "favoriteFilms", void 0);
 __decorate([
     (0, mongoose_1.Prop)({
-        type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Card' }],
-        default: [],
-    }),
-    __metadata("design:type", Array)
-], User.prototype, "expectedFilms", void 0);
-__decorate([
-    (0, mongoose_1.Prop)({
         type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Person' }],
         default: [],
     }),
     __metadata("design:type", Array)
 ], User.prototype, "persons", void 0);
 __decorate([
-    (0, mongoose_1.Prop)({ default: [] }),
-    __metadata("design:type", Array)
-], User.prototype, "favoritePersons", void 0);
-__decorate([
-    (0, mongoose_1.Prop)({ default: [] }),
+    (0, mongoose_1.Prop)({
+        type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Review' }],
+        default: [],
+    }),
     __metadata("design:type", Array)
 ], User.prototype, "reviews", void 0);
 __decorate([
-    (0, mongoose_1.Prop)({ default: [] }),
+    (0, mongoose_1.Prop)({
+        type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }],
+        default: [],
+    }),
     __metadata("design:type", Array)
 ], User.prototype, "comments", void 0);
 __decorate([
@@ -143,6 +127,34 @@ __decorate([
     }),
     __metadata("design:type", Array)
 ], User.prototype, "dislikedFilms", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({
+        type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }],
+        default: [],
+    }),
+    __metadata("design:type", Array)
+], User.prototype, "dislikedComments", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({
+        type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }],
+        default: [],
+    }),
+    __metadata("design:type", Array)
+], User.prototype, "likedComments", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({
+        type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Review' }],
+        default: [],
+    }),
+    __metadata("design:type", Array)
+], User.prototype, "dislikedReviews", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({
+        type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Review' }],
+        default: [],
+    }),
+    __metadata("design:type", Array)
+], User.prototype, "likedReviews", void 0);
 exports.User = User = __decorate([
     (0, mongoose_1.Schema)()
 ], User);

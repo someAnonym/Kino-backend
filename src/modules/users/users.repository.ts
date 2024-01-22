@@ -48,7 +48,11 @@ export class UsersRepository implements UserRepositoryPort {
       currentUser.persons = updatedUser.persons.map((i) => new ObjectId(i));
       currentUser.favoriteFilms = updatedUser.favoriteFilms.map((i) => new ObjectId(i));
       currentUser.likedFilms = updatedUser.likedFilms.map((i) => new ObjectId(i));
-      currentUser.dislikedFilms = updatedUser.dislikedfilms.map((i) => new ObjectId(i));
+      currentUser.dislikedFilms = updatedUser.dislikedFilms.map((i) => new ObjectId(i));
+      currentUser.likedComments = updatedUser.likedComments.map((i) => new ObjectId(i));
+      currentUser.dislikedComments = updatedUser.dislikedComments.map((i) => new ObjectId(i));
+      currentUser.likedReviews = updatedUser.likedReviews.map((i) => new ObjectId(i));
+      currentUser.dislikedReviews = updatedUser.dislikedReviews.map((i) => new ObjectId(i));
       // currentUser.friends = updatedUser.friends.map((i) => new ObjectId(i));
 
       return this.repository.findOneAndUpdate(currentUser._id, currentUser);

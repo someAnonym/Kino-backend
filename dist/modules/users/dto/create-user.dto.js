@@ -15,15 +15,15 @@ class CreateUserDto {
 }
 exports.CreateUserDto = CreateUserDto;
 __decorate([
-    (0, swagger_1.ApiProperty)({ default: 'test@test.test' }),
+    (0, swagger_1.ApiProperty)({ default: 'a@a.a' }),
     __metadata("design:type", String)
 ], CreateUserDto.prototype, "email", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)({ default: 'Vasya' }),
+    (0, swagger_1.ApiProperty)({ default: 'Dima' }),
     __metadata("design:type", String)
 ], CreateUserDto.prototype, "name", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)({ default: 'Pupkin' }),
+    (0, swagger_1.ApiProperty)({ default: 'Foki' }),
     __metadata("design:type", String)
 ], CreateUserDto.prototype, "secondName", void 0);
 __decorate([

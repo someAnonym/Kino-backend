@@ -54,7 +54,7 @@ let CommentsController = exports.CommentsController = class CommentsController {
     async update(id, dto) {
         const command = new udpate_comment_command_1.UpdateCommentCommand(id, dto.comments, dto.likes, dto.dislikes);
         const updatedComment = await this._updateCommentUseCase.updateComment(command);
-        return await (await (await (await (await this._commentsRepository.updateComm(updatedComment)).populate('user')).populate('comments')).populate({
+        return await (await (await (await (await (await this._commentsRepository.updateComm(updatedComment)).populate('user')).populate('comments', 'user')).populate('comments')).populate({
             path: 'comments',
             populate: {
                 path: 'user',

@@ -63,7 +63,9 @@ export class CommentsController {
     return await (
       await (
         await (
-          await (await this._commentsRepository.updateComm(updatedComment)).populate('user')
+          await (
+            await (await this._commentsRepository.updateComm(updatedComment)).populate('user')
+          ).populate('comments', 'user')
         ).populate('comments')
       ).populate({
         path: 'comments',

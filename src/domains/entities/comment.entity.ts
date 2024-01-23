@@ -51,12 +51,20 @@ export class CommentEntity {
     }
   }
 
-  public updateLikes(likes: number): number {
-    return (this._likes = likes);
+  public updateLikes(like: number): void | never {
+    try {
+      this._likes = this._likes + like;
+    } catch (error) {
+      throw new Error('Ошибка обновления лайков!');
+    }
   }
 
-  public updateDislikes(dislikes: number): number {
-    return (this._dislikes = dislikes);
+  public updateDislikes(dislike: number): void | never {
+    try {
+      this._dislikes = this._dislikes + dislike;
+    } catch (error) {
+      throw new Error('Ошибка обновления лайков!');
+    }
   }
 
   public getCommentData() {

@@ -44,11 +44,21 @@ class CommentEntity {
             console.warn('Ошибка при изменении комментариев комментария', error);
         }
     }
-    updateLikes(likes) {
-        return (this._likes = likes);
+    updateLikes(like) {
+        try {
+            this._likes = this._likes + like;
+        }
+        catch (error) {
+            throw new Error('Ошибка обновления лайков!');
+        }
     }
-    updateDislikes(dislikes) {
-        return (this._dislikes = dislikes);
+    updateDislikes(dislike) {
+        try {
+            this._dislikes = this._dislikes + dislike;
+        }
+        catch (error) {
+            throw new Error('Ошибка обновления лайков!');
+        }
     }
     getCommentData() {
         return {

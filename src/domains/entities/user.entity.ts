@@ -366,7 +366,7 @@ export class UserEntity {
 
   public updateLikedComments(likedComment: string): void | never {
     if (likedComment) {
-      if (!this._likedFilms.includes(likedComment)) {
+      if (!this._likedComments.includes(likedComment)) {
         this._likedComments = [...this._likedComments, likedComment];
       } else {
         this._likedComments = this._likedComments.filter((i) => i !== likedComment);
@@ -376,7 +376,7 @@ export class UserEntity {
 
   public updateDislikedComments(dislikedComment: string): void | never {
     if (dislikedComment) {
-      if (!this._dislikedFilms.includes(dislikedComment)) {
+      if (!this._dislikedComments.includes(dislikedComment)) {
         this._dislikedComments = [...this._dislikedComments, dislikedComment];
       } else {
         this._dislikedComments = this._dislikedComments.filter((i) => i !== dislikedComment);

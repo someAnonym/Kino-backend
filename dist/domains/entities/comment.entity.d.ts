@@ -17,8 +17,8 @@ export declare class CommentEntity {
     get comments(): string[];
     get complaints(): string[];
     updateComments(comments: string[]): string[];
-    updateLikes(likes: number): number;
-    updateDislikes(dislikes: number): number;
+    updateLikes(like: number): void | never;
+    updateDislikes(dislike: number): void | never;
     getCommentData(): {
         id: string;
         user: string;

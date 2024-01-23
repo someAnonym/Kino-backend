@@ -32,18 +32,19 @@ let ReviewController = exports.ReviewController = class ReviewController {
     getOne(id) {
         return this._reviewsRepository
             .getOneById(id)
-            .populate('user', 'avatarImage reviews name secondName')
+            .populate('user', 'avatarImage name secondName')
             .populate('comments')
-            .populate('comments', 'user');
+            .populate('comments', 'user')
+            .populate('comments', 'comments user');
     }
     async create(dto) {
-        return (await this._reviewsRepository.create(dto)).populate('user');
+        return (await (await (await this._reviewsRepository.create(dto)).populate('user')).populate('comments')).populate('comments', 'user');
     }
     async update(id, dto) {
         const command = new update_review_command_1.UpdateReviewCommand(id, dto.likes, dto.dislikes, dto.comments);
         const updatedReviewEntity = await this._updateReviewUseCase.updateReview(command);
         const updatedReview = await this._reviewsRepository.getOneById(updatedReviewEntity.id);
-        return (await (await updatedReview.populate('user', 'avatarImage reviews name secondName')).populate('comments')).populate('comments', 'user');
+        return await await (await (await updatedReview.populate('user', 'avatarImage reviews name secondName')).populate('comments', 'user')).populate('comments');
     }
     delete(id) {
         return this._reviewsRepository.delete(id);

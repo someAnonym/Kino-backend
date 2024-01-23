@@ -338,7 +338,7 @@ class UserEntity {
     }
     updateLikedComments(likedComment) {
         if (likedComment) {
-            if (!this._likedFilms.includes(likedComment)) {
+            if (!this._likedComments.includes(likedComment)) {
                 this._likedComments = [...this._likedComments, likedComment];
             }
             else {
@@ -348,7 +348,7 @@ class UserEntity {
     }
     updateDislikedComments(dislikedComment) {
         if (dislikedComment) {
-            if (!this._dislikedFilms.includes(dislikedComment)) {
+            if (!this._dislikedComments.includes(dislikedComment)) {
                 this._dislikedComments = [...this._dislikedComments, dislikedComment];
             }
             else {

@@ -32,15 +32,20 @@ export class ReviewController {
   getOne(@Param('id') id: string) {
     return this._reviewsRepository
       .getOneById(id)
-      .populate('user', 'avatarImage reviews name secondName')
+      .populate('user', 'avatarImage name secondName')
       .populate('comments')
-      .populate('comments', 'user');
+      .populate('comments', 'user')
+      .populate('comments', 'comments user');
   }
 
   @Post('/create')
   @UseGuards(JwtAuthGuard)
   async create(@Body() dto: CreateReviewOrmDto) {
-    return (await this._reviewsRepository.create(dto)).populate('user');
+    return (
+      await (
+        await (await this._reviewsRepository.create(dto)).populate('user')
+      ).populate('comments')
+    ).populate('comments', 'user');
   }
 
   @Put('/update/:id')
@@ -50,11 +55,11 @@ export class ReviewController {
 
     const updatedReviewEntity = await this._updateReviewUseCase.updateReview(command);
     const updatedReview = await this._reviewsRepository.getOneById(updatedReviewEntity.id);
-    return (
+    return await await (
       await (
         await updatedReview.populate('user', 'avatarImage reviews name secondName')
-      ).populate('comments')
-    ).populate('comments', 'user');
+      ).populate('comments', 'user')
+    ).populate('comments');
   }
 
   @Delete('/delete')
